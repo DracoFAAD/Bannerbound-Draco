@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:wither_rose" },
+  "base_liquid": "water",
+  "result_liquid": "ink"
+}

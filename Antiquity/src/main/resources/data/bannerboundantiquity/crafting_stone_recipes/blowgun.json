@@ -1,0 +1,7 @@
+{
+  "ingredients": [
+    { "item": "minecraft:bamboo", "count": 3 },
+    { "item": "bannerboundantiquity:plant_fiber", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:blowgun", "count": 1 }
+}

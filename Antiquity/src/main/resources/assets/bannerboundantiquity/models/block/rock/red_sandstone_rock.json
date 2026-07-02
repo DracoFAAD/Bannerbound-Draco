@@ -1,0 +1,7 @@
+{
+  "parent": "bannerboundantiquity:block/rock/rock",
+  "textures": {
+    "1": "bannerboundantiquity:block/rock/red_sandstone_rock",
+    "particle": "bannerboundantiquity:block/rock/red_sandstone_rock"
+  }
+}

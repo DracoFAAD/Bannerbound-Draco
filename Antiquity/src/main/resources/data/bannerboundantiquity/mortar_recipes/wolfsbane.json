@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:wolfsbane" },
+  "base_liquid": "",
+  "result_item": { "id": "bannerboundantiquity:wolfsbane_poison", "count": 1 }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "Devout Hearts",
+  "description": "Work done in faith is work done twice over. Believing hands waste nothing of the harvest.",
+  "cost": 20,
+  "x": 0,
+  "y": -90,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:communal_rites"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "claim_chunk",
+      "target": "",
+      "count": 1
+    },
+    "boost": 0.4,
+    "message": "Devout Hearts"
+  },
+  "unlocks": {
+    "features": [
+      "bannerbound.food_per_second_delta:0.1"
+    ]
+  }
+}

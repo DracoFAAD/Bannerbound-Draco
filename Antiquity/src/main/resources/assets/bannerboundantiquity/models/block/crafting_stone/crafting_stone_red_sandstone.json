@@ -1,0 +1,7 @@
+{
+  "parent": "bannerboundantiquity:block/crafting_stone/crafting_stone",
+  "textures": {
+    "1": "bannerboundantiquity:block/crafting_stone/crafting_stone_red_sandstone",
+    "particle": "minecraft:block/red_sandstone"
+  }
+}

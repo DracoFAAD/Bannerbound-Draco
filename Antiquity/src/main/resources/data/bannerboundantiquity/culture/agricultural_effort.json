@@ -1,0 +1,17 @@
+{
+  "name": "Agricultural Effort",
+  "description": "Pour the settlement's labour into the fields it already has. Doubles the food from cultivated farmland, but farmers stop breaking new ground.",
+  "cost": 32,
+  "x": 0,
+  "y": -160,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:tribe"
+  ],
+  "unlocks": {
+    "policy": [
+      "agricultural_effort"
+    ]
+  }
+}

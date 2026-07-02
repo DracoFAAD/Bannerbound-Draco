@@ -1,0 +1,6 @@
+{
+	"comment": "Upper door half renders nothing — the lower half's 32px-tall panel covers both halves.",
+	"textures": {
+		"particle": "bannerboundantiquity:block/thatch/thatch_door_closed"
+	}
+}

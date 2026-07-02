@@ -1,0 +1,17 @@
+{
+  "name": "Greater Pantheon",
+  "description": "One god was never going to be enough. The faithful learn to hold two names in their prayers — a second seat is raised in the heavens.",
+  "cost": 40,
+  "x": -160,
+  "y": -180,
+  "min_age": "ancient",
+  "faith_path": "ASTROLOGY",
+  "prerequisites": [
+    "bannerboundantiquity:star_charts"
+  ],
+  "unlocks": {
+    "flags": [
+      "bannerbound.pantheon_slot"
+    ]
+  }
+}

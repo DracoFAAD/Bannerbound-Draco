@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,main=true": { "model": "bannerboundantiquity:block/woodworking_table/woodworking_table" },
+    "facing=east,main=true":  { "model": "bannerboundantiquity:block/woodworking_table/woodworking_table", "y": 90 },
+    "facing=south,main=true": { "model": "bannerboundantiquity:block/woodworking_table/woodworking_table", "y": 180 },
+    "facing=west,main=true":  { "model": "bannerboundantiquity:block/woodworking_table/woodworking_table", "y": 270 },
+
+    "facing=north,main=false": { "model": "bannerboundantiquity:block/woodworking_table/empty" },
+    "facing=east,main=false":  { "model": "bannerboundantiquity:block/woodworking_table/empty" },
+    "facing=south,main=false": { "model": "bannerboundantiquity:block/woodworking_table/empty" },
+    "facing=west,main=false":  { "model": "bannerboundantiquity:block/woodworking_table/empty" }
+  }
+}

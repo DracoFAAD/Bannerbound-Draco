@@ -1,0 +1,17 @@
+{
+  "name": "Settlement",
+  "description": "A banner planted, a handful of kin, and tools of stick and bone. Everything that follows grows from this ground — Bannerbound begins here.",
+  "cost": 0,
+  "x": 0,
+  "y": 100,
+  "auto_unlock": true,
+  "min_age": "ancient",
+  "prerequisites": [],
+  "unlocks": {
+    "items": [],
+    "features": [
+      "bannerbound.set_tool_age:bone"
+    ],
+    "flags": []
+  }
+}

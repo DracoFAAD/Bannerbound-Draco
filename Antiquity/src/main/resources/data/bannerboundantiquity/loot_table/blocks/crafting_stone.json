@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [ { "type": "minecraft:item", "name": "minecraft:cobblestone" } ],
+      "conditions": [
+        { "condition": "minecraft:block_state_property", "block": "bannerboundantiquity:crafting_stone", "properties": { "material": "stone" } }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [ { "type": "minecraft:item", "name": "minecraft:sandstone" } ],
+      "conditions": [
+        { "condition": "minecraft:block_state_property", "block": "bannerboundantiquity:crafting_stone", "properties": { "material": "sandstone" } }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [ { "type": "minecraft:item", "name": "minecraft:red_sandstone" } ],
+      "conditions": [
+        { "condition": "minecraft:block_state_property", "block": "bannerboundantiquity:crafting_stone", "properties": { "material": "red_sandstone" } }
+      ]
+    }
+  ]
+}

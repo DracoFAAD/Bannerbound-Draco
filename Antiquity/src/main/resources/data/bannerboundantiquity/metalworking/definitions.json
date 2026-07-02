@@ -1,0 +1,26 @@
+{
+  "metals": {
+    "copper": { "color": "ED8E56", "rank": 1, "melt_point": 1085, "mb_per_unit": 50 },
+    "tin":    { "color": "D9DEE3", "rank": 1, "melt_point": 232,  "mb_per_unit": 50 },
+    "bronze": { "color": "E29622", "rank": 2, "melt_point": 950,  "mb_per_unit": 50 }
+  },
+  "molds": {
+    "axe": 150, "pickaxe": 150, "hoe": 100, "shovel": 100,
+    "sword": 200, "knife": 80, "hammer": 180, "chisel": 60, "ingot": 100,
+    "spear": 120, "arrow": 60
+  },
+  "alloys": [
+    {
+      "components": {
+        "copper": { "min": 0.60, "max": 0.90 },
+        "tin":    { "min": 0.10, "max": 0.40 }
+      },
+      "result": "bronze"
+    }
+  ],
+  "bloomery": {
+    "base_ceiling": 100, "bellows_per_pump": 220, "bellows_max": 1200,
+    "bellows_decay": 9, "climb": 0.06, "fall": 0.03,
+    "melt_band_width": 220, "green_width": 120
+  }
+}

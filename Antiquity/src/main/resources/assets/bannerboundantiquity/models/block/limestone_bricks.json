@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bannerboundantiquity:block/lime_bricks/lime_bricks"
+  }
+}

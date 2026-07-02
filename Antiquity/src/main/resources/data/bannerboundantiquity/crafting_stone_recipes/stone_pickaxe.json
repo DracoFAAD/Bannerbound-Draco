@@ -1,0 +1,9 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:stone_pick_head", "count": 1 },
+    { "item": "minecraft:stick", "count": 2 },
+    { "item": "bannerboundantiquity:plant_fiber", "count": 1 }
+  ],
+  "result": { "id": "minecraft:stone_pickaxe", "count": 1 },
+  "transfer_quality": true
+}

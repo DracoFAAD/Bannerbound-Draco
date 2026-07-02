@@ -1,0 +1,52 @@
+{
+  "name": "Herbalism",
+  "description": "Every leaf is medicine or murder in the right hands. Grind mountain wolfsbane into a paralytic for your darts — and keep forest yarrow close, for it is the only thing that will pull the same poison back out of a friend.",
+  "cost": 12,
+  "x": 500,
+  "y": 200,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:forager"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "mine_block",
+      "target": "#minecraft:flowers",
+      "count": 16
+    },
+    "boost": 0.4
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:wolfsbane",
+      "bannerboundantiquity:yarrow",
+      "bannerboundantiquity:wolfsbane_poison",
+      "bannerboundantiquity:wolfsbane_dart",
+      "bannerboundantiquity:blowgun",
+      "bannerboundantiquity:yarrow_antidote",
+      "bannerboundantiquity:deadly_nightshade",
+      "bannerboundantiquity:marshmallow_root",
+      "bannerboundantiquity:deadly_nightshade_poison",
+      "bannerboundantiquity:nightshade_dart",
+      "bannerboundantiquity:marshmallow_root_antidote",
+      "bannerboundantiquity:cinchona_antidote",
+      "bannerboundantiquity:curare_vine",
+      "bannerboundantiquity:curare_poison",
+      "bannerboundantiquity:curare_dart",
+      "bannerboundantiquity:arnica",
+      "bannerboundantiquity:arnica_antidote",
+      "bannerboundantiquity:cinchona",
+      "bannerboundantiquity:oleander",
+      "bannerboundantiquity:oleander_poison",
+      "bannerboundantiquity:oleander_dart",
+      "bannerboundantiquity:mortar_and_pestle",
+      "bannerboundantiquity:plant_string",
+      "bannerboundantiquity:fiber_rope"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.herbalism"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bannerboundantiquity:item/stick_fire_starter"
+  }
+}

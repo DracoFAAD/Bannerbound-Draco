@@ -1,0 +1,7 @@
+{
+  "ingredients": [
+    { "item": "minecraft:clay_ball", "count": 3 },
+    { "item": "bannerboundantiquity:thatch_bundle", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:plaster", "count": 6 }
+}

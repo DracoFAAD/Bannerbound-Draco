@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "bannerboundantiquity:block/fletching_table/fletching_station" },
+    "facing=east":  { "model": "bannerboundantiquity:block/fletching_table/fletching_station", "y": 90 },
+    "facing=south": { "model": "bannerboundantiquity:block/fletching_table/fletching_station", "y": 180 },
+    "facing=west":  { "model": "bannerboundantiquity:block/fletching_table/fletching_station", "y": 270 }
+  }
+}

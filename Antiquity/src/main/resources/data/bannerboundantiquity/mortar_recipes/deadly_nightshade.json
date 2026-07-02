@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:deadly_nightshade" },
+  "base_liquid": "",
+  "result_item": { "id": "bannerboundantiquity:deadly_nightshade_poison", "count": 1 }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Ore Mining",
+  "description": "Set miners to the deposits the prospectors found, and the rock gives up its metal. The veins are not spent but renew as they are worked — the miner's trade, and the first raw tin and marble it yields.",
+  "cost": 72,
+  "x": 3125,
+  "y": -75,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:quarry"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "mine_block",
+      "target": "minecraft:stone",
+      "count": 100
+    },
+    "boost": 0.4
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:raw_tin",
+      "bannerboundantiquity:tin_ore",
+      "minecraft:copper_ore",
+      "minecraft:raw_copper",
+      "minecraft:deepslate_copper_ore"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.miner",
+      "bannerbound.showore:bannerboundantiquity:tin_ore",
+      "bannerbound.showore:minecraft:copper_ore",
+      "bannerbound.showore:minecraft:deepslate_copper_ore"
+    ]
+  }
+}

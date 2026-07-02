@@ -1,0 +1,33 @@
+{
+  "name": "Fletching",
+  "description": "Cord, stave, and shaft, bound true at the fletching station. The craft of the straight shot — though a bow and its arrows still wait on the knowledge of Archery.",
+  "cost": 16,
+  "x": 1625,
+  "y": -175,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:stew"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "obtain_item",
+      "target": "minecraft:stick",
+      "count": 8
+    },
+    "boost": 0.4,
+    "message": "Fletching"
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:fletching_station",
+      "bannerboundantiquity:slingshot",
+      "bannerbound:workshop_rod"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.fletcher"
+    ],
+    "policy": []
+  }
+}

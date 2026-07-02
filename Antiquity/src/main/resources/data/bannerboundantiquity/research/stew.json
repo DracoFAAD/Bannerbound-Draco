@@ -1,0 +1,22 @@
+{
+  "name": "Stews",
+  "description": "",
+  "cost": 5,
+  "x": 1300,
+  "y": 0,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:spear_fishing",
+    "bannerboundantiquity:food_preservation"
+  ],
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:stone_cooking_pot"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.cook"
+    ]
+  }
+}

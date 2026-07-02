@@ -1,0 +1,17 @@
+{
+  "comment": "Breaking any one cell returns the eight cobblestone the kiln was built from (the other seven cells are cleared without drops by KilnBlock.onRemove). Pickaxe-gated via requiresCorrectToolForDrops + the mineable/pickaxe tag.",
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cobblestone",
+          "functions": [ { "function": "minecraft:set_count", "count": 8 } ]
+        }
+      ],
+      "conditions": [ { "condition": "minecraft:survives_explosion" } ]
+    }
+  ]
+}

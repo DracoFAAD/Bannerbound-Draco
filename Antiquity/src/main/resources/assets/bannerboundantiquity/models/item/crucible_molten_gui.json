@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "bannerboundantiquity:item/crucible_hot",
+		"layer1": "bannerboundantiquity:item/crucible_liquid_layer"
+	}
+}

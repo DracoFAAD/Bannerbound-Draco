@@ -1,0 +1,12 @@
+{
+  "ingredients": [
+    { "item": "minecraft:cooked_rabbit" },
+    { "item": "minecraft:carrot" },
+    { "item": "minecraft:brown_mushroom", "value": 3.0 }
+  ],
+  "name": "stew.rabbit",
+  "tint": "A0522D",
+  "bonus": 1.4,
+  "servings": 6,
+  "cook_ticks": 420
+}

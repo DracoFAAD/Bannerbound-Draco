@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "bannerboundantiquity:block/lime_bricks/lime_bricks"
+  }
+}

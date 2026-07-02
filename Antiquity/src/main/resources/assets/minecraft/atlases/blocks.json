@@ -1,0 +1,6 @@
+{
+  "sources": [
+    { "type": "minecraft:single", "resource": "bannerboundantiquity:block/plaster/plaster" },
+    { "type": "minecraft:directory", "source": "block/trims", "prefix": "block/trims/" }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Iron Working",
+  "description": "Iron answers the hammer as no stone ever could. Tools that hold their edge, blades that keep it, and armor to turn one aside — the settlement arms and equips itself in earnest.",
+  "cost": 200,
+  "x": 4025,
+  "y": 0,
+  "auto_unlock": false,
+  "min_age": "classical",
+  "prerequisites": [
+    "bannerboundantiquity:bronze_age"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "obtain_item",
+      "target": "bannerboundantiquity:bronze_ingot",
+      "count": 8
+    },
+    "boost": 0.4
+  },
+  "unlocks": {
+    "items": [
+      "minecraft:iron_ingot",
+      "minecraft:iron_block",
+      "minecraft:iron_pickaxe",
+      "minecraft:iron_axe",
+      "minecraft:iron_sword",
+      "minecraft:iron_shovel",
+      "minecraft:iron_hoe",
+      "minecraft:iron_helmet",
+      "minecraft:iron_chestplate",
+      "minecraft:iron_leggings",
+      "minecraft:iron_boots",
+      "minecraft:chainmail_helmet",
+      "minecraft:chainmail_chestplate",
+      "minecraft:chainmail_leggings",
+      "minecraft:chainmail_boots",
+      "minecraft:shield",
+      "minecraft:anvil",
+      "minecraft:bucket",
+      "minecraft:water_bucket",
+      "minecraft:lava_bucket",
+      "minecraft:iron_bars",
+      "minecraft:iron_door",
+      "minecraft:iron_trapdoor",
+      "minecraft:structure_block"
+    ],
+    "features": [
+      "bannerbound.advance_age:medieval",
+      "bannerbound.set_tool_age:iron"
+    ],
+    "flags": []
+  }
+}

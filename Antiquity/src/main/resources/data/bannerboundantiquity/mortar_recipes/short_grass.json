@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:short_grass" },
+  "base_liquid": "water",
+  "result_liquid": "green"
+}

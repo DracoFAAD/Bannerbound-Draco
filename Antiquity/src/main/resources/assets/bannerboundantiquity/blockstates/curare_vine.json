@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "half=lower": { "model": "bannerboundantiquity:block/curare_vine_bottom" },
+    "half=upper": { "model": "bannerboundantiquity:block/curare_vine_top" }
+  }
+}

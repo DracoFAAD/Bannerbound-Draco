@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:dandelion" },
+  "base_liquid": "water",
+  "result_liquid": "yellow"
+}

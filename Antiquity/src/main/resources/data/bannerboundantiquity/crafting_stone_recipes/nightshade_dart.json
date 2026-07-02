@@ -1,0 +1,8 @@
+{
+  "ingredients": [
+    { "item": "minecraft:bamboo", "count": 1 },
+    { "item": "bannerboundantiquity:plant_fiber", "count": 1 },
+    { "item": "bannerboundantiquity:deadly_nightshade_poison", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:nightshade_dart", "count": 4 }
+}

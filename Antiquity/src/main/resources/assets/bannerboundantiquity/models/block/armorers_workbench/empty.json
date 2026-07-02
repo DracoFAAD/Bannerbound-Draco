@@ -1,0 +1,6 @@
+{
+  "__comment": "The secondary half of the Armorer's Workbench renders nothing — the master half's model already extends over this cell. Particle only.",
+  "textures": {
+    "particle": "minecraft:block/smooth_stone"
+  }
+}

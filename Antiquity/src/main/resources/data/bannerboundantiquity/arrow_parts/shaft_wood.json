@@ -1,0 +1,11 @@
+{
+    "slot":  "shaft",
+    "material":  "wood",
+    "ingredient":  "minecraft:stick",
+    "damage":  1,
+    "weight":  0,
+    "accuracy":  1,
+    "priority":  0,
+    "item_texture":  "bannerboundantiquity:item/arrows/wooden_arrow_stick",
+    "projectile_texture":  "bannerboundantiquity:textures/projectiles/wooden_stick.png"
+}

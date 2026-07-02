@@ -1,0 +1,15 @@
+{
+  "research": "bannerboundantiquity:archery",
+  "grants": {
+    "weapon": "primitive_bow",
+    "weapon_item": "bannerboundantiquity:primitive_bow",
+    "melee_weapon": "bannerboundantiquity:bone_knife",
+    "tier": 2,
+    "damage": 2.5,
+    "attack_speed": 1.0,
+    "ranged": true,
+    "projectile": "bannerboundantiquity:arrow",
+    "behavior": "skirmisher",
+    "squad_weight": 2
+  }
+}

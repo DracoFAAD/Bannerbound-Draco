@@ -1,0 +1,31 @@
+{
+  "name": "Storage Logistics",
+  "description": "What one citizen gathers, all may draw upon. A common stockpile gives the settlement a single shared store — baskets in, baskets out, and nothing left to a private hoard.",
+  "cost": 12,
+  "x": 475,
+  "y": -200,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:settlement"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "obtain_item",
+      "target": "bannerboundantiquity:thatch_bundle",
+      "count": 8
+    },
+    "boost": 0.4,
+    "message": "Storage Logistics"
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:basket",
+      "bannerbound:stockpile"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.stocker"
+    ]
+  }
+}

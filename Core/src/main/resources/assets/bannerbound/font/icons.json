@@ -1,0 +1,481 @@
+{
+    "providers":  [
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/speech_bubble.png",
+                          "ascent":  14,
+                          "height":  24,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/science_icon.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/science_icon.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/science_icon.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/science_icon.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/science_icon.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/science_icon.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/science_icon.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/science_icon.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/science_icon.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/food_antiquity.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/culture_antiquity.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/happiness_high.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/happiness_mid.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/happiness_low.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/food_antiquity.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/food_medieval.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/food_renaissance.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/food_industrial.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/food_diesel.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/food_atomic.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/food_modern.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/food_future.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/culture_antiquity.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/culture_medieval.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/culture_renaissance.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/culture_industrial.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/culture_diesel.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/culture_atomic.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/culture_modern.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/culture_future.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/male.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/female.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/pregnancy.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/crown.png",
+                          "ascent":  9,
+                          "height":  12,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/wooden_axe.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/stone_axe.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/iron_axe.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/wooden_shovel.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/stone_shovel.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/iron_shovel.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/wooden_hoe.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/stone_hoe.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/iron_hoe.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/fishing_rod.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/lead.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:block/poppy.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/wooden_sword.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/stone_sword.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/iron_sword.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/bow.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "minecraft:item/cod.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      },
+                      {
+                          "type":  "bitmap",
+                          "file":  "bannerbound:gui/faith_antiquity.png",
+                          "ascent":  12,
+                          "height":  16,
+                          "chars":  [
+                                        ""
+                                    ]
+                      }
+                  ]
+}

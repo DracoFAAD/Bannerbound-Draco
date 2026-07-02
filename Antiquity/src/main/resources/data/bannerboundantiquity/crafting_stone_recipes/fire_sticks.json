@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "minecraft:stick", "count": 2 }
+  ],
+  "result": { "id": "bannerboundantiquity:fire_sticks", "count": 1 }
+}

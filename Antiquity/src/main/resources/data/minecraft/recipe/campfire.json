@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    { "type": "neoforge:false" }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "SLS",
+    "LLL"
+  ],
+  "key": {
+    "S": { "item": "minecraft:stick" },
+    "L": { "item": "minecraft:oak_log" }
+  },
+  "result": { "id": "minecraft:campfire" }
+}

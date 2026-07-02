@@ -1,0 +1,7 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:bone_blade", "count": 2 },
+    { "item": "minecraft:stick", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:bone_saw", "count": 1 }
+}

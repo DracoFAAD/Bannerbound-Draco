@@ -1,0 +1,21 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"0": "bannerboundantiquity:block/thatch/thatch_bed_upper",
+		"particle": "bannerboundantiquity:block/thatch/thatch"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 4, 16],
+			"faces": {
+				"north": {"uv": [0, 12, 16, 16], "texture": "#particle"},
+				"east": {"uv": [0, 12, 16, 16], "texture": "#particle"},
+				"south": {"uv": [0, 12, 16, 16], "texture": "#particle"},
+				"west": {"uv": [0, 12, 16, 16], "texture": "#particle"},
+				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#particle"}
+			}
+		}
+	]
+}

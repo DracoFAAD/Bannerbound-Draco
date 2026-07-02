@@ -1,0 +1,22 @@
+{
+  "name": "Archery",
+  "description": "A taut string and a straight shaft put death at arm's reach and far beyond it. Hunters no longer close on their quarry — they take it from the treeline, before it ever knows they are there.",
+  "cost": 24,
+  "x": 1900,
+  "y": -250,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:fletching"
+  ],
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:primitive_bow",
+      "bannerboundantiquity:arrow"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.archery"
+    ]
+  }
+}

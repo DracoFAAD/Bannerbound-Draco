@@ -1,0 +1,20 @@
+{
+  "name": "Wall Building",
+  "description": "Trace a line of defense along your borders and set hands to raising it. The wall planner lays out the work; the builder's trade is to see it stand, stone upon stone, against whatever comes.",
+  "cost": 80,
+  "x": 3425,
+  "y": -175,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:extensive_quarries"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.walls",
+      "bannerbound.unlock.builder"
+    ]
+  }
+}

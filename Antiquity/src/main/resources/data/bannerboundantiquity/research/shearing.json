@@ -1,0 +1,21 @@
+{
+  "name": "Shearing",
+  "description": "A flint edge, crude but keen, and the undergrowth gives way. Foragers strip vines, grass, and leaves that the bare hand could never gather.",
+  "cost": 10,
+  "x": 4425,
+  "y": 100,
+  "auto_unlock": false,
+  "min_age": "medieval",
+  "prerequisites": [
+    "bannerboundantiquity:iron_working"
+  ],
+  "unlocks": {
+    "items": [
+      "minecraft:shears"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.allow_shearing"
+    ]
+  }
+}

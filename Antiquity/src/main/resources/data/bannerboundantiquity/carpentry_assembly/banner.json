@@ -1,0 +1,9 @@
+{
+  "name": "banner",
+  "result": "minecraft:white_banner",
+  "yield": 1,
+  "ingredients": [
+    { "item": "bannerboundantiquity:thatch", "count": 6 },
+    { "item": "minecraft:stick", "count": 1 }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Spiritualism",
+  "description": "The people look up at the stars and wonder what they are — and look at the old stones and wonder who watches. Opens the founding of a Faith: a choice as weighty as the code of laws, and the first thing in the world bigger than any one banner.",
+  "cost": 36,
+  "x": 240,
+  "y": 200,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:tribe"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "reach_population",
+      "target": "",
+      "count": 5
+    },
+    "boost": 0.4,
+    "message": "Spiritualism"
+  },
+  "unlocks": {
+    "features": [
+      "bannerbound.unlock_faith_founding"
+    ]
+  },
+  "important": true,
+  "heraldry_points": 1
+}

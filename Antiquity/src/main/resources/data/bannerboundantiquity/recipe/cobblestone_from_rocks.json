@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RR",
+    "RR"
+  ],
+  "key": {
+    "R": { "item": "bannerboundantiquity:stone_rock" }
+  },
+  "result": { "id": "minecraft:cobblestone", "count": 1 }
+}

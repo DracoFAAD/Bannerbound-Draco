@@ -1,0 +1,9 @@
+{
+  "input": "bannerboundantiquity:cured_hide",
+  "result": {
+    "id": "minecraft:leather",
+    "count": 1
+  },
+  "ticks": 1200,
+  "category": "none"
+}

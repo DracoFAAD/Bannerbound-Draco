@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 16,
+    "xz_spread": 7,
+    "y_spread": 3,
+    "feature": {
+      "feature": {
+        "type": "bannerboundantiquity:double_plant",
+        "config": {
+          "to_place": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "bannerboundantiquity:curare_vine",
+              "Properties": { "half": "lower" }
+            }
+          }
+        }
+      },
+      "placement": []
+    }
+  }
+}

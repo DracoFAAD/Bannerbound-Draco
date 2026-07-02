@@ -1,0 +1,9 @@
+{
+  "type": "marauder",
+  "greeting": "bannerbound.barbarian.parley.greeting.marauder",
+  "demands": [
+    { "item": "minecraft:wheat", "count": 12 },
+    { "item": "minecraft:leather", "count": 4 }
+  ],
+  "trades": []
+}

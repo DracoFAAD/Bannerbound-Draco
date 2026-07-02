@@ -1,0 +1,65 @@
+{
+  "category": "Housing Crisis",
+  "title": "A Roof Over Their Heads",
+  "headline": "The people demand homes!",
+  "body": "Chief, too many of us sleep on bare ground beneath open sky. The grumbling by the fires has turned to anger — a person with no door of their own feels they belong to no one. They will not labor willingly much longer unless we raise proper homes.",
+  "prompt": "Choose how the settlement will shelter its people.",
+  "start_sound": "bannerboundantiquity:crisis_antiquity",
+  "background": "bannerboundantiquity:textures/gui/crisis/starvation_back.png",
+  "background_layers": [
+    {
+      "texture": "bannerboundantiquity:textures/gui/crisis/starvation_back.png",
+      "parallax": 0.08,
+      "drift_x": 1.4,
+      "drift_y": 0.8,
+      "scale": 1.045,
+      "opacity": 1.0,
+      "reveal_delay_ms": 0,
+      "reveal_duration_ms": 2200
+    }
+  ],
+  "priority": 900,
+  "completion_effects": {
+    "compliance_delta": 25,
+    "resentment_delta": -40
+  },
+  "trigger": {
+    "type": "homeless_count",
+    "count": 4,
+    "duration_ticks": 6000,
+    "requires_government": true
+  },
+  "chronicle_entry": "bannerboundantiquity:housing",
+  "choices": [
+    {
+      "id": "raise_homes",
+      "label": "We'll raise homes for all.",
+      "description": "Unlock the craft of building and put a roof over every head. No one sleeps in the open once the work is done.",
+      "outcome": "The settlement turns to building. Thatch is cut, doors are hung, and beds are claimed.",
+      "objectives": [
+        {
+          "id": "research_housing",
+          "type": "research_completed",
+          "label": "Research Housing",
+          "research": "bannerboundantiquity:housing",
+          "substeps": [
+            "Open the Town Hall research screen.",
+            "Queue and finish Housing.",
+            "This unlocks Housing Orders and thatch building parts."
+          ]
+        },
+        {
+          "id": "house_everyone",
+          "type": "housed_all",
+          "label": "House every citizen",
+          "target_count": 0,
+          "substeps": [
+            "Use Housing Orders to plan homes (roof, door, window, a bed each).",
+            "Build until every citizen has an assigned home.",
+            "Homeless citizens grow steadily unhappier the longer they wait."
+          ]
+        }
+      ]
+    }
+  ]
+}

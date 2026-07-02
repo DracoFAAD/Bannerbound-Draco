@@ -1,0 +1,9 @@
+{
+  "type": "raider",
+  "greeting": "bannerbound.barbarian.parley.greeting.raider",
+  "demands": [
+    { "item": "minecraft:beef", "count": 6 },
+    { "item": "minecraft:mutton", "count": 4 }
+  ],
+  "trades": []
+}

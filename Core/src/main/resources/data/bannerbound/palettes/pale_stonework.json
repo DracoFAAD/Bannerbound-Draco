@@ -1,0 +1,10 @@
+{
+  "id": "pale_stonework",
+  "name": "Pale Stonework",
+  "blocks": {
+    "minecraft:stone_bricks": 0.20,
+    "minecraft:polished_diorite": 0.20,
+    "minecraft:quartz_block": 0.15,
+    "minecraft:smooth_stone": 0.10
+  }
+}

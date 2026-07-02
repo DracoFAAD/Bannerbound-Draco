@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_jungle",
+  "features": "bannerboundantiquity:curare_vine",
+  "step": "vegetal_decoration"
+}

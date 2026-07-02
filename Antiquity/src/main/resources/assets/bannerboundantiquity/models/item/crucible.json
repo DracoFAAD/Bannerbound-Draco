@@ -1,0 +1,15 @@
+{
+	"loader": "neoforge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"parent": "bannerboundantiquity:block/crucible/clay_crucible"
+	},
+	"perspectives": {
+		"gui": {
+			"parent": "bannerboundantiquity:item/crucible_gui"
+		}
+	},
+	"overrides": [
+		{ "predicate": { "bannerboundantiquity:filled": 1 }, "model": "bannerboundantiquity:item/crucible_molten" }
+	]
+}

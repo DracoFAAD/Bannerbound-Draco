@@ -1,0 +1,11 @@
+{
+  "id": "blackstone_bastion",
+  "name": "Blackstone Bastion",
+  "blocks": {
+    "minecraft:polished_blackstone": 0.20,
+    "minecraft:polished_blackstone_bricks": 0.25,
+    "minecraft:gilded_blackstone": 0.20,
+    "minecraft:deepslate_tiles": 0.20,
+    "minecraft:chiseled_polished_blackstone": 0.15
+  }
+}

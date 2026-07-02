@@ -1,0 +1,7 @@
+{
+  "parent": "bannerboundantiquity:block/crucible/clay_crucible",
+  "textures": {
+    "1": "minecraft:block/clay",
+    "particle": "minecraft:block/clay"
+  }
+}

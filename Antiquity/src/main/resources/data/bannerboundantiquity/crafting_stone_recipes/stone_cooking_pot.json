@@ -1,0 +1,7 @@
+{
+  "ingredients": [
+    { "item": "minecraft:cobblestone", "count": 5 },
+    { "item": "minecraft:stick", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:stone_cooking_pot", "count": 1 }
+}

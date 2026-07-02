@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:blueberries" },
+  "base_liquid": "",
+  "result_item": { "id": "bannerboundantiquity:blueberries_pestled", "count": 1 }
+}

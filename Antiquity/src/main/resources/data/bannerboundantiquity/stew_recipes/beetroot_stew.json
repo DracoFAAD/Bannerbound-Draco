@@ -1,0 +1,10 @@
+{
+  "ingredients": [
+    { "item": "minecraft:beetroot" }
+  ],
+  "name": "stew.beetroot",
+  "tint": "8E1F3D",
+  "bonus": 1.2,
+  "servings": 6,
+  "cook_ticks": 360
+}

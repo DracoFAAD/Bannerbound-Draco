@@ -1,0 +1,7 @@
+{
+  "ingredients": [
+    { "item": "minecraft:cobblestone", "count": 1 },
+    { "item": "bannerboundantiquity:bone_pickaxe", "count": 1 }
+  ],
+  "result": { "id": "bannerbound:workshop_rod", "count": 1 }
+}

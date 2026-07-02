@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "bannerboundantiquity:bone_club",
+    "bannerboundantiquity:stone_hammer",
+    "bannerboundantiquity:copper_hammer",
+    "bannerboundantiquity:tin_hammer",
+    "bannerboundantiquity:bronze_hammer"
+  ]
+}

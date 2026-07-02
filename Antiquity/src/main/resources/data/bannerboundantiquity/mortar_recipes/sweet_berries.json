@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:sweet_berries" },
+  "base_liquid": "",
+  "result_item": { "id": "bannerboundantiquity:sweet_berries_pestled", "count": 1 }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "frosthold",
+  "name": "Frosthold",
+  "blocks": {
+    "minecraft:snow_block": 0.15,
+    "minecraft:packed_ice": 0.20,
+    "minecraft:blue_ice": 0.20,
+    "minecraft:spruce_log": 0.15,
+    "minecraft:stripped_spruce_log": 0.15
+  }
+}

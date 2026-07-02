@@ -1,0 +1,49 @@
+{
+	"variants": {
+		"facing=north,type=single": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_single"
+		},
+		"facing=east,type=single": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_single",
+			"y": 90
+		},
+		"facing=south,type=single": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_single",
+			"y": 180
+		},
+		"facing=west,type=single": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_single",
+			"y": 270
+		},
+		"facing=north,type=left": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_left"
+		},
+		"facing=east,type=left": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_left",
+			"y": 90
+		},
+		"facing=south,type=left": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_left",
+			"y": 180
+		},
+		"facing=west,type=left": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_left",
+			"y": 270
+		},
+		"facing=north,type=right": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_right"
+		},
+		"facing=east,type=right": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_right",
+			"y": 90
+		},
+		"facing=south,type=right": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_right",
+			"y": 180
+		},
+		"facing=west,type=right": {
+			"model": "bannerboundantiquity:block/drying_rack/cherry_right",
+			"y": 270
+		}
+	}
+}

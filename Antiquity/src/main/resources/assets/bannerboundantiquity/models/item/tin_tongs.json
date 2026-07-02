@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "bannerboundantiquity:item/tin_tier/tin_tongs"
+  }
+}

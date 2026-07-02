@@ -1,0 +1,19 @@
+{
+  "name": "Domestication",
+  "description": "Welcome animals into the settlement as companions. A Council doctrine — the citizens adore their pets, even if discipline slips a little.",
+  "cost": 28,
+  "x": 160,
+  "y": 80,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "government_type": "COUNCIL",
+  "prerequisites": [
+    "bannerboundantiquity:tribe"
+  ],
+  "unlocks": {
+    "policy": [
+      "domestication"
+    ]
+  },
+  "heraldry_points": 1
+}

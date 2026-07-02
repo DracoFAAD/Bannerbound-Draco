@@ -1,0 +1,25 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
+	"ambientocclusion": false,
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "bannerboundantiquity:block/thatch/thatch_door_open",
+		"particle": "bannerboundantiquity:block/thatch/thatch_door_open"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 32, 2],
+			"faces": {
+				"north": {"uv": [0, 0, 4, 8], "texture": "#0"},
+				"east": {"uv": [0, 8, 0.5, 16], "texture": "#0"},
+				"south": {"uv": [4, 0, 8, 8], "texture": "#0"},
+				"west": {"uv": [8, 0, 8.5, 8], "texture": "#0"},
+				"up": {"uv": [4.5, 8.5, 0.5, 8], "texture": "#0"},
+				"down": {"uv": [8.5, 8, 4.5, 8.5], "texture": "#0"}
+			}
+		}
+	]
+}

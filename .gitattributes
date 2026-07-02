@@ -1,0 +1,19 @@
+# Normalize line endings; mark binaries so diffs stay sane.
+* text=auto
+
+*.java text diff=java
+*.json text
+*.toml text
+*.md text
+*.cfg text
+*.properties text
+gradlew text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+
+*.png binary
+*.ogg binary
+*.mp4 binary
+*.jar binary
+*.aseprite binary
+*.bbtree binary

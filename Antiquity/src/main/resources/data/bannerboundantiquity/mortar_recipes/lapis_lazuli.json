@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:lapis_lazuli" },
+  "base_liquid": "water",
+  "result_liquid": "blue"
+}

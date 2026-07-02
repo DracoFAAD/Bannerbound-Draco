@@ -1,0 +1,11 @@
+{
+  "providers": [
+    {
+      "type": "ttf",
+      "file": "bannerbound:cormorant.ttf",
+      "size": 10.0,
+      "oversample": 6.0,
+      "shift": [0.0, 0.0]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+	"parent": "bannerboundantiquity:block/drying_rack/single",
+	"textures": {
+		"0": "minecraft:block/jungle_log",
+		"1": "minecraft:block/stripped_jungle_log",
+		"2": "minecraft:block/jungle_log_top",
+		"particle": "minecraft:block/jungle_log"
+	}
+}

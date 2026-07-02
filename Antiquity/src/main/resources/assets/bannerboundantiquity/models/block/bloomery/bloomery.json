@@ -1,0 +1,7 @@
+{
+  "comment": "Intentionally empty — the 1x1x2 model is drawn by BloomeryRenderer (a block entity renderer). Only the particle texture is needed here, for break particles.",
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "minecraft:block/mud_bricks"
+  }
+}

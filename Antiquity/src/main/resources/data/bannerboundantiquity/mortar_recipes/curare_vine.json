@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:curare_vine" },
+  "base_liquid": "",
+  "result_item": { "id": "bannerboundantiquity:curare_poison", "count": 1 }
+}

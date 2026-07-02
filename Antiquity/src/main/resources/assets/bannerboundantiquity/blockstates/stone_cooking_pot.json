@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "on_fire=false": { "model": "bannerboundantiquity:block/stone_cooking_pot/cooking_pot_empty" },
+    "on_fire=true": { "model": "bannerboundantiquity:block/stone_cooking_pot/cooking_pot_placed" }
+  }
+}

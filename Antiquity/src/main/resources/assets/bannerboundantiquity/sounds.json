@@ -1,0 +1,214 @@
+{
+"hammer_poor": { "category": "block", "sounds": [ { "name": "bannerboundantiquity:hammer_poor", "stream": false } ] },
+  "hammer_good": { "category": "block", "sounds": [ { "name": "bannerboundantiquity:hammer_good", "stream": false } ] },
+  "hammer_great": { "category": "block", "sounds": [ { "name": "bannerboundantiquity:hammer_great", "stream": false } ] },
+  "hammer_perfect": { "category": "block", "sounds": [ { "name": "bannerboundantiquity:hammer_perfect", "stream": false } ] },
+  "thatch_break": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:thatch_break", "stream": false }
+    ]
+  },
+  "thatch_place": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:thatch_place", "stream": false }
+    ]
+  },
+  "thatch_door_open": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:thatch_door_open", "stream": false }
+    ]
+  },
+  "thatch_door_close": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:thatch_door_close", "stream": false }
+    ]
+  },
+  "bloomery_open": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:bloomery_open", "stream": false }
+    ]
+  },
+  "bloomery_close": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:bloomery_close", "stream": false }
+    ]
+  },
+  "bellows_use": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:bellows_use", "stream": false }
+    ]
+  },
+  "smelting_done": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:smelting_done", "stream": false }
+    ]
+  },
+  "knapping": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:knapping", "stream": false }
+    ]
+  },
+  "spear_hold": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:spear_hold", "stream": false }
+    ]
+  },
+  "spear_throw": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:spear_throw", "stream": false }
+    ]
+  },
+  "spear_throw_rope": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:spear_throw_rope", "stream": false }
+    ]
+  },
+  "spear_hit_block": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:spear_hit_block", "stream": false }
+    ]
+  },
+  "spear_hit_flesh": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:spear_hit_flesh", "stream": false }
+    ]
+  },
+  "spear_reel": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:spear_reel", "stream": false }
+    ]
+  },
+  "fletching_stretch": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:fletching_stretch", "stream": false }
+    ]
+  },
+  "saw": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:saw", "stream": false }
+    ]
+  },
+  "saw_done": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:saw_done", "stream": false }
+    ]
+  },
+  "crisis_antiquity": {
+    "category": "master",
+    "sounds": [
+      { "name": "bannerboundantiquity:crisis_antiquity", "stream": false }
+    ]
+  },
+  "wolfsbane_ambience_1": {
+    "category": "ambient",
+    "sounds": [
+      { "name": "bannerboundantiquity:wolfsbane_ambience_1", "stream": true }
+    ]
+  },
+  "wolfsbane_ambience_2": {
+    "category": "ambient",
+    "sounds": [
+      { "name": "bannerboundantiquity:wolfsbane_ambience_2", "stream": true }
+    ]
+  },
+  "wolfsbane_ambience_3": {
+    "category": "ambient",
+    "sounds": [
+      { "name": "bannerboundantiquity:wolfsbane_ambience_3", "stream": true }
+    ]
+  },
+  "wolfsbane_ambience_4": {
+    "category": "ambient",
+    "sounds": [
+      { "name": "bannerboundantiquity:wolfsbane_ambience_4", "stream": true }
+    ]
+  },
+  "wolfsbane_hit_client": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:wolfsbane_hit_client", "stream": false }
+    ]
+  },
+  "wolfsbane_heal_client": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:wolfsbane_heal_client", "stream": false }
+    ]
+  },
+  "wolfsbane_belch": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:wolfsbane_belch", "stream": false }
+    ]
+  },
+  "blowgun_shoot": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:blowgun_shoot", "stream": false }
+    ]
+  },
+  "sling_pull": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:sling_pull", "stream": false }
+    ]
+  },
+  "sling_shot": {
+    "category": "player",
+    "sounds": [
+      { "name": "bannerboundantiquity:sling_shot", "stream": false }
+    ]
+  },
+  "rock_impact": {
+    "category": "block",
+    "sounds": [
+      { "name": "bannerboundantiquity:rock_impact", "stream": false }
+    ]
+  },
+  "belladonna_ambience_1": {
+    "category": "ambient",
+    "sounds": [ { "name": "bannerboundantiquity:belladonna_ambience_1", "stream": true } ]
+  },
+  "belladonna_ambience_2": {
+    "category": "ambient",
+    "sounds": [ { "name": "bannerboundantiquity:belladonna_ambience_2", "stream": true } ]
+  },
+  "belladonna_ambience_3": {
+    "category": "ambient",
+    "sounds": [ { "name": "bannerboundantiquity:belladonna_ambience_3", "stream": true } ]
+  },
+  "belladonna_ambience_4": {
+    "category": "ambient",
+    "sounds": [ { "name": "bannerboundantiquity:belladonna_ambience_4", "stream": true } ]
+  },
+  "belladonna_hit_client": {
+    "category": "player",
+    "sounds": [ { "name": "bannerboundantiquity:belladonna_hit_client", "stream": false } ]
+  },
+  "belladonna_heal_client": {
+    "category": "player",
+    "sounds": [ { "name": "bannerboundantiquity:belladonna_heal_client", "stream": false } ]
+  },
+  "oleander_heartbeat": {
+    "category": "player",
+    "sounds": [ { "name": "bannerboundantiquity:oleander_heartbeat", "stream": false } ]
+  }
+}

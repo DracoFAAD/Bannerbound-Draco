@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "roped=false": { "model": "bannerboundantiquity:block/rope_fence/acacia_rope_fence_post" },
+    "roped=true":  { "model": "bannerboundantiquity:block/rope_fence/acacia_rope_fence_post_with_rope" }
+  }
+}

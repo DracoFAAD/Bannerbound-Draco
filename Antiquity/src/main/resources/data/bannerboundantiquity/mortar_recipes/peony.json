@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:peony" },
+  "base_liquid": "water",
+  "result_liquid": "pink"
+}

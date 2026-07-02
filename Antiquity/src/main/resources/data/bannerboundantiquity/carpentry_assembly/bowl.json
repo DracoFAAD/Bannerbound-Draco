@@ -1,0 +1,8 @@
+{
+  "name": "bowl",
+  "result": "minecraft:bowl",
+  "yield": 4,
+  "ingredients": [
+    { "tag": "minecraft:logs", "count": 1 }
+  ]
+}

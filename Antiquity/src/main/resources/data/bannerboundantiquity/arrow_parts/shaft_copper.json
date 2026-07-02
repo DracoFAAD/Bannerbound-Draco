@@ -1,0 +1,11 @@
+{
+    "slot":  "shaft",
+    "material":  "copper",
+    "ingredient":  "minecraft:copper_ingot",
+    "damage":  1,
+    "weight":  2,
+    "accuracy":  1,
+    "priority":  20,
+    "item_texture":  "bannerboundantiquity:item/arrows/copper_arrow_stick",
+    "projectile_texture":  "bannerboundantiquity:textures/projectiles/copper_stick.png"
+}

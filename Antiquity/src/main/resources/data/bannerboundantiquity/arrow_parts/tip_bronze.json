@@ -1,0 +1,11 @@
+{
+    "slot":  "tip",
+    "material":  "bronze",
+    "ingredient":  "bannerboundantiquity:bronze_arrow_head",
+    "damage":  1.45,
+    "weight":  3,
+    "accuracy":  1,
+    "priority":  30,
+    "item_texture":  "bannerboundantiquity:item/arrows/bronze_arrow_tip",
+    "projectile_texture":  "bannerboundantiquity:textures/projectiles/bronze_arrow_tip.png"
+}

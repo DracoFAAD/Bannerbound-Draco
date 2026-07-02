@@ -1,0 +1,6 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:raw_mud_brick" },
+  "ticks": 80,
+  "result": { "id": "minecraft:mud_bricks", "count": 1 },
+  "chance": 1.0
+}

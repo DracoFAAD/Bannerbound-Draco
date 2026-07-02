@@ -1,0 +1,19 @@
+{
+  "name": "Opinionated Crowd",
+  "description": "Put every major decision to the whole tribe. A Council doctrine — when the citizens feel heard, they pull together.",
+  "cost": 28,
+  "x": 160,
+  "y": -80,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "government_type": "COUNCIL",
+  "prerequisites": [
+    "bannerboundantiquity:tribe"
+  ],
+  "unlocks": {
+    "policy": [
+      "opinionated_crowd"
+    ]
+  },
+  "heraldry_points": 1
+}

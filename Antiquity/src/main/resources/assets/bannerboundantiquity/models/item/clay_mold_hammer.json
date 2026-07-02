@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bannerboundantiquity:item/clay_mold/clay_mold_hammer"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:unfired_clay_tank" },
+  "ticks": 200,
+  "result": { "id": "bannerboundantiquity:clay_tank", "count": 1 },
+  "chance": 1.0
+}

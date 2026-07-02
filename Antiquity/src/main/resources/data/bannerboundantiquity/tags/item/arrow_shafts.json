@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:stick",
+    "minecraft:copper_ingot",
+    "bannerboundantiquity:tin_ingot",
+    "bannerboundantiquity:bronze_ingot"
+  ]
+}

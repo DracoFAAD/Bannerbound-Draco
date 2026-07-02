@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bannerboundantiquity:item/empty_mug",
+    "layer1": "bannerboundantiquity:item/mug_alcohol_layer"
+  }
+}

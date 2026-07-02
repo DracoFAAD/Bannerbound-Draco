@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [ "minecraft:plains", "minecraft:sunflower_plains" ],
+  "features": "bannerboundantiquity:blueberry_bush_plains",
+  "step": "vegetal_decoration"
+}

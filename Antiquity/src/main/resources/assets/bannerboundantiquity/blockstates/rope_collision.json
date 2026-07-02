@@ -1,0 +1,5 @@
+{
+  "multipart": [
+    { "apply": { "model": "bannerboundantiquity:block/rope_collision" } }
+  ]
+}

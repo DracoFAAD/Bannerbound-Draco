@@ -1,0 +1,26 @@
+{
+  "name": "Kilns",
+  "description": "Pack cobblestone with river clay and bake it hard, and you have a dome that holds real heat. The kiln fires clay into brick and terracotta and chars wood into charcoal — the settlement's first true furnace, long before metal.",
+  "cost": 40,
+  "x": 2475,
+  "y": -100,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:knapping"
+  ],
+  "unlocks": {
+    "items": [
+      "minecraft:brick",
+      "minecraft:terracotta",
+      "minecraft:charcoal",
+      "minecraft:clay_ball",
+      "bannerboundantiquity:clayed_cobblestone",
+      "bannerboundantiquity:quicklime"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.home_demand:charcoal"
+    ]
+  }
+}

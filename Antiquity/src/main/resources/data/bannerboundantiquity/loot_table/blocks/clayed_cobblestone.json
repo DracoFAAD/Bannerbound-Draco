@@ -1,0 +1,16 @@
+{
+  "comment": "Breaking clayed cobblestone gives back its ingredients — the cobblestone plus the clay ball pressed into it. Pickaxe-gated via requiresCorrectToolForDrops + the mineable/pickaxe tag.",
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [ { "type": "minecraft:item", "name": "minecraft:cobblestone" } ],
+      "conditions": [ { "condition": "minecraft:survives_explosion" } ]
+    },
+    {
+      "rolls": 1,
+      "entries": [ { "type": "minecraft:item", "name": "minecraft:clay_ball" } ],
+      "conditions": [ { "condition": "minecraft:survives_explosion" } ]
+    }
+  ]
+}

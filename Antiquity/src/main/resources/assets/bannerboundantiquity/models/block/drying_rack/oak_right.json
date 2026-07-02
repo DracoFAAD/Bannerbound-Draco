@@ -1,0 +1,9 @@
+{
+	"parent": "bannerboundantiquity:block/drying_rack/right",
+	"textures": {
+		"0": "minecraft:block/oak_log",
+		"1": "minecraft:block/stripped_oak_log",
+		"2": "minecraft:block/oak_log_top",
+		"particle": "minecraft:block/oak_log"
+	}
+}

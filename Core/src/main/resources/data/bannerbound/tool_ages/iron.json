@@ -1,0 +1,23 @@
+{
+  "name": "Iron Age",
+  "order": 5,
+  "chop_ticks": 30,
+  "mine_speed": 22,
+  "harvest_speed": 15,
+  "weapon_damage": 6.0,
+  "weapon_attack_speed": 1.6,
+  "tools": {
+    "axe":     "minecraft:iron_axe",
+    "pickaxe": "minecraft:iron_pickaxe",
+    "shovel":  "minecraft:iron_shovel",
+    "hoe":     "minecraft:iron_hoe",
+    "sword":   "minecraft:iron_sword",
+    "guard":   "minecraft:iron_sword",
+    "hunt":    "minecraft:iron_sword",
+    "fishing_rod": "minecraft:fishing_rod",
+    "rope":        "minecraft:lead",
+    "forage":      "minecraft:poppy",
+    "saw":         "bannerboundantiquity:bone_saw",
+    "chisel":      "bannerboundantiquity:stone_chisel"
+  }
+}

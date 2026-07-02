@@ -1,0 +1,8 @@
+{
+  "type": "tribe",
+  "greeting": "bannerbound.barbarian.parley.greeting.tribe",
+  "demands": [
+    { "item": "minecraft:porkchop", "count": 6 }
+  ],
+  "trades": []
+}

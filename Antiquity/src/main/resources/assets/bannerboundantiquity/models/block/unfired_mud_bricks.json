@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bannerboundantiquity:block/unrefined_mud_bricks/unrefined_mud_bricks"
+  }
+}

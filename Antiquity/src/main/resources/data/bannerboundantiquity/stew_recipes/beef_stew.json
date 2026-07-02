@@ -1,0 +1,11 @@
+{
+  "ingredients": [
+    { "item": "minecraft:cooked_beef" },
+    { "item": "minecraft:potato" }
+  ],
+  "name": "stew.beef",
+  "tint": "6E4023",
+  "bonus": 1.4,
+  "servings": 6,
+  "cook_ticks": 440
+}

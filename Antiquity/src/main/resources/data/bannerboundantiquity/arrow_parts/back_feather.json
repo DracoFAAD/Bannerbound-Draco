@@ -1,0 +1,11 @@
+{
+    "slot":  "back",
+    "material":  "feather",
+    "ingredient":  "minecraft:feather",
+    "damage":  1,
+    "weight":  0,
+    "accuracy":  0.7,
+    "priority":  10,
+    "item_texture":  "bannerboundantiquity:item/arrows/feather_arrow_back",
+    "projectile_texture":  "bannerboundantiquity:textures/projectiles/feather_back.png"
+}

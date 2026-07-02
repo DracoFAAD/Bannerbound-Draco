@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:yarrow" },
+  "base_liquid": "",
+  "result_item": { "id": "bannerboundantiquity:yarrow_antidote", "count": 1 }
+}

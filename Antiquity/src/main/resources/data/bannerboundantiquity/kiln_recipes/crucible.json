@@ -1,0 +1,6 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:unfired_crucible" },
+  "ticks": 180,
+  "result": { "id": "bannerboundantiquity:crucible", "count": 1 },
+  "chance": 1.0
+}

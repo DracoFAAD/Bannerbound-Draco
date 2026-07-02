@@ -1,0 +1,11 @@
+{
+  "ingredients": [
+    { "item": "minecraft:cooked_mutton" },
+    { "item": "minecraft:carrot" }
+  ],
+  "name": "stew.mutton",
+  "tint": "8A5A3B",
+  "bonus": 1.3,
+  "servings": 6,
+  "cook_ticks": 420
+}

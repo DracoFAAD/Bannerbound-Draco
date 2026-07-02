@@ -1,0 +1,11 @@
+{
+  "id": "copper_quarter",
+  "name": "Copper Quarter",
+  "blocks": {
+    "minecraft:copper_block": 0.20,
+    "minecraft:cut_copper": 0.20,
+    "minecraft:exposed_copper": 0.15,
+    "minecraft:oxidized_copper": 0.15,
+    "minecraft:weathered_cut_copper": 0.15
+  }
+}

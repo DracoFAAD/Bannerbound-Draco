@@ -1,0 +1,6 @@
+{
+	"parent": "bannerboundantiquity:block/trough/fermentation_trough_connected_right",
+	"textures": {
+		"1": "minecraft:block/jungle_log"
+	}
+}

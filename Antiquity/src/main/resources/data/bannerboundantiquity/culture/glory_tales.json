@@ -1,0 +1,17 @@
+{
+  "name": "Glory Tales",
+  "description": "Bards and elders turn each new war into a story worth joining. The surge is brief, but powerful.",
+  "cost": 24,
+  "x": 0,
+  "y": 240,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:tribe"
+  ],
+  "unlocks": {
+    "policy": [
+      "glory_tales"
+    ]
+  }
+}

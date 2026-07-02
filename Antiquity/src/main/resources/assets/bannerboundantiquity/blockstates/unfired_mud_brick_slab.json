@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bannerboundantiquity:block/unfired_mud_brick_slab"
+    },
+    "type=double": {
+      "model": "bannerboundantiquity:block/unfired_mud_bricks"
+    },
+    "type=top": {
+      "model": "bannerboundantiquity:block/unfired_mud_brick_slab_top"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Pottery",
+  "description": "Clay shaped on a slab becomes vessels, buckets, bricks, and crucibles. The kiln hardens what the hand forms, turning soft river clay into the settlement's first durable ceramics.",
+  "cost": 48,
+  "x": 2725,
+  "y": 0,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:kiln"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "mine_block",
+      "target": "minecraft:clay",
+      "count": 4
+    },
+    "boost": 0.4,
+    "message": "Pottery"
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:pottery_slab",
+      "minecraft:clay",
+      "bannerboundantiquity:clay_pot_unfired",
+      "bannerboundantiquity:clay_pot_fired",
+      "bannerboundantiquity:clay_bucket",
+      "bannerboundantiquity:clay_fired_bucket",
+      "bannerboundantiquity:clay_fired_bucket_water",
+      "bannerboundantiquity:clay_fired_bucket_lava",
+      "bannerboundantiquity:raw_mud_brick",
+      "minecraft:mud_bricks",
+      "bannerboundantiquity:unfired_mud_bricks",
+      "bannerboundantiquity:unfired_mud_brick_stairs",
+      "bannerboundantiquity:unfired_mud_brick_slab",
+      "bannerboundantiquity:unfired_mud_brick_wall",
+      "bannerboundantiquity:plaster",
+      "bannerboundantiquity:paint_brush",
+      "bannerboundantiquity:unfired_crucible",
+      "bannerboundantiquity:crucible"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.potter"
+    ]
+  }
+}

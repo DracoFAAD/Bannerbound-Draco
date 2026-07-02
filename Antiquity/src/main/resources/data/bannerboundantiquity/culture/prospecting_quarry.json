@@ -1,0 +1,17 @@
+{
+  "name": "Prospecting Quarry",
+  "description": "Teach quarry crews to watch the rubble for glints of ore. Unlocks the Prospecting Quarry policy: quarryworkers have a small chance to recover raw ore from natural stone. Requires the Early Prospecting science.",
+  "cost": 28,
+  "x": -160,
+  "y": 160,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:tribe"
+  ],
+  "unlocks": {
+    "policy": [
+      "prospecting_quarry"
+    ]
+  }
+}

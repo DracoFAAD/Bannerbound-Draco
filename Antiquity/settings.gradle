@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+// Project name = the mod id (the folder name has spaces, which is best kept out of Gradle).
+rootProject.name = 'bannerboundantiquity'
+
+// Bannerbound: Core is developed alongside this expansion. Including it as a composite build
+// means Core changes are picked up automatically — no need to publish or copy a jar.
+// Core now lives in the sibling repo/Core checkout (Bannerbound--Core.git).
+includeBuild '../Core'

@@ -1,0 +1,8 @@
+{
+  "input": "minecraft:mutton",
+  "result": {
+    "id": "bannerboundantiquity:dried_mutton",
+    "count": 1
+  },
+  "ticks": 2400
+}

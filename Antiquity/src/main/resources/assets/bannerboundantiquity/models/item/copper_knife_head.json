@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bannerboundantiquity:item/metal_heads/copper_knife_head"
+  }
+}

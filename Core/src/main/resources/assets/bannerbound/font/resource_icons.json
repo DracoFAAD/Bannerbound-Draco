@@ -1,0 +1,34 @@
+{
+  "providers": [
+    {"type": "bitmap", "file": "bannerbound:gui/science_icon.png", "ascent": 9, "height": 12, "chars": ["\ue000"]},
+    {"type": "bitmap", "file": "bannerbound:gui/food_antiquity.png", "ascent": 9, "height": 12, "chars": ["\ue001"]},
+    {"type": "bitmap", "file": "bannerbound:gui/culture_antiquity.png", "ascent": 9, "height": 12, "chars": ["\ue002"]},
+
+    {"type": "bitmap", "file": "bannerbound:gui/food_antiquity.png", "ascent": 9, "height": 12, "chars": ["\ue010"]},
+    {"type": "bitmap", "file": "bannerbound:gui/food_medieval.png", "ascent": 9, "height": 12, "chars": ["\ue011"]},
+    {"type": "bitmap", "file": "bannerbound:gui/food_renaissance.png", "ascent": 9, "height": 12, "chars": ["\ue012"]},
+    {"type": "bitmap", "file": "bannerbound:gui/food_industrial.png", "ascent": 9, "height": 12, "chars": ["\ue013"]},
+    {"type": "bitmap", "file": "bannerbound:gui/food_diesel.png", "ascent": 9, "height": 12, "chars": ["\ue014"]},
+    {"type": "bitmap", "file": "bannerbound:gui/food_atomic.png", "ascent": 9, "height": 12, "chars": ["\ue015"]},
+    {"type": "bitmap", "file": "bannerbound:gui/food_modern.png", "ascent": 9, "height": 12, "chars": ["\ue016"]},
+    {"type": "bitmap", "file": "bannerbound:gui/food_future.png", "ascent": 9, "height": 12, "chars": ["\ue017"]},
+
+    {"type": "bitmap", "file": "bannerbound:gui/culture_antiquity.png", "ascent": 9, "height": 12, "chars": ["\ue020"]},
+    {"type": "bitmap", "file": "bannerbound:gui/culture_medieval.png", "ascent": 9, "height": 12, "chars": ["\ue021"]},
+    {"type": "bitmap", "file": "bannerbound:gui/culture_renaissance.png", "ascent": 9, "height": 12, "chars": ["\ue022"]},
+    {"type": "bitmap", "file": "bannerbound:gui/culture_industrial.png", "ascent": 9, "height": 12, "chars": ["\ue023"]},
+    {"type": "bitmap", "file": "bannerbound:gui/culture_diesel.png", "ascent": 9, "height": 12, "chars": ["\ue024"]},
+    {"type": "bitmap", "file": "bannerbound:gui/culture_atomic.png", "ascent": 9, "height": 12, "chars": ["\ue025"]},
+    {"type": "bitmap", "file": "bannerbound:gui/culture_modern.png", "ascent": 9, "height": 12, "chars": ["\ue026"]},
+    {"type": "bitmap", "file": "bannerbound:gui/culture_future.png", "ascent": 9, "height": 12, "chars": ["\ue027"]},
+
+    {"type": "bitmap", "file": "bannerbound:gui/science_icon.png", "ascent": 9, "height": 12, "chars": ["\ue030"]},
+    {"type": "bitmap", "file": "bannerbound:gui/science_icon.png", "ascent": 9, "height": 12, "chars": ["\ue031"]},
+    {"type": "bitmap", "file": "bannerbound:gui/science_icon.png", "ascent": 9, "height": 12, "chars": ["\ue032"]},
+    {"type": "bitmap", "file": "bannerbound:gui/science_icon.png", "ascent": 9, "height": 12, "chars": ["\ue033"]},
+    {"type": "bitmap", "file": "bannerbound:gui/science_icon.png", "ascent": 9, "height": 12, "chars": ["\ue034"]},
+    {"type": "bitmap", "file": "bannerbound:gui/science_icon.png", "ascent": 9, "height": 12, "chars": ["\ue035"]},
+    {"type": "bitmap", "file": "bannerbound:gui/science_icon.png", "ascent": 9, "height": 12, "chars": ["\ue036"]},
+    {"type": "bitmap", "file": "bannerbound:gui/science_icon.png", "ascent": 9, "height": 12, "chars": ["\ue037"]}
+  ]
+}

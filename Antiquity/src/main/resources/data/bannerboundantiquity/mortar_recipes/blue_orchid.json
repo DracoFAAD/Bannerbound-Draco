@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:blue_orchid" },
+  "base_liquid": "water",
+  "result_liquid": "light_blue"
+}

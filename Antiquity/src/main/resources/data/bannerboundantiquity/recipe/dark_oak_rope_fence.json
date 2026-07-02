@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RLR"
+  ],
+  "key": {
+    "L": { "item": "minecraft:dark_oak_log" },
+    "R": { "item": "bannerboundantiquity:fiber_rope" }
+  },
+  "result": { "id": "bannerboundantiquity:dark_oak_rope_fence", "count": 3 }
+}

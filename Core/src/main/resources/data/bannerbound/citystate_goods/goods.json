@@ -1,0 +1,53 @@
+{
+  "entries": [
+
+    { "item": "minecraft:wheat", "weight": 3.0, "biomes": ["plains", "meadow", "sunflower"], "poi": "minecraft:farmer" },
+    { "item": "minecraft:carrot", "weight": 1.0, "biomes": ["plains", "meadow"], "poi": "minecraft:farmer" },
+    { "item": "minecraft:potato", "weight": 1.0, "biomes": ["plains", "meadow", "taiga"], "poi": "minecraft:farmer" },
+    { "item": "minecraft:hay_block", "weight": 1.5, "biomes": ["plains", "savanna", "meadow"] },
+    { "item": "bannerboundantiquity:cow_hide", "weight": 1.0, "biomes": ["plains", "meadow", "savanna"], "poi": "minecraft:butcher" },
+    { "item": "bannerboundantiquity:sheep_hide", "weight": 1.0, "biomes": ["plains", "meadow"], "poi": "minecraft:shepherd" },
+
+    { "item": "minecraft:wheat", "weight": 2.0, "biomes": ["savanna"], "poi": "minecraft:farmer" },
+    { "item": "minecraft:acacia_log", "weight": 2.0, "biomes": ["savanna"] },
+    { "item": "bannerboundantiquity:goat_hide", "weight": 1.0, "biomes": ["savanna", "desert", "badlands"] },
+
+    { "item": "minecraft:sandstone", "weight": 2.0, "biomes": ["desert", "badlands"], "poi": "minecraft:mason" },
+    { "item": "bannerboundantiquity:salt", "weight": 2.0, "biomes": ["desert", "badlands"] },
+    { "item": "minecraft:cactus", "weight": 1.0, "biomes": ["desert", "badlands"] },
+    { "item": "minecraft:wheat", "weight": 1.0, "biomes": ["desert"], "poi": "minecraft:farmer" },
+
+    { "item": "minecraft:spruce_log", "weight": 3.0, "biomes": ["taiga", "snowy", "grove"], "poi": "minecraft:fletcher" },
+    { "item": "minecraft:sweet_berries", "weight": 2.0, "biomes": ["taiga"] },
+    { "item": "bannerboundantiquity:pig_hide", "weight": 1.0, "biomes": ["taiga", "forest"], "poi": "minecraft:butcher" },
+    { "item": "bannerboundantiquity:plant_fiber", "weight": 1.0, "biomes": ["taiga", "forest", "jungle", "plains"] },
+    { "item": "bannerboundantiquity:plant_string", "weight": 1.0, "biomes": ["taiga", "forest", "jungle"] },
+
+    { "item": "minecraft:rabbit_hide", "weight": 2.0, "biomes": ["snowy"] },
+    { "item": "minecraft:mutton", "weight": 1.0, "biomes": ["snowy"], "poi": "minecraft:butcher" },
+
+    { "item": "minecraft:cod", "weight": 2.0, "requires_chunk": "FISH", "poi": "minecraft:fisherman" },
+    { "item": "minecraft:salmon", "weight": 1.0, "requires_chunk": "FISH", "poi": "minecraft:fisherman" },
+
+    { "item": "bannerboundantiquity:clay_pot_fired", "weight": 1.0, "requires_tech": "bannerboundantiquity:pottery" },
+    { "item": "minecraft:mud_bricks", "weight": 1.0, "requires_tech": "bannerboundantiquity:mud_mixing" },
+    { "item": "minecraft:bread", "weight": 1.0, "requires_tech": "bannerboundantiquity:kiln" },
+    { "item": "minecraft:leather", "weight": 1.0, "biomes": ["plains", "meadow", "savanna", "taiga", "snowy", "forest"], "requires_tech": "bannerboundantiquity:tanning", "poi": "minecraft:leatherworker" },
+    { "item": "minecraft:white_wool", "weight": 1.0, "biomes": ["plains", "meadow"], "requires_tech": "bannerboundantiquity:shearing", "poi": "minecraft:shepherd" },
+    { "item": "bannerboundantiquity:salt", "weight": 1.0, "requires_tech": "bannerboundantiquity:food_preservation" },
+
+    { "item": "minecraft:stone", "weight": 1.0, "requires_tech": "bannerboundantiquity:quarry", "requires_chunk": "STONE", "poi": "minecraft:mason" },
+    { "item": "bannerboundantiquity:limestone", "weight": 1.0, "requires_tech": "bannerboundantiquity:quarry", "requires_chunk": "LIMESTONE", "poi": "minecraft:mason" },
+    { "item": "bannerboundantiquity:limestone_bricks", "weight": 1.0, "requires_tech": "bannerboundantiquity:masonry", "requires_chunk": "LIMESTONE", "poi": "minecraft:mason" },
+    { "item": "minecraft:calcite", "weight": 0.5, "requires_tech": "bannerboundantiquity:masonry", "requires_chunk": "MARBLE" },
+
+    { "item": "minecraft:raw_copper", "weight": 1.0, "requires_tech": "bannerboundantiquity:ore_mining", "requires_chunk": "COPPER" },
+    { "item": "bannerboundantiquity:raw_tin", "weight": 1.0, "requires_tech": "bannerboundantiquity:ore_mining", "requires_chunk": "TIN" },
+    { "item": "minecraft:coal", "weight": 1.0, "requires_tech": "bannerboundantiquity:ore_mining", "requires_chunk": "COAL" },
+    { "item": "minecraft:copper_ingot", "weight": 1.0, "requires_tech": "bannerboundantiquity:metal_working", "requires_chunk": "COPPER" },
+    { "item": "bannerboundantiquity:tin_ingot", "weight": 1.0, "requires_tech": "bannerboundantiquity:metal_working", "requires_chunk": "TIN" },
+    { "item": "bannerboundantiquity:bronze_ingot", "weight": 1.0, "requires_tech": "bannerboundantiquity:bronze_age", "requires_chunk": ["COPPER", "TIN"] },
+    { "item": "minecraft:raw_iron", "weight": 1.0, "requires_tech": "bannerboundantiquity:iron_working", "requires_chunk": "IRON" },
+    { "item": "minecraft:iron_ingot", "weight": 0.5, "requires_tech": "bannerboundantiquity:iron_working", "requires_chunk": "IRON" }
+  ]
+}

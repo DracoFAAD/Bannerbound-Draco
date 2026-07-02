@@ -1,0 +1,13 @@
+{
+  "entries": [
+    { "item": "minecraft:bread" },
+    { "item": "bannerboundantiquity:salt" },
+    { "item": "bannerboundantiquity:clay_pot_fired" },
+    { "item": "minecraft:leather", "requires_tech": "bannerboundantiquity:tanning" },
+    { "item": "minecraft:white_wool", "requires_tech": "bannerboundantiquity:shearing" },
+    { "item": "minecraft:copper_ingot", "requires_tech": "bannerboundantiquity:metal_working" },
+    { "item": "bannerboundantiquity:bronze_ingot", "requires_tech": "bannerboundantiquity:bronze_age" },
+    { "item": "minecraft:calcite", "requires_tech": "bannerboundantiquity:masonry" },
+    { "item": "minecraft:emerald", "requires_tech": "bannerboundantiquity:masonry" }
+  ]
+}

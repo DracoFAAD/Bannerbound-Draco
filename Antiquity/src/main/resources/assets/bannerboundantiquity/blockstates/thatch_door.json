@@ -1,0 +1,16 @@
+{
+  "comment": "Static thatch curtain — no hinge swing. Lower half shows the full panel (closed/open texture); upper half renders nothing. Rotation is by facing only; oriented to match vanilla door placement.",
+  "variants": {
+    "half=upper": { "model": "bannerboundantiquity:block/thatch/thatch_door_top" },
+
+    "half=lower,facing=north,open=false": { "model": "bannerboundantiquity:block/thatch/thatch_door_closed", "y": 180 },
+    "half=lower,facing=east,open=false":  { "model": "bannerboundantiquity:block/thatch/thatch_door_closed", "y": 270 },
+    "half=lower,facing=south,open=false": { "model": "bannerboundantiquity:block/thatch/thatch_door_closed" },
+    "half=lower,facing=west,open=false":  { "model": "bannerboundantiquity:block/thatch/thatch_door_closed", "y": 90 },
+
+    "half=lower,facing=north,open=true": { "model": "bannerboundantiquity:block/thatch/thatch_door_open", "y": 180 },
+    "half=lower,facing=east,open=true":  { "model": "bannerboundantiquity:block/thatch/thatch_door_open", "y": 270 },
+    "half=lower,facing=south,open=true": { "model": "bannerboundantiquity:block/thatch/thatch_door_open" },
+    "half=lower,facing=west,open=true":  { "model": "bannerboundantiquity:block/thatch/thatch_door_open", "y": 90 }
+  }
+}

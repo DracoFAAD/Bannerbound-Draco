@@ -1,0 +1,7 @@
+{
+  "values": [
+    { "id": "bannerboundantiquity:stone_rock", "required": false },
+    { "id": "bannerboundantiquity:sandstone_rock", "required": false },
+    { "id": "bannerboundantiquity:red_sandstone_rock", "required": false }
+  ]
+}

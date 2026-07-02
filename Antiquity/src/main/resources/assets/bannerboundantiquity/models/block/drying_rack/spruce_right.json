@@ -1,0 +1,9 @@
+{
+	"parent": "bannerboundantiquity:block/drying_rack/right",
+	"textures": {
+		"0": "minecraft:block/spruce_log",
+		"1": "minecraft:block/stripped_spruce_log",
+		"2": "minecraft:block/spruce_log_top",
+		"particle": "minecraft:block/spruce_log"
+	}
+}

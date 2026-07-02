@@ -1,0 +1,6 @@
+{
+	"parent": "bannerboundantiquity:block/trough/fermentation_trough_single",
+	"textures": {
+		"1": "minecraft:block/dark_oak_log"
+	}
+}

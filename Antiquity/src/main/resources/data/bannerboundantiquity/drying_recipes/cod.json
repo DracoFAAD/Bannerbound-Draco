@@ -1,0 +1,8 @@
+{
+  "input": "minecraft:cod",
+  "result": {
+    "id": "bannerboundantiquity:dried_cod",
+    "count": 1
+  },
+  "ticks": 2400
+}

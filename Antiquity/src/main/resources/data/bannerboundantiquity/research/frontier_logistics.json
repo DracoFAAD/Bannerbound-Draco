@@ -1,0 +1,19 @@
+{
+  "name": "Frontier Logistics",
+  "description": "Pack routes, quartermasters, and careful rationing reach where roads do not. The settlement learns to feed a holding far from home, and may sustain one more outpost than before.",
+  "cost": 80,
+  "x": 3425,
+  "y": -400,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:outposts"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.outpost_slot_1"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "ingredients": [
+    { "item": "minecraft:red_mushroom", "value": 3.0 },
+    { "item": "minecraft:brown_mushroom", "value": 3.0 }
+  ],
+  "name": "stew.mushroom",
+  "tint": "C99A6B",
+  "bonus": 1.25,
+  "servings": 6,
+  "cook_ticks": 300
+}

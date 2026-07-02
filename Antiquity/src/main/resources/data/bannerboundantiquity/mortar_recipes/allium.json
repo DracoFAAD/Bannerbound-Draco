@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:allium" },
+  "base_liquid": "water",
+  "result_liquid": "magenta"
+}

@@ -1,0 +1,9 @@
+{
+	"parent": "bannerboundantiquity:block/drying_rack/left",
+	"textures": {
+		"0": "minecraft:block/birch_log",
+		"1": "minecraft:block/stripped_birch_log",
+		"2": "minecraft:block/birch_log_top",
+		"particle": "minecraft:block/birch_log"
+	}
+}

@@ -1,0 +1,13 @@
+{
+  "ingredients": [
+    { "item": "minecraft:stick", "count": 3 },
+    { "item": "bannerboundantiquity:plant_string", "count": 3 }
+  ],
+  "result": { "id": "bannerboundantiquity:primitive_bow", "count": 1 },
+  "in_progress": "bannerboundantiquity:in_progress_primitive_bow",
+  "stretches": 3,
+  "base_zone_pct": 0.18,
+  "zone_decay": 0.65,
+  "min_zone_pct": 0.06,
+  "yellow_pad_pct": 0.05
+}

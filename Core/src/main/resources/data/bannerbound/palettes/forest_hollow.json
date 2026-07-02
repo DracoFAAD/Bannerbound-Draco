@@ -1,0 +1,12 @@
+{
+  "id": "forest_hollow",
+  "name": "Forest Hollow",
+  "blocks": {
+    "minecraft:oak_log": 0.20,
+    "minecraft:spruce_log": 0.20,
+    "minecraft:moss_block": 0.20,
+    "minecraft:oak_leaves": 0.10,
+    "minecraft:spruce_leaves": 0.10,
+    "minecraft:fern": 0.10
+  }
+}

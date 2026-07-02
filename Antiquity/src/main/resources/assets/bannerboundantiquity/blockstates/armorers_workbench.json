@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,main=true": { "model": "bannerboundantiquity:block/armorers_workbench/armorers_workbench" },
+    "facing=east,main=true":  { "model": "bannerboundantiquity:block/armorers_workbench/armorers_workbench", "y": 90 },
+    "facing=south,main=true": { "model": "bannerboundantiquity:block/armorers_workbench/armorers_workbench", "y": 180 },
+    "facing=west,main=true":  { "model": "bannerboundantiquity:block/armorers_workbench/armorers_workbench", "y": 270 },
+
+    "facing=north,main=false": { "model": "bannerboundantiquity:block/armorers_workbench/empty" },
+    "facing=east,main=false":  { "model": "bannerboundantiquity:block/armorers_workbench/empty" },
+    "facing=south,main=false": { "model": "bannerboundantiquity:block/armorers_workbench/empty" },
+    "facing=west,main=false":  { "model": "bannerboundantiquity:block/armorers_workbench/empty" }
+  }
+}

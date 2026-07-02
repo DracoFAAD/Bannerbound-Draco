@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RLR"
+  ],
+  "key": {
+    "L": { "item": "minecraft:acacia_log" },
+    "R": { "item": "bannerboundantiquity:fiber_rope" }
+  },
+  "result": { "id": "bannerboundantiquity:acacia_rope_fence", "count": 3 }
+}

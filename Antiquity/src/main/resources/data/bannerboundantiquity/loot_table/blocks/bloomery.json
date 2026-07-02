@@ -1,0 +1,5 @@
+{
+  "comment": "No loot pools — breaking the bloomery returns the 2 mud bricks via BloomeryBlock.onRemove, so the loot table itself drops nothing (avoids a double drop).",
+  "type": "minecraft:block",
+  "pools": []
+}

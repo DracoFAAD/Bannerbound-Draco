@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "minecraft:clay_ball", "count": 4 }
+  ],
+  "result": { "id": "minecraft:clay", "count": 1 }
+}

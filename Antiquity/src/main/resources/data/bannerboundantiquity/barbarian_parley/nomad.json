@@ -1,0 +1,9 @@
+{
+  "type": "nomad",
+  "greeting": "bannerbound.barbarian.parley.greeting.nomad",
+  "demands": [],
+  "trades": [
+    { "give": "minecraft:wheat", "give_count": 6, "get": "minecraft:leather", "get_count": 2 },
+    { "give": "minecraft:leather", "give_count": 3, "get": "minecraft:string", "get_count": 4 }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:clay_bucket" },
+  "ticks": 140,
+  "result": { "id": "bannerboundantiquity:clay_fired_bucket", "count": 1 },
+  "chance": 1.0
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bannerboundantiquity:item/empty_mug"
+  },
+  "overrides": [
+    {
+      "predicate": { "bannerboundantiquity:filled": 1 },
+      "model": "bannerboundantiquity:item/mug_full"
+    }
+  ]
+}

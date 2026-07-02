@@ -1,0 +1,30 @@
+{
+  "name": "Brown Haven",
+  "description": "The earth tones of a people rooted to their land — loam, bark, and turned soil. A palette of browns for the faction's heraldry, and a point toward the banner that will bear them.",
+  "cost": 10,
+  "x": 330,
+  "y": 0,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:tribe"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "place_block",
+      "target": "minecraft:dirt",
+      "count": 8
+    },
+    "boost": 0.4,
+    "message": "Brown Haven"
+  },
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [],
+    "palette": [
+      "brown_haven"
+    ]
+  },
+  "heraldry_points": 1
+}

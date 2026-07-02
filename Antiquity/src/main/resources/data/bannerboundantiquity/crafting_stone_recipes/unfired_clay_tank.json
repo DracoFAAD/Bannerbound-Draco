@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "minecraft:clay", "count": 4 }
+  ],
+  "result": { "id": "bannerboundantiquity:unfired_clay_tank", "count": 1 }
+}

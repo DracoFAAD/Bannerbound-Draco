@@ -1,0 +1,17 @@
+{
+  "name": "Mud Mixing",
+  "description": "",
+  "cost": 5,
+  "x": 2100,
+  "y": -350,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:domestic_comfort"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": []
+  }
+}

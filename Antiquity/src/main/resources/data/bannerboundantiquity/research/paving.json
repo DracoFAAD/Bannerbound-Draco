@@ -1,0 +1,19 @@
+{
+  "name": "Paving",
+  "description": "Worn earth, packed firm, becomes a road that endures. Shovels flatten dirt and grass into paths — the groundwork on which the Roads doctrine is later laid, that citizens may keep to them and travel faster.",
+  "cost": 24,
+  "x": 1900,
+  "y": 0,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:woodworking"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.allow_paving"
+    ]
+  }
+}

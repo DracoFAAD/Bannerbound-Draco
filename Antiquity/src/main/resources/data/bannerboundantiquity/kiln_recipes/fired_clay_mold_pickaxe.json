@@ -1,0 +1,6 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:clay_mold_pickaxe" },
+  "ticks": 100,
+  "result": { "id": "bannerboundantiquity:fired_clay_mold_pickaxe", "count": 1 },
+  "chance": 1.0
+}

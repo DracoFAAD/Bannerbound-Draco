@@ -1,0 +1,8 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:tin_hoe_head", "count": 1 },
+    { "item": "minecraft:stick", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:tin_hoe", "count": 1 },
+  "strikes": 2
+}

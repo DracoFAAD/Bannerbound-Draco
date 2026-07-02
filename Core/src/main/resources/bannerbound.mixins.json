@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.bannerbound.core.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "bannerbound.refmap.json",
+  "client": [
+    "LevelRendererMixin",
+    "MapRendererMixin",
+    "ItemStackMixin",
+    "ItemRendererMixin",
+    "BlockModelShaperMixin",
+    "ChatComponentMixin",
+    "GuiMessageMixin",
+    "GuiMessageLineMixin",
+    "SoundEngineMixin",
+    "EntityRendererMixin",
+    "CreativeModeTabMixin",
+    "CreativeModeInventoryScreenMixin",
+    "CreativeItemPickerMenuMixin"
+  ],
+  "mixins": [
+    "CraftingMenuMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

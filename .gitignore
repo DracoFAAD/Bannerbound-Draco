@@ -1,0 +1,46 @@
+# --- Gradle / Java build output ---
+**/.gradle/
+**/build/
+**/bin/
+**/out/
+**/dist/
+**/node_modules/
+
+# --- Minecraft dev runs (worlds, logs, downloaded mods — never publish) ---
+**/run/
+**/run-*/
+**/runs/
+**/src/generated/**/.cache/
+
+# --- local maven repo folders inside the MDKs ---
+**/repo/
+
+# --- IDE ---
+**/.idea/
+**/.vscode/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.eclipse/
+.apt_generated
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- misc ---
+*.log
+*.rar
+
+# --- private: WIP plans, docs, and tooling stay local — never publish ---
+/README.md
+/ARCHITECTURE.md
+/docs/
+/tools/
+/models/
+Core/docs/
+Antiquity/README.md

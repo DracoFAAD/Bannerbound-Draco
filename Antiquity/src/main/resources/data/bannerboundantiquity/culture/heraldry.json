@@ -1,0 +1,18 @@
+{
+  "name": "Heraldry",
+  "description": "The banner above the plaza is more than dyed cloth — it is who you are. The Heraldry editor opens in the town hall, where points buy the pattern layers that make your faction's mark its own.",
+  "cost": 32,
+  "x": 160,
+  "y": 160,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:tribe"
+  ],
+  "unlocks": {
+    "flags": [
+      "bannerbound.unlock.heraldry"
+    ]
+  },
+  "heraldry_points": 2
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/goat_horn"
+  },
+  "overrides": [
+    {
+      "predicate": { "bannerboundantiquity:filled": 1 },
+      "model": "bannerboundantiquity:item/goat_horn_full"
+    }
+  ]
+}

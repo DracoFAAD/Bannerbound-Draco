@@ -1,0 +1,11 @@
+{
+    "slot":  "shaft",
+    "material":  "tin",
+    "ingredient":  "bannerboundantiquity:tin_ingot",
+    "damage":  1,
+    "weight":  1,
+    "accuracy":  1,
+    "priority":  10,
+    "item_texture":  "bannerboundantiquity:item/arrows/tin_arrow_stick",
+    "projectile_texture":  "bannerboundantiquity:textures/projectiles/tin_stick.png"
+}

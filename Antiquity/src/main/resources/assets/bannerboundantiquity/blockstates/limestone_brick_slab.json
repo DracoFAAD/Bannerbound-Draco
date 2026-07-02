@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bannerboundantiquity:block/limestone_brick_slab"
+    },
+    "type=double": {
+      "model": "bannerboundantiquity:block/limestone_bricks"
+    },
+    "type=top": {
+      "model": "bannerboundantiquity:block/limestone_brick_slab_top"
+    }
+  }
+}

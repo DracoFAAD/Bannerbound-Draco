@@ -1,0 +1,69 @@
+{
+  "name": "Masonry",
+  "description": "Dress the rough stone. With a knapped chisel and a steady bench, cobblestone and field stone become slabs, stairs, walls, bricks and polished blocks — the mason's craft that builds in stone what the carpenter builds in wood. It branches off knapping; the chisel is the tool you knap to begin.",
+  "cost": 32,
+  "x": 2725,
+  "y": -225,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:kiln",
+    "bannerboundantiquity:mud_mixing"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "obtain_item",
+      "target": "minecraft:stone_bricks",
+      "count": 16
+    },
+    "boost": 0.4,
+    "message": "Masonry"
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:masons_bench",
+      "bannerboundantiquity:stone_chisel",
+      "bannerboundantiquity:limestone",
+      "bannerboundantiquity:limestone_bricks",
+      "bannerboundantiquity:limestone_brick_stairs",
+      "bannerboundantiquity:limestone_brick_slab",
+      "bannerboundantiquity:limestone_brick_wall",
+      "minecraft:cobblestone_slab",
+      "minecraft:stone_slab",
+      "minecraft:sandstone_slab",
+      "minecraft:red_sandstone_slab",
+      "minecraft:andesite_slab",
+      "minecraft:diorite_slab",
+      "minecraft:granite_slab",
+      "minecraft:cobblestone_stairs",
+      "minecraft:stone_stairs",
+      "minecraft:sandstone_stairs",
+      "minecraft:red_sandstone_stairs",
+      "minecraft:andesite_stairs",
+      "minecraft:diorite_stairs",
+      "minecraft:granite_stairs",
+      "minecraft:cobblestone_wall",
+      "minecraft:sandstone_wall",
+      "minecraft:red_sandstone_wall",
+      "minecraft:andesite_wall",
+      "minecraft:diorite_wall",
+      "minecraft:granite_wall",
+      "minecraft:stone_bricks",
+      "minecraft:polished_andesite",
+      "minecraft:polished_diorite",
+      "minecraft:polished_granite",
+      "minecraft:smooth_stone",
+      "minecraft:smooth_sandstone",
+      "minecraft:smooth_red_sandstone",
+      "minecraft:cut_sandstone",
+      "minecraft:cut_red_sandstone",
+      "minecraft:chiseled_stone_bricks",
+      "minecraft:chiseled_sandstone",
+      "minecraft:chiseled_red_sandstone"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.mason"
+    ]
+  }
+}

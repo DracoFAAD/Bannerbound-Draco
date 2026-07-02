@@ -1,0 +1,21 @@
+{
+  "name": "Domestic Comfort",
+  "description": "A home is more than a roof and a bed. People want light to see by, a chest for their things, and a warm hearth to gather round — and a home that gives them these is one they're glad to come back to, and to raise a family in.",
+  "cost": 28,
+  "x": 1625,
+  "y": -350,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:stew"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.home_demand:lighting",
+      "bannerbound.home_demand:storage",
+      "bannerbound.home_demand:campfire"
+    ]
+  }
+}

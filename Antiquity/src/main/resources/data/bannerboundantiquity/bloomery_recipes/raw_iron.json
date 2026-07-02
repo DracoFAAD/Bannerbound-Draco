@@ -1,0 +1,6 @@
+{
+  "ingredient": { "item": "minecraft:raw_iron" },
+  "ticks": 350,
+  "result": { "id": "minecraft:iron_ingot", "count": 1 },
+  "chance": 1.0
+}

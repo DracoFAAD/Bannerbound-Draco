@@ -1,0 +1,11 @@
+{
+    "slot":  "shaft",
+    "material":  "bronze",
+    "ingredient":  "bannerboundantiquity:bronze_ingot",
+    "damage":  1,
+    "weight":  3,
+    "accuracy":  1,
+    "priority":  30,
+    "item_texture":  "bannerboundantiquity:item/arrows/bronze_arrow_stick",
+    "projectile_texture":  "bannerboundantiquity:textures/projectiles/bronze_stick.png"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "barrel",
+  "result": "minecraft:barrel",
+  "yield": 1,
+  "ingredients": [
+    { "tag": "minecraft:logs", "count": 2 },
+    { "item": "minecraft:stick", "count": 2 }
+  ]
+}

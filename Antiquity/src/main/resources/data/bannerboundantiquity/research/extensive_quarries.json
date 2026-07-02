@@ -1,0 +1,19 @@
+{
+  "name": "Extensive Quarries",
+  "description": "The pit no longer stops at the boundary stones. Quarry crews carry their orders onto unclaimed ground near your borders, biting deeper into the land than any claim alone allows.",
+  "cost": 72,
+  "x": 3125,
+  "y": -175,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:quarry"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.extensive_quarries"
+    ]
+  }
+}

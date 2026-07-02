@@ -1,0 +1,8 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:bronze_knife_head", "count": 1 },
+    { "item": "minecraft:stick", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:bronze_knife", "count": 1 },
+  "strikes": 2
+}

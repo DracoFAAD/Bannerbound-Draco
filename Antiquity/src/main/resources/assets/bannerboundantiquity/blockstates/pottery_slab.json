@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "bannerboundantiquity:block/pottery/pottery_slab" },
+    "facing=east":  { "model": "bannerboundantiquity:block/pottery/pottery_slab", "y": 90 },
+    "facing=south": { "model": "bannerboundantiquity:block/pottery/pottery_slab", "y": 180 },
+    "facing=west":  { "model": "bannerboundantiquity:block/pottery/pottery_slab", "y": 270 }
+  }
+}

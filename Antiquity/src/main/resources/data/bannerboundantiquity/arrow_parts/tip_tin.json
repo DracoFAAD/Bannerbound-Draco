@@ -1,0 +1,11 @@
+{
+    "slot":  "tip",
+    "material":  "tin",
+    "ingredient":  "bannerboundantiquity:tin_arrow_head",
+    "damage":  1.1,
+    "weight":  1,
+    "accuracy":  1,
+    "priority":  10,
+    "item_texture":  "bannerboundantiquity:item/arrows/tin_arrow_tip",
+    "projectile_texture":  "bannerboundantiquity:textures/projectiles/tin_arrow_tip.png"
+}

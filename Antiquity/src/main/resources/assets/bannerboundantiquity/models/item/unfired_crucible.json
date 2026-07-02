@@ -1,0 +1,12 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "bannerboundantiquity:block/crucible/unfired_clay_crucible"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "bannerboundantiquity:block/crucible/unfired_clay_crucible"
+    }
+  }
+}

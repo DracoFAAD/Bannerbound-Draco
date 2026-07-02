@@ -1,0 +1,14 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+// Project name = the mod id. Defaults to the folder name ("MDK") otherwise, which would break
+// composite-build dependency substitution from the Antiquity expansion (it depends on
+// 'com.bannerbound.core:bannerbound').
+rootProject.name = 'bannerbound'

@@ -1,0 +1,22 @@
+{
+  "name": "Communal Rites",
+  "description": "The faithful gather, and gathering becomes ceremony. The first shared observance of the faith — and the root from which all its wisdom climbs.",
+  "cost": 10,
+  "x": 0,
+  "y": 0,
+  "min_age": "ancient",
+  "insight": {
+    "trigger": {
+      "type": "reach_population",
+      "target": "",
+      "count": 3
+    },
+    "boost": 0.4,
+    "message": "Communal Rites"
+  },
+  "unlocks": {
+    "features": [
+      "bannerbound.culture_per_second_delta:0.05"
+    ]
+  }
+}

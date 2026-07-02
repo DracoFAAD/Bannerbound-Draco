@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:stone_rock", "count": 4 }
+  ],
+  "result": { "id": "minecraft:cobblestone", "count": 1 }
+}

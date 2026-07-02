@@ -1,0 +1,12 @@
+{
+	"loader": "neoforge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"parent": "bannerboundantiquity:block/crucible/clay_crucible_with_molten_metal"
+	},
+	"perspectives": {
+		"gui": {
+			"parent": "bannerboundantiquity:item/crucible_molten_gui"
+		}
+	}
+}

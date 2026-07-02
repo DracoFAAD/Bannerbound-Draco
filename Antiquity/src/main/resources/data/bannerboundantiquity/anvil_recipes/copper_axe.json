@@ -1,0 +1,8 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:copper_axe_head", "count": 1 },
+    { "item": "minecraft:stick", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:copper_axe", "count": 1 },
+  "strikes": 3
+}

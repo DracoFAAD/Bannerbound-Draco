@@ -1,0 +1,8 @@
+{
+  "ingredients": [
+    { "item": "minecraft:clay", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:raw_mud_brick", "count": 4 },
+  "spins": 2,
+  "in_progress": "minecraft:clay"
+}

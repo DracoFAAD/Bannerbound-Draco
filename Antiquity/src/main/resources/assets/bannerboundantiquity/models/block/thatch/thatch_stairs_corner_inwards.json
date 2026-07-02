@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "bannerboundantiquity:block/thatch/thatch",
+    "top": "bannerboundantiquity:block/thatch/thatch",
+    "side": "bannerboundantiquity:block/thatch/thatch"
+  }
+}

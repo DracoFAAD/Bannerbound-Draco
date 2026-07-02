@@ -1,0 +1,7 @@
+{
+  "ingredients": [
+    { "item": "minecraft:bone", "count": 1 },
+    { "item": "bannerboundantiquity:plant_fiber", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:bone_club", "count": 1 }
+}

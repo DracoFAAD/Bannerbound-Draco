@@ -1,0 +1,8 @@
+{
+  "name": "ladder",
+  "result": "minecraft:ladder",
+  "yield": 3,
+  "ingredients": [
+    { "item": "minecraft:stick", "count": 7 }
+  ]
+}

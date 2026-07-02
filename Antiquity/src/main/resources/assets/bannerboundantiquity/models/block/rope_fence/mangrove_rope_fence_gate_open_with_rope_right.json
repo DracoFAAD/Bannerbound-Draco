@@ -1,0 +1,8 @@
+{
+  "parent": "bannerboundantiquity:block/rope_fence/rope_fence_gate_open_with_rope_right",
+  "textures": {
+    "0": "minecraft:block/mangrove_log",
+    "1": "minecraft:block/mangrove_log_top",
+    "particle": "minecraft:block/mangrove_log"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "wooden_shovel",
+  "result": "minecraft:wooden_shovel",
+  "yield": 1,
+  "ingredients": [
+    { "tag": "minecraft:logs", "count": 1 },
+    { "item": "minecraft:stick", "count": 2 }
+  ]
+}

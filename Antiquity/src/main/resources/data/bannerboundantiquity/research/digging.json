@@ -1,0 +1,28 @@
+{
+  "name": "Digging",
+  "description": "Hand a citizen a sharpened stick and they will move the earth itself. The first labour that reshapes the land rather than merely living on it — the Digger's trade begins here.",
+  "cost": 40,
+  "x": 900,
+  "y": 325,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:herbalism"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "mine_block",
+      "target": "#minecraft:dirt",
+      "count": 8
+    },
+    "boost_points": 2,
+    "message": "Digging"
+  },
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.digger"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Wood Age",
+  "order": 1,
+  "chop_ticks": 90,
+  "mine_speed": 68,
+  "harvest_speed": 53,
+  "weapon_damage": 4.0,
+  "weapon_attack_speed": 1.6,
+  "tools": {
+    "axe":     "minecraft:wooden_axe",
+    "pickaxe": "minecraft:wooden_pickaxe",
+    "shovel":  "minecraft:wooden_shovel",
+    "hoe":     "minecraft:wooden_hoe",
+    "sword":   "minecraft:wooden_sword",
+    "guard":   "minecraft:wooden_sword",
+    "hunt":    "minecraft:wooden_sword",
+    "spear":   "bannerboundantiquity:wooden_spear",
+    "spearfish": "minecraft:cod",
+    "fishing_rod": "minecraft:fishing_rod",
+    "rope":        "minecraft:lead",
+    "forage":      "minecraft:poppy",
+    "saw":         "bannerboundantiquity:bone_saw"
+  }
+}

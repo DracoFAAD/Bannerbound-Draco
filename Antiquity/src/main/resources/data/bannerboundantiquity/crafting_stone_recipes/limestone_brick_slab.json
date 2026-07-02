@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:limestone_bricks", "count": 3 }
+  ],
+  "result": { "id": "bannerboundantiquity:limestone_brick_slab", "count": 6 }
+}

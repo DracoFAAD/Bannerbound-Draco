@@ -1,0 +1,50 @@
+{
+  "name": "Bronze Age",
+  "description": "",
+  "cost": 120,
+  "x": 3575,
+  "y": 0,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:metal_working"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "mine_block",
+      "target": "bannerboundantiquity:tin_ore",
+      "count": 12
+    },
+    "boost": 0.4
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:bronze_ingot",
+      "bannerboundantiquity:bronze_axe_head",
+      "bannerboundantiquity:bronze_pickaxe_head",
+      "bannerboundantiquity:bronze_hoe_head",
+      "bannerboundantiquity:bronze_shovel_head",
+      "bannerboundantiquity:bronze_blade",
+      "bannerboundantiquity:bronze_knife_head",
+      "bannerboundantiquity:bronze_hammer_head",
+      "bannerboundantiquity:bronze_axe",
+      "bannerboundantiquity:bronze_pickaxe",
+      "bannerboundantiquity:bronze_hoe",
+      "bannerboundantiquity:bronze_shovel",
+      "bannerboundantiquity:bronze_sword",
+      "bannerboundantiquity:bronze_knife",
+      "bannerboundantiquity:bronze_hammer",
+      "bannerboundantiquity:bronze_chisel",
+      "bannerboundantiquity:bronze_tongs",
+      "bannerboundantiquity:bronze_spear_point",
+      "bannerboundantiquity:bronze_spear",
+      "bannerboundantiquity:bronze_arrow_head",
+      "bannerboundantiquity:bronze_arrow"
+    ],
+    "features": [
+      "bannerbound.set_tool_age:bronze",
+      "bannerbound.advance_age:classical"
+    ],
+    "flags": []
+  }
+}

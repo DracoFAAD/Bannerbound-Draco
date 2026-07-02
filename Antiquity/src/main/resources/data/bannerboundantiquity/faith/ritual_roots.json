@@ -1,0 +1,18 @@
+{
+  "name": "Ritual Roots",
+  "description": "The old ways are remembered: how to carve, how to stack, how to call. The foundation of the totem pole and every rite performed before it.",
+  "cost": 24,
+  "x": 160,
+  "y": -90,
+  "min_age": "ancient",
+  "important": true,
+  "faith_path": "TOTEMIC",
+  "prerequisites": [
+    "bannerboundantiquity:communal_rites"
+  ],
+  "unlocks": {
+    "flags": [
+      "bannerbound.ritual_roots"
+    ]
+  }
+}

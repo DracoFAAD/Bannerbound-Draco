@@ -1,0 +1,102 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Clean 1x1 placeholder workbench (symmetric, so it reads the same for any facing and the selection box matches). The delivered 2-wide model will need a 2-block multiblock; this keeps the placeholder well-behaved meanwhile.",
+	"textures": {
+		"particle": "block/oak_planks",
+		"top": "block/oak_planks",
+		"leg": "block/oak_log"
+	},
+	"elements": [
+		{
+			"from": [0, 12, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 4], "texture": "#top"},
+				"east": {"uv": [0, 0, 16, 4], "texture": "#top"},
+				"south": {"uv": [0, 0, 16, 4], "texture": "#top"},
+				"west": {"uv": [0, 0, 16, 4], "texture": "#top"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#top"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#top"}
+			}
+		},
+		{
+			"from": [1, 0, 1],
+			"to": [3, 12, 3],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"east": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"south": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"west": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"up": {"uv": [0, 0, 2, 2], "texture": "#leg"},
+				"down": {"uv": [0, 0, 2, 2], "texture": "#leg"}
+			}
+		},
+		{
+			"from": [13, 0, 1],
+			"to": [15, 12, 3],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"east": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"south": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"west": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"up": {"uv": [0, 0, 2, 2], "texture": "#leg"},
+				"down": {"uv": [0, 0, 2, 2], "texture": "#leg"}
+			}
+		},
+		{
+			"from": [1, 0, 13],
+			"to": [3, 12, 15],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"east": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"south": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"west": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"up": {"uv": [0, 0, 2, 2], "texture": "#leg"},
+				"down": {"uv": [0, 0, 2, 2], "texture": "#leg"}
+			}
+		},
+		{
+			"from": [13, 0, 13],
+			"to": [15, 12, 15],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"east": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"south": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"west": {"uv": [0, 0, 2, 12], "texture": "#leg"},
+				"up": {"uv": [0, 0, 2, 2], "texture": "#leg"},
+				"down": {"uv": [0, 0, 2, 2], "texture": "#leg"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -135, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, -135, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"fixed": {
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

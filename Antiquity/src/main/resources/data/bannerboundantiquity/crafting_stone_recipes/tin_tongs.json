@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:tin_ingot", "count": 2 }
+  ],
+  "result": { "id": "bannerboundantiquity:tin_tongs", "count": 1 }
+}

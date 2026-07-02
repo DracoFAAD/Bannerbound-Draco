@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:red_tulip" },
+  "base_liquid": "water",
+  "result_liquid": "red"
+}

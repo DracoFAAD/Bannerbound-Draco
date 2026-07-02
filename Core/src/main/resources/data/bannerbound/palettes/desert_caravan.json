@@ -1,0 +1,11 @@
+{
+  "id": "desert_caravan",
+  "name": "Desert Caravan",
+  "blocks": {
+    "minecraft:sandstone": 0.20,
+    "minecraft:smooth_sandstone": 0.20,
+    "minecraft:cut_sandstone": 0.15,
+    "minecraft:terracotta": 0.15,
+    "minecraft:orange_terracotta": 0.15
+  }
+}

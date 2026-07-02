@@ -1,0 +1,7 @@
+{
+  "comment": "Empty model for the kiln's non-controller cells — nothing renders (the dome is drawn by KilnRenderer from the controller). Only the particle texture is needed, for break particles.",
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "bannerboundantiquity:block/kiln/kiln"
+  }
+}

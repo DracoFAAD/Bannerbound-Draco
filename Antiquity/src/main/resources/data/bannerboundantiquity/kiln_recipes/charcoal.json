@@ -1,0 +1,6 @@
+{
+  "ingredient": { "tag": "minecraft:logs" },
+  "ticks": 100,
+  "result": { "id": "minecraft:charcoal", "count": 1 },
+  "chance": 1.0
+}

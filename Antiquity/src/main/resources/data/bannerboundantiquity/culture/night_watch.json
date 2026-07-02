@@ -1,0 +1,17 @@
+{
+  "name": "Night Watch",
+  "description": "The watch learns to stand through the dark hours. Guards give up their beds to keep the settlement defended all night — a weary duty.",
+  "cost": 24,
+  "x": -160,
+  "y": -240,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:tribe"
+  ],
+  "unlocks": {
+    "policy": [
+      "night_watch"
+    ]
+  }
+}

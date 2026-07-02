@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:raw_mud_brick", "count": 4 }
+  ],
+  "result": { "id": "bannerboundantiquity:unfired_mud_bricks", "count": 4 }
+}

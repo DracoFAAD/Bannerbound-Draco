@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [ { "type": "minecraft:item", "name": "bannerboundantiquity:firewood" } ],
+      "conditions": [
+        { "condition": "minecraft:block_state_property", "block": "bannerboundantiquity:firewood_pile", "properties": { "logs": "1" } }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "bannerboundantiquity:firewood",
+          "functions": [ { "function": "minecraft:set_count", "count": 2 } ]
+        }
+      ],
+      "conditions": [
+        { "condition": "minecraft:block_state_property", "block": "bannerboundantiquity:firewood_pile", "properties": { "logs": "2" } }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "bannerboundantiquity:firewood",
+          "functions": [ { "function": "minecraft:set_count", "count": 3 } ]
+        }
+      ],
+      "conditions": [
+        { "condition": "minecraft:block_state_property", "block": "bannerboundantiquity:firewood_pile", "properties": { "logs": "3" } }
+      ]
+    }
+  ]
+}

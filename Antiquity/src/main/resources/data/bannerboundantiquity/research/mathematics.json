@@ -1,0 +1,28 @@
+{
+  "name": "Mathematics",
+  "description": "Counting, measure, and the keeping of accounts. With numbers set down and reckoned, a settlement can finally see itself clearly — who labours and why, what each trade yields, and whether the stores will hold. Unlocks the Statistics tab in the Town Hall.",
+  "cost": 80,
+  "x": 3963,
+  "y": -485,
+  "auto_unlock": false,
+  "min_age": "classical",
+  "prerequisites": [
+    "bannerboundantiquity:bronze_age"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "obtain_item",
+      "target": "minecraft:paper",
+      "count": 8
+    },
+    "boost": 0.4,
+    "message": "Mathematics"
+  },
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.statistics"
+    ]
+  }
+}

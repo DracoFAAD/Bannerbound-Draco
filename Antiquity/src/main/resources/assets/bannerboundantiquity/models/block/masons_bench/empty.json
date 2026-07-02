@@ -1,0 +1,6 @@
+{
+  "__comment": "The secondary half of the mason's bench renders nothing — the master half's model already extends over this cell. Particle only.",
+  "textures": {
+    "particle": "minecraft:block/stone"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.bannerbound.antiquity.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "bannerboundantiquity.refmap.json",
+  "client": [
+    "CampfireUnderPotMixin",
+    "DrunkInputMixin",
+    "DrunkProneMixin",
+    "DrunkSoundMixin",
+    "DrunkTextMixin",
+    "FirstPersonTootHornMixin",
+    "PlayerArmRaiseMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

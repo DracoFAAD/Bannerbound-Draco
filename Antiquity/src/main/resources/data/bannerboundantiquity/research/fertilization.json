@@ -1,0 +1,25 @@
+{
+  "name": "Fertilization",
+  "description": "Nothing is wasted: scraps and bone return to the soil as compost and meal. Fed earth gives back faster, and the harvest comes round before its time.",
+  "cost": 24,
+  "x": 1100,
+  "y": -75,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:herding",
+    "bannerboundantiquity:agricultural_revolution"
+  ],
+  "unlocks": {
+    "items": [
+      "minecraft:composter",
+      "minecraft:bone_meal",
+      "bannerboundantiquity:manure",
+      "bannerboundantiquity:dung"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.allow_fertilizing"
+    ]
+  }
+}

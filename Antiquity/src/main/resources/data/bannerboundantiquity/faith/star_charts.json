@@ -1,0 +1,27 @@
+{
+  "name": "Star Charts",
+  "description": "The wanderers and the colored fires of the night are named and tracked. Star types reveal their natures in Pantheon mode — the foundation of every god yet to be drawn.",
+  "cost": 24,
+  "x": -160,
+  "y": -90,
+  "min_age": "ancient",
+  "important": true,
+  "faith_path": "ASTROLOGY",
+  "prerequisites": [
+    "bannerboundantiquity:communal_rites"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "obtain_item",
+      "target": "minecraft:torch",
+      "count": 4
+    },
+    "boost": 0.4,
+    "message": "Star Charts"
+  },
+  "unlocks": {
+    "flags": [
+      "bannerbound.star_charts"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        { "type": "minecraft:item", "name": "bannerboundantiquity:curare_vine" }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "bannerboundantiquity:curare_vine",
+          "properties": { "half": "lower" }
+        },
+        { "condition": "minecraft:survives_explosion" }
+      ]
+    }
+  ]
+}

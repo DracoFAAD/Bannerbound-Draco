@@ -1,0 +1,25 @@
+{
+  "name": "Copper Age",
+  "order": 3,
+  "chop_ticks": 55,
+  "mine_speed": 40,
+  "harvest_speed": 28,
+  "weapon_damage": 5.5,
+  "weapon_attack_speed": 1.6,
+  "tools": {
+    "axe":     "bannerboundantiquity:copper_axe",
+    "pickaxe": "bannerboundantiquity:copper_pickaxe",
+    "shovel":  "bannerboundantiquity:copper_shovel",
+    "hoe":     "bannerboundantiquity:copper_hoe",
+    "sword":   "bannerboundantiquity:copper_sword",
+    "guard":   "bannerboundantiquity:copper_sword",
+    "hunt":    "bannerboundantiquity:copper_spear",
+    "spear":   "bannerboundantiquity:copper_spear",
+    "spearfish": "minecraft:cod",
+    "fishing_rod": "minecraft:fishing_rod",
+    "rope":        "minecraft:lead",
+    "forage":      "minecraft:poppy",
+    "saw":         "bannerboundantiquity:bone_saw",
+    "chisel":      "bannerboundantiquity:copper_chisel"
+  }
+}

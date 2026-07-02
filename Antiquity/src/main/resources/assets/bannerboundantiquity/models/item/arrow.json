@@ -1,0 +1,202 @@
+{
+    "parent":  "minecraft:item/generated",
+    "textures":  {
+                     "layer0":  "bannerboundantiquity:item/arrows/feather_arrow_back",
+                     "layer1":  "bannerboundantiquity:item/arrows/wooden_arrow_stick",
+                     "layer2":  "bannerboundantiquity:item/arrows/flint_arrow_tip"
+                 },
+    "overrides":  [
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  0
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_0"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  1
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_1"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  2
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_2"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  3
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_3"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  4
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_4"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  5
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_5"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  6
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_6"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  7
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_7"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  8
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_8"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  9
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_9"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  10
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_10"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  11
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_11"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  12
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_12"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  13
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_13"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  14
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_14"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  15
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_15"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  16
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_16"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  17
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_17"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  18
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_18"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  19
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_19"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  20
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_20"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  21
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_21"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  22
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_22"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  23
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_23"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  24
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_24"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  25
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_25"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  26
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_26"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  27
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_27"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  28
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_28"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  29
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_29"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  30
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_30"
+                      },
+                      {
+                          "predicate":  {
+                                            "bannerboundantiquity:arrow_combo":  31
+                                        },
+                          "model":  "bannerboundantiquity:item/arrow/combo_31"
+                      }
+                  ]
+}

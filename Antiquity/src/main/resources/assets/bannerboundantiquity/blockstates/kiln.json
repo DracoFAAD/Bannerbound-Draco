@@ -1,0 +1,13 @@
+{
+  "comment": "PART 0 (the controller) maps to the authored dome model — KilnRenderer fetches it as a baked model and draws it rotated. The block renders INVISIBLE, so this model is used only by the renderer + break particles. PART 1-7 are empty (particle only).",
+  "variants": {
+    "part=0": { "model": "bannerboundantiquity:block/kiln/kiln" },
+    "part=1": { "model": "bannerboundantiquity:block/kiln/kiln_empty" },
+    "part=2": { "model": "bannerboundantiquity:block/kiln/kiln_empty" },
+    "part=3": { "model": "bannerboundantiquity:block/kiln/kiln_empty" },
+    "part=4": { "model": "bannerboundantiquity:block/kiln/kiln_empty" },
+    "part=5": { "model": "bannerboundantiquity:block/kiln/kiln_empty" },
+    "part=6": { "model": "bannerboundantiquity:block/kiln/kiln_empty" },
+    "part=7": { "model": "bannerboundantiquity:block/kiln/kiln_empty" }
+  }
+}

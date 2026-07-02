@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:cornflower" },
+  "base_liquid": "water",
+  "result_liquid": "blue"
+}

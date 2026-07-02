@@ -1,0 +1,7 @@
+{
+  "ingredients": [
+    { "item": "minecraft:cobblestone", "count": 1 },
+    { "item": "bannerboundantiquity:thatch_bed", "count": 1 }
+  ],
+  "result": { "id": "bannerbound:housing_orders", "count": 1 }
+}

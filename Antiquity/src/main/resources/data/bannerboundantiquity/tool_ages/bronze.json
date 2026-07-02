@@ -1,0 +1,25 @@
+{
+  "name": "Bronze Age",
+  "order": 4,
+  "chop_ticks": 44,
+  "mine_speed": 32,
+  "harvest_speed": 22,
+  "weapon_damage": 6.0,
+  "weapon_attack_speed": 1.6,
+  "tools": {
+    "axe":     "bannerboundantiquity:bronze_axe",
+    "pickaxe": "bannerboundantiquity:bronze_pickaxe",
+    "shovel":  "bannerboundantiquity:bronze_shovel",
+    "hoe":     "bannerboundantiquity:bronze_hoe",
+    "sword":   "bannerboundantiquity:bronze_sword",
+    "guard":   "bannerboundantiquity:bronze_sword",
+    "hunt":    "bannerboundantiquity:bronze_spear",
+    "spear":   "bannerboundantiquity:bronze_spear",
+    "spearfish": "minecraft:cod",
+    "fishing_rod": "minecraft:fishing_rod",
+    "rope":        "minecraft:lead",
+    "forage":      "minecraft:poppy",
+    "saw":         "bannerboundantiquity:bone_saw",
+    "chisel":      "bannerboundantiquity:bronze_chisel"
+  }
+}

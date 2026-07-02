@@ -1,0 +1,6 @@
+{
+  "parent": "bannerboundantiquity:item/slingshot",
+  "textures": {
+    "layer0": "bannerboundantiquity:item/slingshot_3"
+  }
+}

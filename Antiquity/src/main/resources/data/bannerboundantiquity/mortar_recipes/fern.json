@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:fern" },
+  "base_liquid": "water",
+  "result_liquid": "green"
+}

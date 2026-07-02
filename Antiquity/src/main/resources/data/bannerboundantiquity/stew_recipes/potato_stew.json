@@ -1,0 +1,10 @@
+{
+  "ingredients": [
+    { "item": "minecraft:potato" }
+  ],
+  "name": "stew.potato",
+  "tint": "D2B48C",
+  "bonus": 1.2,
+  "servings": 6,
+  "cook_ticks": 360
+}

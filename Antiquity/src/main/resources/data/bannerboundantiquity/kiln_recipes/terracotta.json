@@ -1,0 +1,6 @@
+{
+  "ingredient": { "item": "minecraft:clay" },
+  "ticks": 140,
+  "result": { "id": "minecraft:terracotta", "count": 1 },
+  "chance": 1.0
+}

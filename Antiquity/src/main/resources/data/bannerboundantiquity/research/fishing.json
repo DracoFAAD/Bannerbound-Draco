@@ -1,0 +1,28 @@
+{
+  "name": "Fishery",
+  "description": "Cast a line where the water runs dark and the river will feed the settlement. The fisher's trade — the first food that asks for patience rather than the chase.",
+  "cost": 32,
+  "x": 1900,
+  "y": -100,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:fletching"
+  ],
+  "unlocks": {
+    "items": [
+      "minecraft:string",
+      "minecraft:fishing_rod",
+      "minecraft:cod",
+      "minecraft:salmon",
+      "minecraft:tropical_fish",
+      "minecraft:pufferfish",
+      "minecraft:cooked_cod",
+      "minecraft:cooked_salmon"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.fisher"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Food Preservation",
+  "description": "Salt, smoke, and a cool cellar hold the harvest against leaner days. The settlement may keep a little more than it needs, instead of letting the surplus spoil.",
+  "cost": 16,
+  "x": 1100,
+  "y": 75,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:agricultural_revolution"
+  ],
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:salt",
+      "bannerboundantiquity:salt_block",
+      "bannerboundantiquity:dried_beef",
+      "bannerboundantiquity:dried_porkchop",
+      "bannerboundantiquity:dried_mutton",
+      "bannerboundantiquity:dried_chicken",
+      "bannerboundantiquity:dried_rabbit",
+      "bannerboundantiquity:dried_cod",
+      "bannerboundantiquity:dried_salmon"
+    ],
+    "features": [
+      "bannerbound.food_capacity_delta:4"
+    ],
+    "flags": [
+      "bannerbound.home_demand:cooked_food"
+    ]
+  }
+}

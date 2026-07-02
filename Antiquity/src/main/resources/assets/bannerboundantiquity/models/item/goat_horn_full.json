@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/goat_horn",
+    "layer1": "bannerboundantiquity:item/horn_alcohol_layer"
+  }
+}

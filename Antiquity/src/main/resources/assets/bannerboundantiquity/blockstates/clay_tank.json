@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "part=0": { "model": "bannerboundantiquity:block/clay_tank/clay_tank_base" },
+    "part=1": { "model": "bannerboundantiquity:block/clay_tank/clay_tank_extension" },
+    "part=2": { "model": "bannerboundantiquity:block/clay_tank/clay_tank_extension" },
+    "part=3": { "model": "bannerboundantiquity:block/clay_tank/clay_tank_extension" }
+  }
+}

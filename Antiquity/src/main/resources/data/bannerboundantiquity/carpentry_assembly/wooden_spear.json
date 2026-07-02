@@ -1,0 +1,9 @@
+{
+  "name": "wooden_spear",
+  "result": "bannerboundantiquity:wooden_spear",
+  "yield": 1,
+  "ingredients": [
+    { "tag": "minecraft:logs", "count": 1 },
+    { "item": "minecraft:stick", "count": 3 }
+  ]
+}

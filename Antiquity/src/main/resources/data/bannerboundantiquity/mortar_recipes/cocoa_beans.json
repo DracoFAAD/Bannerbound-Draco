@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:cocoa_beans" },
+  "base_liquid": "water",
+  "result_liquid": "brown"
+}

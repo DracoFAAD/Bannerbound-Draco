@@ -1,0 +1,6 @@
+{
+  "__comment": "The secondary (north) half of the carpenter's table renders nothing — the master half's model already extends over this cell. Particle only.",
+  "textures": {
+    "particle": "minecraft:block/stripped_oak_log"
+  }
+}

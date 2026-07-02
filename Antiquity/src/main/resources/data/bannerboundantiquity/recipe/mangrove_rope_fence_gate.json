@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RLR",
+    "R R"
+  ],
+  "key": {
+    "L": { "item": "minecraft:mangrove_log" },
+    "R": { "item": "bannerboundantiquity:fiber_rope" }
+  },
+  "result": { "id": "bannerboundantiquity:mangrove_rope_fence_gate", "count": 1 }
+}

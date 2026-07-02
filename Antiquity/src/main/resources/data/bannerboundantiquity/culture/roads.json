@@ -1,0 +1,28 @@
+{
+  "name": "Roads",
+  "description": "Turn dirt paths into real infrastructure. Citizens prefer to walk on paths and move faster on them. Requires the Paving science.",
+  "cost": 32,
+  "x": 0,
+  "y": 160,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:tribe",
+    "bannerboundantiquity:paving"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "claim_chunk",
+      "target": "",
+      "count": 1
+    },
+    "boost": 0.4,
+    "message": "Roads"
+  },
+  "unlocks": {
+    "policy": [
+      "roads"
+    ]
+  },
+  "heraldry_points": 1
+}

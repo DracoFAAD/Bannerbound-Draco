@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "bannerboundantiquity:block/basket/basket" },
+    "facing=east":  { "model": "bannerboundantiquity:block/basket/basket", "y": 90 },
+    "facing=south": { "model": "bannerboundantiquity:block/basket/basket", "y": 180 },
+    "facing=west":  { "model": "bannerboundantiquity:block/basket/basket", "y": 270 }
+  }
+}

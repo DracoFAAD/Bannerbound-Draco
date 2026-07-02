@@ -1,0 +1,7 @@
+{
+  "ingredients": [
+    { "item": "minecraft:cobblestone", "count": 3 },
+    { "item": "minecraft:stick", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:mortar_and_pestle", "count": 1 }
+}

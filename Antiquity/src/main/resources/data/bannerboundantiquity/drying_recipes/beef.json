@@ -1,0 +1,8 @@
+{
+  "input": "minecraft:beef",
+  "result": {
+    "id": "bannerboundantiquity:dried_beef",
+    "count": 1
+  },
+  "ticks": 2400
+}

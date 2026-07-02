@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "bannerboundantiquity:flint_blade",
+    "bannerboundantiquity:bone_blade",
+    "bannerboundantiquity:flint_knife",
+    "bannerboundantiquity:bone_knife",
+    "bannerboundantiquity:wooden_knife"
+  ]
+}

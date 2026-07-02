@@ -1,0 +1,16 @@
+{
+  "name": "The Heavens' Wheel",
+  "description": "The sky turns, the months turn with it, and the thinkers who watch both learn to ask better questions.",
+  "cost": 36,
+  "x": 0,
+  "y": -180,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:devout_hearts"
+  ],
+  "unlocks": {
+    "features": [
+      "bannerbound.science_per_second_delta:0.1"
+    ]
+  }
+}

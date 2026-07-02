@@ -1,0 +1,22 @@
+{
+  "name": "Joinery",
+  "description": "Iron nails, planed boards and tight-fitted joints. The chest — lockable, stackable, and proof against the weather — becomes the settlement's standard container.",
+  "cost": 20,
+  "x": 4425,
+  "y": -100,
+  "auto_unlock": false,
+  "min_age": "medieval",
+  "prerequisites": [
+    "bannerboundantiquity:iron_working"
+  ],
+  "unlocks": {
+    "items": [
+      "minecraft:chest",
+      "minecraft:trapped_chest"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.chest"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "ingredients": [
+    { "item": "minecraft:stick", "count": 3 },
+    { "item": "bannerboundantiquity:plant_string", "count": 2 }
+  ],
+  "result": { "id": "minecraft:fishing_rod", "count": 1 },
+  "stretches": 3,
+  "base_zone_pct": 0.18,
+  "zone_decay": 0.65,
+  "min_zone_pct": 0.06,
+  "yellow_pad_pct": 0.05
+}

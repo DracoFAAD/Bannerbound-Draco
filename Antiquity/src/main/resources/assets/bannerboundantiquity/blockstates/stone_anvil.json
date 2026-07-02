@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "bannerboundantiquity:block/stone_anvil/stone_anvil", "y": 90 },
+    "facing=east":  { "model": "bannerboundantiquity:block/stone_anvil/stone_anvil", "y": 180 },
+    "facing=south": { "model": "bannerboundantiquity:block/stone_anvil/stone_anvil", "y": 270 },
+    "facing=west":  { "model": "bannerboundantiquity:block/stone_anvil/stone_anvil", "y": 0 }
+  }
+}

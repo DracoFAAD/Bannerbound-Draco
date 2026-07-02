@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "logs=1,facing=north": { "model": "bannerboundantiquity:block/campfire/campfire_stage_1" },
+    "logs=1,facing=east":  { "model": "bannerboundantiquity:block/campfire/campfire_stage_1", "y": 90 },
+    "logs=1,facing=south": { "model": "bannerboundantiquity:block/campfire/campfire_stage_1", "y": 180 },
+    "logs=1,facing=west":  { "model": "bannerboundantiquity:block/campfire/campfire_stage_1", "y": 270 },
+    "logs=2,facing=north": { "model": "bannerboundantiquity:block/campfire/campfire_stage_2" },
+    "logs=2,facing=east":  { "model": "bannerboundantiquity:block/campfire/campfire_stage_2", "y": 90 },
+    "logs=2,facing=south": { "model": "bannerboundantiquity:block/campfire/campfire_stage_2", "y": 180 },
+    "logs=2,facing=west":  { "model": "bannerboundantiquity:block/campfire/campfire_stage_2", "y": 270 },
+    "logs=3,facing=north": { "model": "bannerboundantiquity:block/campfire/campfire_stage_3" },
+    "logs=3,facing=east":  { "model": "bannerboundantiquity:block/campfire/campfire_stage_3", "y": 90 },
+    "logs=3,facing=south": { "model": "bannerboundantiquity:block/campfire/campfire_stage_3", "y": 180 },
+    "logs=3,facing=west":  { "model": "bannerboundantiquity:block/campfire/campfire_stage_3", "y": 270 }
+  }
+}

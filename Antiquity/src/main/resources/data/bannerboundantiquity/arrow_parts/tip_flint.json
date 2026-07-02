@@ -1,0 +1,11 @@
+{
+    "slot":  "tip",
+    "material":  "flint",
+    "ingredient":  "bannerboundantiquity:flint_blade",
+    "damage":  1,
+    "weight":  0,
+    "accuracy":  1,
+    "priority":  0,
+    "item_texture":  "bannerboundantiquity:item/arrows/flint_arrow_tip",
+    "projectile_texture":  "bannerboundantiquity:textures/projectiles/flint_arrow_tip.png"
+}

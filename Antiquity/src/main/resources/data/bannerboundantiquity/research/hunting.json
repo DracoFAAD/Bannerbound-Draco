@@ -1,0 +1,46 @@
+{
+  "name": "Hunting",
+  "description": "Beyond the boundary stones the wilds run thick with game. Hunters range out to stalk and fell it, carrying back meat, hide, and feather that no pen could ever provide.",
+  "cost": 10,
+  "x": 300,
+  "y": 0,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:settlement"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "kill_entity",
+      "target": "#bannerbound:huntable",
+      "count": 2
+    },
+    "boost": 0.4,
+    "message": "Hunting"
+  },
+  "unlocks": {
+    "items": [
+      "minecraft:porkchop",
+      "minecraft:cooked_porkchop",
+      "minecraft:beef",
+      "minecraft:cooked_beef",
+      "minecraft:mutton",
+      "minecraft:cooked_mutton",
+      "minecraft:chicken",
+      "minecraft:cooked_chicken",
+      "minecraft:rabbit",
+      "minecraft:cooked_rabbit",
+      "minecraft:rabbit_hide",
+      "minecraft:feather",
+      "bannerboundantiquity:cow_hide",
+      "bannerboundantiquity:sheep_hide",
+      "bannerboundantiquity:horse_hide",
+      "bannerboundantiquity:pig_hide",
+      "bannerboundantiquity:goat_hide"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.hunter"
+    ]
+  }
+}

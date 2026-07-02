@@ -1,0 +1,10 @@
+{
+  "name": "Tribe",
+  "description": "A loose band of kin and friends — the first political body, born before any code of laws.",
+  "cost": 0,
+  "x": 0,
+  "y": 0,
+  "auto_unlock": true,
+  "min_age": "ancient",
+  "prerequisites": []
+}

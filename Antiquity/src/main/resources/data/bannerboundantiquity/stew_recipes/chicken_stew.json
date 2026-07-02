@@ -1,0 +1,11 @@
+{
+  "ingredients": [
+    { "item": "minecraft:cooked_chicken" },
+    { "item": "minecraft:carrot" }
+  ],
+  "name": "stew.chicken",
+  "tint": "C68642",
+  "bonus": 1.25,
+  "servings": 6,
+  "cook_ticks": 400
+}

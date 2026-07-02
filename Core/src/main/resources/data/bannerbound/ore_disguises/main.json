@@ -1,0 +1,22 @@
+{
+  "disguises": [
+    {"ore": "minecraft:coal_ore", "as": "minecraft:stone", "flag": "bannerbound.showore:minecraft:coal_ore"},
+    {"ore": "minecraft:deepslate_coal_ore", "as": "minecraft:deepslate", "flag": "bannerbound.showore:minecraft:deepslate_coal_ore"},
+    {"ore": "minecraft:iron_ore", "as": "minecraft:stone", "flag": "bannerbound.showore:minecraft:iron_ore"},
+    {"ore": "minecraft:deepslate_iron_ore", "as": "minecraft:deepslate", "flag": "bannerbound.showore:minecraft:deepslate_iron_ore"},
+    {"ore": "minecraft:copper_ore", "as": "minecraft:stone", "flag": "bannerbound.showore:minecraft:copper_ore"},
+    {"ore": "minecraft:deepslate_copper_ore", "as": "minecraft:deepslate", "flag": "bannerbound.showore:minecraft:deepslate_copper_ore"},
+    {"ore": "minecraft:gold_ore", "as": "minecraft:stone", "flag": "bannerbound.showore:minecraft:gold_ore"},
+    {"ore": "minecraft:deepslate_gold_ore", "as": "minecraft:deepslate", "flag": "bannerbound.showore:minecraft:deepslate_gold_ore"},
+    {"ore": "minecraft:nether_gold_ore", "as": "minecraft:netherrack", "flag": "bannerbound.showore:minecraft:nether_gold_ore"},
+    {"ore": "minecraft:diamond_ore", "as": "minecraft:stone", "flag": "bannerbound.showore:minecraft:diamond_ore"},
+    {"ore": "minecraft:deepslate_diamond_ore", "as": "minecraft:deepslate", "flag": "bannerbound.showore:minecraft:deepslate_diamond_ore"},
+    {"ore": "minecraft:emerald_ore", "as": "minecraft:stone", "flag": "bannerbound.showore:minecraft:emerald_ore"},
+    {"ore": "minecraft:deepslate_emerald_ore", "as": "minecraft:deepslate", "flag": "bannerbound.showore:minecraft:deepslate_emerald_ore"},
+    {"ore": "minecraft:lapis_ore", "as": "minecraft:stone", "flag": "bannerbound.showore:minecraft:lapis_ore"},
+    {"ore": "minecraft:deepslate_lapis_ore", "as": "minecraft:deepslate", "flag": "bannerbound.showore:minecraft:deepslate_lapis_ore"},
+    {"ore": "minecraft:redstone_ore", "as": "minecraft:stone", "flag": "bannerbound.showore:minecraft:redstone_ore"},
+    {"ore": "minecraft:deepslate_redstone_ore", "as": "minecraft:deepslate", "flag": "bannerbound.showore:minecraft:deepslate_redstone_ore"},
+    {"ore": "minecraft:ancient_debris", "as": "minecraft:netherrack", "flag": "bannerbound.showore:minecraft:ancient_debris"}
+  ]
+}

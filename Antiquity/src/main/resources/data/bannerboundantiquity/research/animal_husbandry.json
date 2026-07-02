@@ -1,0 +1,62 @@
+{
+  "name": "Animal Husbandry",
+  "description": "Fence a stretch of pasture and the wild settles into a herd. Beasts kept and well fed will pair and bear young, returning wool, leather, and eggs season after season.",
+  "cost": 12,
+  "x": 700,
+  "y": -75,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:hunting"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "breed_animal",
+      "target": "",
+      "count": 2
+    },
+    "boost": 0.4
+  },
+  "unlocks": {
+    "items": [
+      "minecraft:oak_fence",
+      "minecraft:spruce_fence",
+      "minecraft:birch_fence",
+      "minecraft:jungle_fence",
+      "minecraft:acacia_fence",
+      "minecraft:dark_oak_fence",
+      "minecraft:oak_fence_gate",
+      "minecraft:spruce_fence_gate",
+      "minecraft:birch_fence_gate",
+      "minecraft:jungle_fence_gate",
+      "minecraft:acacia_fence_gate",
+      "minecraft:dark_oak_fence_gate",
+      "minecraft:egg",
+      "bannerboundantiquity:goat_horn",
+      "minecraft:wheat_seeds",
+      "minecraft:wheat",
+      "minecraft:hay_block",
+      "minecraft:leather",
+      "minecraft:white_wool",
+      "minecraft:orange_wool",
+      "minecraft:magenta_wool",
+      "minecraft:light_blue_wool",
+      "minecraft:yellow_wool",
+      "minecraft:pink_wool",
+      "minecraft:gray_wool",
+      "minecraft:light_gray_wool",
+      "minecraft:cyan_wool",
+      "minecraft:purple_wool",
+      "minecraft:blue_wool",
+      "minecraft:brown_wool",
+      "minecraft:green_wool",
+      "minecraft:red_wool",
+      "minecraft:black_wool"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.allow_animal_breeding",
+      "bannerbound.allow_leashing"
+    ]
+  }
+}

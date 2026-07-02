@@ -1,0 +1,12 @@
+{
+  "ingredients": [
+    { "item": "minecraft:stick", "count": 1 },
+    { "item": "bannerboundantiquity:plant_string", "count": 2 }
+  ],
+  "result": { "id": "bannerboundantiquity:slingshot", "count": 1 },
+  "stretches": 2,
+  "base_zone_pct": 0.22,
+  "zone_decay": 0.7,
+  "min_zone_pct": 0.08,
+  "yellow_pad_pct": 0.06
+}

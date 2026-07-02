@@ -1,0 +1,8 @@
+{
+  "name": "stick",
+  "result": "minecraft:stick",
+  "yield": 4,
+  "ingredients": [
+    { "tag": "minecraft:logs", "count": 1 }
+  ]
+}

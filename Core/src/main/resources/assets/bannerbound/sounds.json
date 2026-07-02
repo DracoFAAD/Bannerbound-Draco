@@ -1,0 +1,65 @@
+{
+  "found_settlement": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "bannerbound:found_settlement",
+        "stream": false
+      }
+    ]
+  },
+  "medieval_settlement": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "bannerbound:medieval_settlement",
+        "stream": false
+      }
+    ]
+  },
+  "bubble_pop": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "bannerbound:bubble_pop",
+        "stream": false
+      }
+    ]
+  },
+  "found_religion": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "bannerbound:found_religion",
+        "stream": false
+      }
+    ]
+  },
+  "insight": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "bannerbound:insight",
+        "stream": false
+      }
+    ]
+  },
+  "crisis_menu_open": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "bannerbound:crisis_menu_open",
+        "stream": false
+      }
+    ]
+  },
+  "crisis_menu_close": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "bannerbound:crisis_menu_close",
+        "stream": false
+      }
+    ]
+  }
+}

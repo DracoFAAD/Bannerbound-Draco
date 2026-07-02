@@ -1,0 +1,22 @@
+{
+  "name": "Herding",
+  "description": "A length of fiber rope and a fenced pen turn loose beasts into a tended flock. The herder's trade — to keep, drive, and gather the animals the settlement leans on.",
+  "cost": 16,
+  "x": 900,
+  "y": -75,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:animal_husbandry"
+  ],
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:fiber_rope",
+      "bannerboundantiquity:plant_string"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.herder"
+    ]
+  }
+}

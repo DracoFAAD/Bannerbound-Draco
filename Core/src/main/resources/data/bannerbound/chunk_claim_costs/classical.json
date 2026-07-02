@@ -1,0 +1,42 @@
+{
+  "era": "classical",
+  "max_expansions": 8,
+  "default": {
+    "tiers": [
+      { "population": 2, "items": [{ "id": "minecraft:cobblestone", "count": 24 }] },
+      { "population": 3, "items": [{ "id": "minecraft:andesite",   "count": 24 }] },
+      { "population": 4, "items": [{ "id": "minecraft:stone",      "count": 32 }] },
+      { "population": 5, "items": [
+          { "id": "minecraft:oak_log",    "count": 64 },
+          { "id": "minecraft:oak_planks", "count": 32 }
+      ]},
+      { "population": 6, "items": [{ "id": "minecraft:raw_copper", "count": 24 }] }
+    ]
+  },
+  "biomes": {
+    "minecraft:desert": {
+      "tiers": [
+        { "population": 2, "items": [{ "id": "minecraft:sandstone",        "count": 24 }] },
+        { "population": 3, "items": [{ "id": "minecraft:cut_sandstone",    "count": 24 }] },
+        { "population": 4, "items": [{ "id": "minecraft:smooth_sandstone", "count": 32 }] },
+        { "population": 5, "items": [
+            { "id": "minecraft:sand",         "count": 64 },
+            { "id": "minecraft:dead_bush",    "count": 4  }
+        ]},
+        { "population": 6, "items": [{ "id": "minecraft:raw_copper", "count": 24 }] }
+      ]
+    },
+    "minecraft:badlands": {
+      "tiers": [
+        { "population": 2, "items": [{ "id": "minecraft:terracotta",      "count": 24 }] },
+        { "population": 3, "items": [{ "id": "minecraft:red_sandstone",   "count": 24 }] },
+        { "population": 4, "items": [{ "id": "minecraft:smooth_sandstone","count": 32 }] },
+        { "population": 5, "items": [
+            { "id": "minecraft:red_sand",  "count": 64 },
+            { "id": "minecraft:dead_bush", "count": 4  }
+        ]},
+        { "population": 6, "items": [{ "id": "minecraft:raw_copper", "count": 24 }] }
+      ]
+    }
+  }
+}

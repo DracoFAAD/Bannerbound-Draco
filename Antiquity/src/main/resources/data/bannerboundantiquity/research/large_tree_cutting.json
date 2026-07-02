@@ -1,0 +1,19 @@
+{
+  "name": "Lumberjacking",
+  "description": "The forest's giants — dark oak, towering spruce, the great jungle boles — no longer stand beyond reach. Foresters fell them too, though the largest trunks ask many more swings before they come down.",
+  "cost": 24,
+  "x": 1900,
+  "y": 300,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:woodworking"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.large_tree_cutting"
+    ]
+  }
+}

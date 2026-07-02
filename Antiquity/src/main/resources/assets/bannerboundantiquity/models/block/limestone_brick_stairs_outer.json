@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "bannerboundantiquity:block/lime_bricks/lime_bricks",
+    "side": "bannerboundantiquity:block/lime_bricks/lime_bricks",
+    "top": "bannerboundantiquity:block/lime_bricks/lime_bricks"
+  }
+}

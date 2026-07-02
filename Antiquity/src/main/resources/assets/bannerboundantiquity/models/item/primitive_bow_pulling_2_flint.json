@@ -1,0 +1,6 @@
+{
+  "parent": "bannerboundantiquity:item/primitive_bow",
+  "textures": {
+    "layer0": "bannerboundantiquity:item/primitive_bow_pulling_2_flint"
+  }
+}

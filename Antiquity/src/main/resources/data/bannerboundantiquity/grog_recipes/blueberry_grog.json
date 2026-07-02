@@ -1,0 +1,13 @@
+{
+  "input": "bannerboundantiquity:blueberries_pestled",
+  "min_water_units": 1,
+  "ferment_ticks": 2400,
+  "name": "grog.blueberry",
+  "tint": "2E2160",
+  "strength": 1,
+  "food_value": 2,
+  "servings": 3,
+  "effects": [
+    { "id": "minecraft:haste", "duration": 200, "amplifier": 0 }
+  ]
+}

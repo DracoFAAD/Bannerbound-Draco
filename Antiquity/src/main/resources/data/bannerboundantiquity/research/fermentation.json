@@ -1,0 +1,30 @@
+{
+  "name": "Fermentation",
+  "description": "Leave crushed fruit and water in a hollowed log and the wild yeasts do the rest — a sour, heady grog. The settlement's first drink: a comfort, a trade good, and the base for steeping medicine. Carve a Fermentation Trough from any log with a bone axe.",
+  "cost": 30,
+  "x": 900,
+  "y": 200,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:herbalism"
+  ],
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:blueberries_pestled",
+      "bannerboundantiquity:sweet_berries_pestled",
+      "bannerboundantiquity:oak_fermentation_trough",
+      "bannerboundantiquity:spruce_fermentation_trough",
+      "bannerboundantiquity:birch_fermentation_trough",
+      "bannerboundantiquity:jungle_fermentation_trough",
+      "bannerboundantiquity:acacia_fermentation_trough",
+      "bannerboundantiquity:dark_oak_fermentation_trough",
+      "bannerboundantiquity:mangrove_fermentation_trough",
+      "bannerboundantiquity:cherry_fermentation_trough"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.brewer"
+    ]
+  }
+}

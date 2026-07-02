@@ -1,0 +1,9 @@
+{
+  "animals": {
+    "minecraft:cow": "spear",
+    "minecraft:horse": "spear",
+    "minecraft:pig": "blade",
+    "minecraft:sheep": "blunt",
+    "minecraft:goat": "arrow"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Quarry",
+  "description": "There is a mountain in the way; there need not be. Diggers take up the deeper work of the quarry, cutting stone and coal from the living rock.",
+  "cost": 56,
+  "x": 2725,
+  "y": -100,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:kiln"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [
+      "bannerbound.set_tool_age:stone"
+    ],
+    "flags": [
+      "bannerbound.unlock_quarry",
+      "bannerbound.showore:minecraft:coal_ore",
+      "bannerbound.showore:minecraft:deepslate_coal_ore"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "minecraft:copper_ingot", "count": 2 }
+  ],
+  "result": { "id": "bannerboundantiquity:copper_tongs", "count": 1 }
+}

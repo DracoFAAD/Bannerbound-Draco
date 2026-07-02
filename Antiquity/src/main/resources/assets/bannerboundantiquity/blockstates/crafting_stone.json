@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "material=stone,facing=north":  { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone" },
+    "material=stone,facing=east":   { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone", "y": 90 },
+    "material=stone,facing=south":  { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone", "y": 180 },
+    "material=stone,facing=west":   { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone", "y": 270 },
+    "material=sandstone,facing=north":  { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone_sandstone" },
+    "material=sandstone,facing=east":   { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone_sandstone", "y": 90 },
+    "material=sandstone,facing=south":  { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone_sandstone", "y": 180 },
+    "material=sandstone,facing=west":   { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone_sandstone", "y": 270 },
+    "material=red_sandstone,facing=north":  { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone_red_sandstone" },
+    "material=red_sandstone,facing=east":   { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone_red_sandstone", "y": 90 },
+    "material=red_sandstone,facing=south":  { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone_red_sandstone", "y": 180 },
+    "material=red_sandstone,facing=west":   { "model": "bannerboundantiquity:block/crafting_stone/crafting_stone_red_sandstone", "y": 270 }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:thatch_bundle", "count": 4 }
+  ],
+  "result": { "id": "bannerboundantiquity:thatch", "count": 1 }
+}

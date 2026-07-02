@@ -1,0 +1,57 @@
+{
+  "name": "Foraging",
+  "description": "The wild is already a larder for those who know where to look. Foragers walk the unclaimed land for fruit, mushroom, and bloom, bringing back what grows untended.",
+  "cost": 10,
+  "x": 300,
+  "y": 200,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:settlement"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "mine_block",
+      "target": "#minecraft:flowers",
+      "count": 8
+    },
+    "boost": 0.4
+  },
+  "unlocks": {
+    "items": [
+      "minecraft:apple",
+      "minecraft:red_mushroom",
+      "minecraft:brown_mushroom",
+      "minecraft:bamboo",
+      "minecraft:wheat_seeds",
+      "minecraft:melon_seeds",
+      "minecraft:pumpkin_seeds",
+      "minecraft:beetroot_seeds",
+      "minecraft:lily_of_the_valley",
+      "minecraft:white_tulip",
+      "minecraft:orange_tulip",
+      "minecraft:magenta_tulip",
+      "minecraft:light_blue_tulip",
+      "minecraft:yellow_tulip",
+      "minecraft:pink_tulip",
+      "minecraft:oxeye_daisy",
+      "minecraft:cornflower",
+      "minecraft:azure_bluet",
+      "minecraft:blue_orchid",
+      "minecraft:allium",
+      "minecraft:dandelion",
+      "minecraft:rose_bush",
+      "minecraft:peony",
+      "minecraft:poppy",
+      "minecraft:sweet_berries",
+      "minecraft:glow_berries",
+      "bannerboundantiquity:mortar_and_pestle",
+      "minecraft:ink_sac",
+      "bannerboundantiquity:plant_string"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.forager"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ingredients": [
+    { "item": "minecraft:clay", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:unfired_crucible", "count": 1 },
+  "spins": 5,
+  "in_progress": "minecraft:clay"
+}

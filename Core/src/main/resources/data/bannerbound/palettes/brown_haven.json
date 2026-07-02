@@ -1,0 +1,11 @@
+{
+  "id": "brown_haven",
+  "name": "Brown Haven",
+  "blocks": {
+    "minecraft:dirt": 0.15,
+    "minecraft:coarse_dirt": 0.15,
+    "minecraft:rooted_dirt": 0.10,
+    "minecraft:oak_log": 0.20,
+    "minecraft:dark_oak_log": 0.20
+  }
+}

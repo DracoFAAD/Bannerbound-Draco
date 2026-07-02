@@ -1,0 +1,24 @@
+{
+  "name": "Housing",
+  "description": "A roof, a door, and a bed of one's own. The settlement stops being a camp and becomes a place people return to — the first true homes are raised.",
+  "cost": 24,
+  "x": 700,
+  "y": -200,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:storage_logistics"
+  ],
+  "unlocks": {
+    "items": [
+      "bannerbound:housing_orders",
+      "bannerboundantiquity:thatch_slab",
+      "bannerboundantiquity:thatch_stairs",
+      "bannerboundantiquity:thatch_bed",
+      "bannerboundantiquity:thatch_bundle",
+      "bannerboundantiquity:thatch_door"
+    ],
+    "features": [],
+    "flags": []
+  }
+}

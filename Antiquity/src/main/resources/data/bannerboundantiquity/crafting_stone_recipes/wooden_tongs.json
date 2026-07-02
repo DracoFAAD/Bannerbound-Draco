@@ -1,0 +1,7 @@
+{
+  "ingredients": [
+    { "item": "minecraft:stick", "count": 2 },
+    { "item": "bannerboundantiquity:plant_fiber", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:wooden_tongs", "count": 1 }
+}

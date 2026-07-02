@@ -1,0 +1,5 @@
+{
+  "overrides": [
+    { "item": "minecraft:leather", "mode": "never_drop" }
+  ]
+}

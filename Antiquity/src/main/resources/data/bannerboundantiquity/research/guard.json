@@ -1,0 +1,19 @@
+{
+  "name": "Town Watch",
+  "description": "A settlement that means to keep what it has needs hands trained to hold a spear as well as a hoe. The watch musters guards — citizens who patrol the borders and stand between the raiders and the granary.",
+  "cost": 10,
+  "x": 300,
+  "y": 150,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:settlement"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.guard"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Sailing",
+  "description": "Lash a raft and push off past the shallows. Fishers ride out onto deep water, where the catch comes twice as quick as anything the shoreline offers.",
+  "cost": 40,
+  "x": 2100,
+  "y": -100,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:fishing"
+  ],
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:oar"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.sailing"
+    ]
+  }
+}

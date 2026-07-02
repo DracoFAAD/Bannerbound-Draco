@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "minecraft:slime_ball" },
+  "base_liquid": "water",
+  "result_liquid": "lime"
+}

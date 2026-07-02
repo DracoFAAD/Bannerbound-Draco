@@ -1,0 +1,7 @@
+{
+  "parent": "bannerboundantiquity:block/clay_tank/clay_tank_base",
+  "textures": {
+    "0": "minecraft:block/clay",
+    "particle": "minecraft:block/clay"
+  }
+}

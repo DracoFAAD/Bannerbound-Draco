@@ -1,0 +1,11 @@
+{
+  "id": "cherry_garden",
+  "name": "Cherry Garden",
+  "blocks": {
+    "minecraft:cherry_log": 0.20,
+    "minecraft:cherry_planks": 0.20,
+    "minecraft:cherry_leaves": 0.15,
+    "minecraft:pink_petals": 0.20,
+    "minecraft:flowering_azalea": 0.15
+  }
+}

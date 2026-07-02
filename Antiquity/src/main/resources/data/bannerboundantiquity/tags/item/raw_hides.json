@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "bannerboundantiquity:cow_hide",
+    "bannerboundantiquity:sheep_hide",
+    "bannerboundantiquity:pig_hide",
+    "bannerboundantiquity:goat_hide",
+    "bannerboundantiquity:horse_hide"
+  ]
+}

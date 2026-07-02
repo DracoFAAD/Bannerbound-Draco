@@ -1,0 +1,23 @@
+{
+  "name": "Bone Age",
+  "order": 0,
+  "chop_ticks": 100,
+  "mine_speed": 75,
+  "harvest_speed": 58,
+  "weapon_damage": 4.0,
+  "weapon_attack_speed": 1.6,
+  "tools": {
+    "axe":     "bannerboundantiquity:bone_axe",
+    "pickaxe": "bannerboundantiquity:bone_pickaxe",
+    "shovel":  "bannerboundantiquity:bone_shovel",
+    "hoe":     "bannerboundantiquity:bone_hoe",
+    "sword":   "bannerboundantiquity:bone_sword",
+    "guard":   "bannerboundantiquity:bone_sword",
+    "club":    "bannerboundantiquity:bone_club",
+    "spear":   "bannerboundantiquity:bone_spear",
+    "hunt":    "bannerboundantiquity:bone_spear",
+    "spearfish": "minecraft:cod",
+    "saw":     "bannerboundantiquity:bone_saw",
+    "chisel":  "bannerboundantiquity:stone_chisel"
+  }
+}

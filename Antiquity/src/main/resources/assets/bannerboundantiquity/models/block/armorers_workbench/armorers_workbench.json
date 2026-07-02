@@ -1,0 +1,77 @@
+{
+  "credit": "Bannerbound Antiquity — Armorer's Workbench (v1 placeholder)",
+  "textures": {
+    "legs": "minecraft:block/stripped_oak_log",
+    "top": "minecraft:block/smooth_stone",
+    "anvil": "minecraft:block/iron_block",
+    "particle": "minecraft:block/smooth_stone"
+  },
+  "elements": [
+    {
+      "from": [1, 12, -14], "to": [15, 15, 14],
+      "faces": {
+        "north": {"uv": [1, 1, 15, 4], "texture": "#top"},
+        "east":  {"uv": [0, 1, 16, 4], "texture": "#top"},
+        "south": {"uv": [1, 1, 15, 4], "texture": "#top"},
+        "west":  {"uv": [0, 1, 16, 4], "texture": "#top"},
+        "up":    {"uv": [1, 0, 15, 16], "texture": "#top"},
+        "down":  {"uv": [1, 0, 15, 16], "texture": "#top"}
+      }
+    },
+    {
+      "from": [2, 0, 12], "to": [4, 12, 14],
+      "faces": {
+        "north": {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "east":  {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "south": {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "west":  {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "up":    {"uv": [0, 0, 2, 2], "texture": "#legs"},
+        "down":  {"uv": [0, 0, 2, 2], "texture": "#legs"}
+      }
+    },
+    {
+      "from": [12, 0, 12], "to": [14, 12, 14],
+      "faces": {
+        "north": {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "east":  {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "south": {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "west":  {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "up":    {"uv": [0, 0, 2, 2], "texture": "#legs"},
+        "down":  {"uv": [0, 0, 2, 2], "texture": "#legs"}
+      }
+    },
+    {
+      "from": [2, 0, -14], "to": [4, 12, -12],
+      "faces": {
+        "north": {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "east":  {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "south": {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "west":  {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "up":    {"uv": [0, 0, 2, 2], "texture": "#legs"},
+        "down":  {"uv": [0, 0, 2, 2], "texture": "#legs"}
+      }
+    },
+    {
+      "from": [12, 0, -14], "to": [14, 12, -12],
+      "faces": {
+        "north": {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "east":  {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "south": {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "west":  {"uv": [0, 4, 2, 16], "texture": "#legs"},
+        "up":    {"uv": [0, 0, 2, 2], "texture": "#legs"},
+        "down":  {"uv": [0, 0, 2, 2], "texture": "#legs"}
+      }
+    },
+    {
+      "from": [5, 15, 3], "to": [11, 19, 9],
+      "faces": {
+        "north": {"uv": [0, 0, 6, 4], "texture": "#anvil"},
+        "east":  {"uv": [0, 0, 6, 4], "texture": "#anvil"},
+        "south": {"uv": [0, 0, 6, 4], "texture": "#anvil"},
+        "west":  {"uv": [0, 0, 6, 4], "texture": "#anvil"},
+        "up":    {"uv": [0, 0, 6, 6], "texture": "#anvil"},
+        "down":  {"uv": [0, 0, 6, 6], "texture": "#anvil"}
+      }
+    }
+  ]
+}

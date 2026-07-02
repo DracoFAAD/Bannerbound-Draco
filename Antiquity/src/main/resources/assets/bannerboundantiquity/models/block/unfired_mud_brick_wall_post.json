@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "bannerboundantiquity:block/unrefined_mud_bricks/unrefined_mud_bricks"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "bannerboundantiquity:item/bronze_tier/bronze_spear_item"
+    }
+  },
+  "perspectives": {
+    "none": { "parent": "bannerboundantiquity:item/bronze_spear_3d" },
+    "thirdperson_righthand": { "parent": "bannerboundantiquity:item/bronze_spear_3d" },
+    "thirdperson_lefthand": { "parent": "bannerboundantiquity:item/bronze_spear_3d" },
+    "firstperson_righthand": { "parent": "bannerboundantiquity:item/bronze_spear_3d" },
+    "firstperson_lefthand": { "parent": "bannerboundantiquity:item/bronze_spear_3d" }
+  }
+}

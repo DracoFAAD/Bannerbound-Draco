@@ -1,0 +1,30 @@
+{
+  "name": "Barrel Making",
+  "description": "Staves drawn tight under wooden hoops make a sealed cask — the settlement's first proper vanilla store, raised once the woodwright's bench is running.",
+  "cost": 40,
+  "x": 4050,
+  "y": 500,
+  "auto_unlock": false,
+  "min_age": "classical",
+  "prerequisites": [
+    "bannerboundantiquity:carpentry"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "mine_block",
+      "target": "#minecraft:logs",
+      "count": 12
+    },
+    "boost": 0.4,
+    "message": "Barrel Making"
+  },
+  "unlocks": {
+    "items": [
+      "minecraft:barrel"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.barrel"
+    ]
+  }
+}

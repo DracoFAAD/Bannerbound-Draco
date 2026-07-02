@@ -1,0 +1,6 @@
+{
+  "parent": "bannerboundantiquity:block/spear/spear",
+  "textures": {
+    "2": "bannerboundantiquity:item/tin_spear_model"
+  }
+}

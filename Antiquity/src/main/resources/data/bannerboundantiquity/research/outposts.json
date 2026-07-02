@@ -1,0 +1,19 @@
+{
+  "name": "Outposts",
+  "description": "Plant a banner on distant ground and work what your borders cannot reach. The claim is yours alone, yet no wall shields it and no guard keeps watch — guard the road, for if the banner falls, the outpost falls with it.",
+  "cost": 56,
+  "x": 2950,
+  "y": -400,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:quarry"
+  ],
+  "unlocks": {
+    "items": [],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.outpost"
+    ]
+  }
+}

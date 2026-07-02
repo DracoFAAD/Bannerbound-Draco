@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "part=0,facing=north": { "model": "bannerboundantiquity:block/tanning_rack/tanning_rock" },
+    "part=0,facing=east":  { "model": "bannerboundantiquity:block/tanning_rack/tanning_rock", "y": 90 },
+    "part=0,facing=south": { "model": "bannerboundantiquity:block/tanning_rack/tanning_rock", "y": 180 },
+    "part=0,facing=west":  { "model": "bannerboundantiquity:block/tanning_rack/tanning_rock", "y": 270 },
+
+    "part=1,facing=north": { "model": "bannerboundantiquity:block/empty" },
+    "part=1,facing=east":  { "model": "bannerboundantiquity:block/empty" },
+    "part=1,facing=south": { "model": "bannerboundantiquity:block/empty" },
+    "part=1,facing=west":  { "model": "bannerboundantiquity:block/empty" },
+
+    "part=2,facing=north": { "model": "bannerboundantiquity:block/empty" },
+    "part=2,facing=east":  { "model": "bannerboundantiquity:block/empty" },
+    "part=2,facing=south": { "model": "bannerboundantiquity:block/empty" },
+    "part=2,facing=west":  { "model": "bannerboundantiquity:block/empty" },
+
+    "part=3,facing=north": { "model": "bannerboundantiquity:block/empty" },
+    "part=3,facing=east":  { "model": "bannerboundantiquity:block/empty" },
+    "part=3,facing=south": { "model": "bannerboundantiquity:block/empty" },
+    "part=3,facing=west":  { "model": "bannerboundantiquity:block/empty" }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "Woodworking",
+  "description": "A bone axe, a steady hand, and the forest starts to give. Strip the log, carve the haft, lash the rest — the settlement's first worked wood: sticks, wooden tools, ladders and bowls, and rope-and-stick fences to ring the homestead. The Woodworking Table is raised here; the finished plank trade waits on Carpentry, an age later.",
+  "cost": 24,
+  "x": 1625,
+  "y": 150,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:stew",
+    "bannerboundantiquity:digging"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "mine_block",
+      "target": "#minecraft:logs",
+      "count": 16
+    },
+    "boost": 0.4,
+    "message": "Woodworking"
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:woodworking_table",
+      "bannerboundantiquity:bone_saw",
+      "minecraft:barrel",
+      "bannerboundantiquity:wooden_spear",
+      "bannerbound:foremans_rod",
+      "bannerboundantiquity:oak_stick_fence",
+      "bannerboundantiquity:spruce_stick_fence",
+      "bannerboundantiquity:birch_stick_fence",
+      "bannerboundantiquity:jungle_stick_fence",
+      "bannerboundantiquity:acacia_stick_fence",
+      "bannerboundantiquity:dark_oak_stick_fence",
+      "bannerboundantiquity:mangrove_stick_fence",
+      "bannerboundantiquity:cherry_stick_fence",
+      "bannerboundantiquity:oak_rope_fence",
+      "bannerboundantiquity:oak_rope_fence_gate",
+      "bannerboundantiquity:spruce_rope_fence",
+      "bannerboundantiquity:spruce_rope_fence_gate",
+      "bannerboundantiquity:birch_rope_fence",
+      "bannerboundantiquity:birch_rope_fence_gate",
+      "bannerboundantiquity:jungle_rope_fence",
+      "bannerboundantiquity:jungle_rope_fence_gate",
+      "bannerboundantiquity:acacia_rope_fence",
+      "bannerboundantiquity:acacia_rope_fence_gate",
+      "bannerboundantiquity:dark_oak_rope_fence",
+      "bannerboundantiquity:dark_oak_rope_fence_gate",
+      "bannerboundantiquity:mangrove_rope_fence",
+      "bannerboundantiquity:mangrove_rope_fence_gate",
+      "bannerboundantiquity:cherry_rope_fence",
+      "bannerboundantiquity:cherry_rope_fence_gate",
+      "minecraft:stick",
+      "minecraft:ladder",
+      "minecraft:bowl",
+      "bannerboundantiquity:mug",
+      "minecraft:wooden_pickaxe",
+      "minecraft:wooden_axe",
+      "minecraft:wooden_shovel",
+      "minecraft:wooden_hoe",
+      "minecraft:wooden_sword",
+      "minecraft:white_banner"
+    ],
+    "features": [
+      "bannerbound.set_tool_age:wood"
+    ],
+    "flags": [
+      "bannerbound.unlock.carpenter",
+      "bannerbound.unlock.forester"
+    ]
+  }
+}

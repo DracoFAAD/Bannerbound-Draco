@@ -1,0 +1,10 @@
+{
+  "ingredients": [
+    { "tag": "bannerboundantiquity:stew_vegetables" }
+  ],
+  "name": "stew.vegetable",
+  "tint": "6E8B3D",
+  "bonus": 1.15,
+  "servings": 6,
+  "cook_ticks": 380
+}

@@ -1,0 +1,5 @@
+{
+  "disguises": [
+    {"ore": "bannerboundantiquity:tin_ore", "as": "minecraft:tuff", "flag": "bannerbound.showore:bannerboundantiquity:tin_ore"}
+  ]
+}

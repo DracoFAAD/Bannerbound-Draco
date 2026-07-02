@@ -1,0 +1,205 @@
+{
+  "category": "Starvation Crisis",
+  "title": "Starvation",
+  "headline": "The people are starving!",
+  "body": "Chief, the people are celebrating the new organized life. But we have grown beyond the old wandering stores. The mouths around the fires now ask for something steadier than luck: they demand that we make food.",
+  "prompt": "Choose how the settlement will answer hunger.",
+  "start_sound": "bannerboundantiquity:crisis_antiquity",
+  "background": "bannerboundantiquity:textures/gui/crisis/starvation_back.png",
+  "background_layers": [
+    {
+      "texture": "bannerboundantiquity:textures/gui/crisis/starvation_back.png",
+      "parallax": 0.08,
+      "drift_x": 1.4,
+      "drift_y": 0.8,
+      "scale": 1.045,
+      "opacity": 1.0,
+      "reveal_delay_ms": 0,
+      "reveal_duration_ms": 2200
+    },
+    {
+      "texture": "bannerboundantiquity:textures/gui/crisis/starvation_front.png",
+      "parallax": 0.44,
+      "drift_x": 5.5,
+      "drift_y": 2.2,
+      "scale": 1.075,
+      "opacity": 1.0,
+      "reveal_delay_ms": 1750,
+      "reveal_duration_ms": 1900
+    }
+  ],
+  "priority": 1000,
+  "completion_effects": {
+    "compliance_delta": 25,
+    "resentment_delta": -40
+  },
+  "trigger": {
+    "type": "government_enacted",
+    "target": "tribe",
+    "delay_ticks": 100
+  },
+  "chronicle_entry": "bannerboundantiquity:starvation",
+  "choices": [
+    {
+      "id": "fish",
+      "label": "We'll feed through fish.",
+      "description": "Wade the shallows and strike at the fish below. A spear and a riverbank will carry us while the fields are still only an idea.",
+      "outcome": "The settlement turns to the water. Spear fishers wade the banks to keep the stores from running dry.",
+      "viability": [
+        {
+          "type": "fishable_water",
+          "warning": "No claimed pond or shore looks fishable yet."
+        }
+      ],
+      "objectives": [
+        {
+          "id": "research_fishing",
+          "type": "research_completed",
+          "label": "Research Spear Fishing",
+          "research": "bannerboundantiquity:spear_fishing",
+          "substeps": [
+            "Open the Town Hall research screen.",
+            "Queue and finish Spear Fishing."
+          ]
+        },
+        {
+          "id": "appoint_fishers",
+          "type": "job_count",
+          "label": "Appoint 2 spear fishers",
+          "job": "spear_fishers_post",
+          "target_count": 2,
+          "substeps": [
+            "Open a citizen's Job tab.",
+            "Assign or request Spear Fisher.",
+            "A spear in the tool slot makes them faster, but they'll fish bare-handed without one.",
+            "Mark a waterside storage chest as the drop-off."
+          ]
+        },
+        {
+          "id": "fishing_surplus",
+          "type": "food_sustained",
+          "source": "fishing",
+          "label": "Let fishing keep the settlement fed",
+          "target_count": 15,
+          "substeps": [
+            "Keep spear fishers landing catches into claimed storage.",
+            "Your settlement's total food production (the rate shown) must meet or beat what a FULL tribe eats — a whole settlement of mouths, even if a hard season has left you with fewer right now.",
+            "Fishing leads here, but every food worker counts; add fishers, claim better fishing spots, or put others on food until it covers a full tribe."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fields",
+      "label": "We'll feed through fields.",
+      "description": "Break the soil, save seed, and turn the settlement's hunger into planned harvests.",
+      "outcome": "The settlement chooses the field. Hunger will be answered by seed, water, and patient labor.",
+      "viability": [
+        {
+          "type": "farmable_soil",
+          "warning": "No tillable dirt or grass is claimed."
+        }
+      ],
+      "objectives": [
+        {
+          "id": "research_agriculture",
+          "type": "research_completed",
+          "label": "Research Agricultural Revolution",
+          "research": "bannerboundantiquity:agricultural_revolution",
+          "substeps": [
+            "Open the Town Hall research screen.",
+            "Queue and finish Agricultural Revolution."
+          ]
+        },
+        {
+          "id": "appoint_farmers",
+          "type": "job_count",
+          "label": "Appoint 2 farmers",
+          "job": "farmers_granary",
+          "target_count": 2,
+          "substeps": [
+            "Open a citizen's Job tab.",
+            "Assign Farmer.",
+            "Give access to hoes through the tool slot or tool storage.",
+            "Mark a harvest drop-off chest.",
+            "Mark a seed source chest.",
+            "Bind a field with the Foreman's Rod."
+          ]
+        },
+        {
+          "id": "farming_surplus",
+          "type": "food_sustained",
+          "source": "farming",
+          "label": "Let your fields keep the settlement fed",
+          "target_count": 15,
+          "substeps": [
+            "Keep farmers harvesting edible crops into claimed storage.",
+            "Your settlement's total food production (the rate shown) must meet or beat what a FULL tribe eats — a whole settlement of mouths, even if a hard season has left you with fewer right now.",
+            "Wheat alone won't do it until it's cooked — grow food crops or bake bread.",
+            "Fields lead here, but every food worker counts; add farmers or more field tiles until it covers a full tribe."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "animals",
+      "label": "We'll feed through the animals.",
+      "description": "Pens, rope, and breeding stock can turn wandering beasts into a living reserve.",
+      "outcome": "The settlement chooses the herd. Animals will be kept, bred, and counted as food for tomorrow.",
+      "viability": [
+        {
+          "type": "grazing_land",
+          "warning": "No claimed grassland is ready for animals."
+        }
+      ],
+      "objectives": [
+        {
+          "id": "research_herding",
+          "type": "research_completed",
+          "label": "Research Herding",
+          "research": "bannerboundantiquity:herding",
+          "substeps": [
+            "Open the Town Hall research screen.",
+            "Queue and finish Herding."
+          ]
+        },
+        {
+          "id": "research_husbandry",
+          "type": "research_completed",
+          "label": "Research Animal Husbandry",
+          "research": "bannerboundantiquity:animal_husbandry",
+          "substeps": [
+            "Open the Town Hall research screen.",
+            "Queue and finish Animal Husbandry."
+          ]
+        },
+        {
+          "id": "appoint_herders",
+          "type": "job_count",
+          "label": "Appoint 2 herders",
+          "job": "herders_pen",
+          "target_count": 2,
+          "substeps": [
+            "Open a citizen's Job tab.",
+            "Assign Herder.",
+            "Fence a pen for the animals.",
+            "Bind the pen with the Foreman's Rod.",
+            "Mark harvest storage if you plan to cull animals."
+          ]
+        },
+        {
+          "id": "livestock_surplus",
+          "type": "food_sustained",
+          "source": "livestock",
+          "label": "Let your herds keep the settlement fed",
+          "target_count": 15,
+          "substeps": [
+            "Breed up a herd and cull surplus animals into claimed storage.",
+            "Your settlement's total food production (the rate shown) must meet or beat what a FULL tribe eats — a whole settlement of mouths, even if a hard season has left you with fewer right now.",
+            "Herds lead here, but every food worker counts; add animals and pens, cull more often, or put others on food until it covers a full tribe."
+          ]
+        }
+      ]
+    }
+  ]
+}

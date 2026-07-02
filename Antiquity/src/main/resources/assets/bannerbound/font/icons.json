@@ -1,0 +1,13 @@
+{
+    "providers": [
+        {
+            "type": "bitmap",
+            "file": "bannerboundantiquity:item/bone_spear_item.png",
+            "ascent": 12,
+            "height": 16,
+            "chars": [
+                ""
+            ]
+        }
+    ]
+}

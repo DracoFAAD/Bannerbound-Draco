@@ -1,0 +1,25 @@
+{
+  "name": "Stone Age",
+  "order": 2,
+  "chop_ticks": 68,
+  "mine_speed": 48,
+  "harvest_speed": 33,
+  "weapon_damage": 5.0,
+  "weapon_attack_speed": 1.6,
+  "tools": {
+    "axe":     "minecraft:stone_axe",
+    "pickaxe": "minecraft:stone_pickaxe",
+    "shovel":  "minecraft:stone_shovel",
+    "hoe":     "minecraft:stone_hoe",
+    "sword":   "minecraft:stone_sword",
+    "guard":   "minecraft:stone_sword",
+    "hunt":    "minecraft:stone_sword",
+    "spear":   "bannerboundantiquity:stone_spear",
+    "spearfish": "minecraft:cod",
+    "fishing_rod": "minecraft:fishing_rod",
+    "rope":        "minecraft:lead",
+    "forage":      "minecraft:poppy",
+    "saw":         "bannerboundantiquity:bone_saw",
+    "chisel":      "bannerboundantiquity:stone_chisel"
+  }
+}

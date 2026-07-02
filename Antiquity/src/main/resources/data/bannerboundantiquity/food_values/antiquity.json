@@ -1,0 +1,12 @@
+{
+  "_comment": "Antiquity's additions to Core's food-value table (FoodValueLoader merges all namespaces' files, later per-item wins). Dried foods sit BELOW their cooked equivalents (cooked meat 3.0, cooked fish 2.0) but never spoil — preservation trades peak value for immortality.",
+  "items": {
+    "bannerboundantiquity:dried_beef": 2.0,
+    "bannerboundantiquity:dried_porkchop": 2.0,
+    "bannerboundantiquity:dried_mutton": 2.0,
+    "bannerboundantiquity:dried_chicken": 2.0,
+    "bannerboundantiquity:dried_rabbit": 1.5,
+    "bannerboundantiquity:dried_cod": 1.5,
+    "bannerboundantiquity:dried_salmon": 1.5
+  }
+}

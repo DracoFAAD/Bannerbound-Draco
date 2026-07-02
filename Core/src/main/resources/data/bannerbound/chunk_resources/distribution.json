@@ -1,0 +1,26 @@
+{
+  "_comment": "Specialized-chunk distribution. Edit + /reload to retune (no recompile). 'chance' = odds a chunk of that biome category is special (0..1). 'weights' = relative odds of each resource within that category (any positive numbers; need not sum to anything). Animal resources are now ONLY HORSES + FISH (cow/pig/sheep/chicken spawn naturally everywhere and are NOT chunk-typed). Resource names: HORSES, FISH, COPPER, IRON, COAL, MARBLE, TIN, WHEAT, CARROT, BEETROOT, POTATO, STONE, LIMESTONE, ANDESITE, DIORITE, GRANITE, CLAY, SAND (the crop resources are dry-farmland crop chunks; stone/limestone/clay/sand are digger material deposits; coal is a miner ore boulder; andesite/diorite/granite are low-value 'red herring' stone deposits that read as special on the scout map). 'max_relief' = max ground-height spread across a chunk before it's considered too steep to be special.",
+  "max_relief": 5,
+  "categories": {
+    "aquatic": {
+      "chance": 0.12,
+      "weights": { "FISH": 100 }
+    },
+    "mountainous": {
+      "chance": 0.15,
+      "weights": { "COPPER": 48, "IRON": 20, "COAL": 30, "MARBLE": 16, "TIN": 9, "STONE": 18, "LIMESTONE": 14, "ANDESITE": 16, "DIORITE": 14, "GRANITE": 14 }
+    },
+    "plains": {
+      "chance": 0.13,
+      "weights": { "HORSES": 10.5, "WHEAT": 8, "CARROT": 5, "POTATO": 4, "BEETROOT": 3, "COPPER": 6, "IRON": 3.7, "COAL": 3, "MARBLE": 1.7, "TIN": 1.1, "CLAY": 4, "SAND": 2, "LIMESTONE": 3, "ANDESITE": 4, "DIORITE": 3, "GRANITE": 3 }
+    },
+    "forest": {
+      "chance": 0.09,
+      "weights": { "WHEAT": 5, "POTATO": 4, "BEETROOT": 3, "COPPER": 10.7, "IRON": 8, "COAL": 6, "CLAY": 4, "STONE": 3, "ANDESITE": 4, "GRANITE": 4 }
+    },
+    "other": {
+      "chance": 0.04,
+      "weights": { "COPPER": 55, "IRON": 25, "COAL": 30, "MARBLE": 12, "TIN": 8, "STONE": 18, "SAND": 14, "CLAY": 5, "LIMESTONE": 12, "ANDESITE": 18, "DIORITE": 16, "GRANITE": 16 }
+    }
+  }
+}

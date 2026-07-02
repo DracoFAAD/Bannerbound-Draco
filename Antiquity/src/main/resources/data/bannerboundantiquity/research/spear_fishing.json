@@ -1,0 +1,31 @@
+{
+  "name": "Spear Fishing",
+  "description": "Bind plant cordage to a spear and strike at the fish below. Tethered to its rope, the spear is thrown and hauled back, catch and all — the shallows' oldest harvest.",
+  "cost": 12,
+  "x": 700,
+  "y": 0,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:hunting"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "kill_entity",
+      "target": "#minecraft:fish",
+      "count": 2
+    },
+    "boost": 0.4
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:plant_string",
+      "bannerboundantiquity:fiber_rope"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock_spear_fishing",
+      "bannerbound.unlock.spear_fisher"
+    ]
+  }
+}

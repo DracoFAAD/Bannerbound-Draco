@@ -1,0 +1,9 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:bronze_spear_point", "count": 1 },
+    { "item": "minecraft:stick", "count": 2 },
+    { "item": "bannerboundantiquity:plant_fiber", "count": 2 }
+  ],
+  "result": { "id": "bannerboundantiquity:bronze_spear", "count": 1 },
+  "transfer_quality": true
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RLR"
+  ],
+  "key": {
+    "L": { "item": "minecraft:birch_log" },
+    "R": { "item": "bannerboundantiquity:fiber_rope" }
+  },
+  "result": { "id": "bannerboundantiquity:birch_rope_fence", "count": 3 }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Tanning",
+  "description": "Scrape, cure, and dry a hide and it becomes leather. The tanner works raw hides on a rack, soaks them in a quicklime tank, and dries them into supple leather — the settlement's first worked skins.",
+  "cost": 56,
+  "x": 2950,
+  "y": 0,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:pottery"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "obtain_item",
+      "target": "#bannerboundantiquity:raw_hides",
+      "count": 3
+    },
+    "boost": 0.4,
+    "message": "Tanning"
+  },
+  "unlocks": {
+    "items": [
+      "bannerboundantiquity:tanning_rack",
+      "bannerboundantiquity:clay_tank",
+      "bannerboundantiquity:unfired_clay_tank",
+      "bannerboundantiquity:limestone",
+      "bannerboundantiquity:quicklime",
+      "bannerboundantiquity:bone_club",
+      "bannerboundantiquity:cow_hide",
+      "bannerboundantiquity:sheep_hide",
+      "bannerboundantiquity:pig_hide",
+      "bannerboundantiquity:goat_hide",
+      "bannerboundantiquity:horse_hide",
+      "bannerboundantiquity:scraped_hide",
+      "bannerboundantiquity:cured_hide",
+      "minecraft:leather"
+    ],
+    "features": [],
+    "flags": [
+      "bannerbound.unlock.tanner"
+    ]
+  }
+}

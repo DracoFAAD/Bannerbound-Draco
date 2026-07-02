@@ -1,0 +1,32 @@
+{
+  "name": "Knapping",
+  "description": "Strike flint against flint and the flakes fall sharp. Crude wood gives way to a working edge of stone — the settlement's first true tools and weapons.",
+  "cost": 32,
+  "x": 2100,
+  "y": 150,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:woodworking"
+  ],
+  "unlocks": {
+    "items": [
+      "minecraft:stone_pickaxe",
+      "minecraft:stone_axe",
+      "minecraft:stone_sword",
+      "minecraft:stone_shovel",
+      "minecraft:stone_hoe",
+      "bannerboundantiquity:stone_spear",
+      "bannerboundantiquity:stone_pick_head",
+      "bannerboundantiquity:stone_axe_head",
+      "bannerboundantiquity:stone_shovel_head",
+      "bannerboundantiquity:stone_hoe_head",
+      "bannerboundantiquity:stone_sword_blade",
+      "bannerboundantiquity:stone_spear_point"
+    ],
+    "features": [
+      "bannerbound.set_tool_age:stone"
+    ],
+    "flags": []
+  }
+}

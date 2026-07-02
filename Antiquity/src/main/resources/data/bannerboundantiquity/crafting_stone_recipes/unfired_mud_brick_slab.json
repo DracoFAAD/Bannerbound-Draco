@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:unfired_mud_bricks", "count": 3 }
+  ],
+  "result": { "id": "bannerboundantiquity:unfired_mud_brick_slab", "count": 6 }
+}

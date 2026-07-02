@@ -1,0 +1,9 @@
+{
+	"multipart": [
+		{ "apply": { "model": "bannerboundantiquity:block/stick_fence/birch_stick_fence_post" } },
+		{ "when": { "west": "true" },  "apply": { "model": "bannerboundantiquity:block/stick_fence/birch_stick_fence_arm_left" } },
+		{ "when": { "north": "true" }, "apply": { "model": "bannerboundantiquity:block/stick_fence/birch_stick_fence_arm_left", "y": 90 } },
+		{ "when": { "east": "true" },  "apply": { "model": "bannerboundantiquity:block/stick_fence/birch_stick_fence_arm_right" } },
+		{ "when": { "south": "true" }, "apply": { "model": "bannerboundantiquity:block/stick_fence/birch_stick_fence_arm_right", "y": 90 } }
+	]
+}

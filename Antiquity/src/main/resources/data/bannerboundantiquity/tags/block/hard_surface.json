@@ -1,0 +1,32 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:base_stone_overworld",
+    "minecraft:cobblestone",
+    "minecraft:mossy_cobblestone",
+    "minecraft:smooth_stone",
+    "minecraft:stone_bricks",
+    "minecraft:mossy_stone_bricks",
+    "minecraft:cracked_stone_bricks",
+    "minecraft:chiseled_stone_bricks",
+    "minecraft:bricks",
+    "minecraft:sandstone",
+    "minecraft:cut_sandstone",
+    "minecraft:chiseled_sandstone",
+    "minecraft:smooth_sandstone",
+    "minecraft:red_sandstone",
+    "minecraft:cut_red_sandstone",
+    "minecraft:chiseled_red_sandstone",
+    "minecraft:smooth_red_sandstone",
+    "minecraft:cobbled_deepslate",
+    "minecraft:polished_deepslate",
+    "minecraft:deepslate_bricks",
+    "minecraft:deepslate_tiles",
+    "minecraft:blackstone",
+    "minecraft:polished_blackstone",
+    "minecraft:polished_blackstone_bricks",
+    "minecraft:polished_andesite",
+    "minecraft:polished_diorite",
+    "minecraft:polished_granite"
+  ]
+}

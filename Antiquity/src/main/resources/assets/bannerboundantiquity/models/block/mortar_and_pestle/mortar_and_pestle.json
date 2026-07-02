@@ -1,0 +1,7 @@
+{
+  "comment": "Intentionally empty — the body and liquid are drawn by MortarAndPestleRenderer (a block entity renderer). Only the particle texture is needed here, for break particles.",
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "minecraft:block/stone"
+  }
+}

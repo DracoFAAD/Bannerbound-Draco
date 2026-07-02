@@ -1,0 +1,5 @@
+{
+  "ingredient": { "item": "bannerboundantiquity:marshmallow_root" },
+  "base_liquid": "",
+  "result_item": { "id": "bannerboundantiquity:marshmallow_root_antidote", "count": 1 }
+}

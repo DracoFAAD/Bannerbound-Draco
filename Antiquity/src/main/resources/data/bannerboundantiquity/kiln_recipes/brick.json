@@ -1,0 +1,6 @@
+{
+  "ingredient": { "item": "minecraft:clay_ball" },
+  "ticks": 100,
+  "result": { "id": "minecraft:brick", "count": 1 },
+  "chance": 1.0
+}

@@ -1,0 +1,6 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:plant_string", "count": 2 }
+  ],
+  "result": { "id": "bannerboundantiquity:fiber_rope", "count": 1 }
+}
