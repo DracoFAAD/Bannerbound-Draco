@@ -1531,7 +1531,7 @@ public class ResearchScreen extends Screen {
         // Progress / discovered status.
         boolean fired = currentInsightFired(def.id());
         if (fired) {
-            header.add(Component.literal("âœ” Discovered").withStyle(ChatFormatting.GREEN));
+            header.add(Component.literal("\u2714 Discovered").withStyle(ChatFormatting.GREEN));
         } else {
             int target = Math.max(1, insight.trigger().count());
             int count = (int) Math.min(target, Math.max(0, Math.floor(currentInsightProgress(def.id()))));
