@@ -210,7 +210,8 @@ public final class Carves {
             return null;
         }
         for (Direction d : Direction.values()) {
-            if (level.getBlockState(pos.relative(d)).is(BlockTags.LOGS)) {
+            BlockState logState = level.getBlockState(pos.relative(d));
+            if (logState.is(BlockTags.LOGS) || logState.is(BlockTags.LEAVES)) {
                 return null; // part of a tree/cluster
             }
         }

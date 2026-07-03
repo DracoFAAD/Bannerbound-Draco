@@ -1,14 +1,12 @@
 package com.bannerbound.antiquity;
 
+import com.bannerbound.antiquity.block.*;
 import com.bannerbound.core.codex.CodexTriggerContext;
+import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
 
-import com.bannerbound.antiquity.block.BloomeryBlock;
-import com.bannerbound.antiquity.block.CraftingStoneBlock;
-import com.bannerbound.antiquity.block.KilnFormation;
-import com.bannerbound.antiquity.block.RockBlock;
 import com.bannerbound.antiquity.block.entity.ChoppingStumpBlockEntity;
 import com.bannerbound.antiquity.block.entity.MortarAndPestleBlockEntity;
 import com.bannerbound.antiquity.entity.RaftEntity;
@@ -993,7 +991,7 @@ public final class AntiquityEvents {
                 giveOrDrop(player, new ItemStack(BannerboundAntiquity.FLINT_BLADE.get()));
                 playKnapping(level, pos);
                 spawnKnapParticles(level, pos, surface);
-                CodexManager.onItemObtained((ServerPlayer) player, BannerboundAntiquity.FLINT_BLADE.getId().toString());
+                CodexManager.onItemObtained((ServerPlayer) player, "bannerboundantiquity:flint_blade");
             }
             handled = true;
         } else if (held.is(Items.BONE)) {
@@ -1027,7 +1025,8 @@ public final class AntiquityEvents {
         BlockState logState = level.getBlockState(pos);
         if (!logState.is(BlockTags.LOGS)) return;
         for (Direction d : Direction.values()) {
-            if (level.getBlockState(pos.relative(d)).is(BlockTags.LOGS)) return; // part of a cluster
+            BlockState state = level.getBlockState(pos.relative(d));
+            if (state.is(BlockTags.LOGS) || state.is(BlockTags.LEAVES)) return;
         }
         if (!level.isClientSide) {
             Block sourceLog = logState.getBlock();
