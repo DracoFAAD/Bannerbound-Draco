@@ -3,8 +3,10 @@ package com.bannerbound.antiquity.item;
 import com.bannerbound.antiquity.BannerboundAntiquity;
 import com.bannerbound.antiquity.block.FirewoodPileBlock;
 
+import com.bannerbound.core.codex.CodexManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -46,10 +48,12 @@ public class FirewoodItem extends Item {
                     level.setBlock(clicked, clickedState.setValue(FirewoodPileBlock.LOGS, logs + 1),
                         Block.UPDATE_ALL);
                 } else {
-                    // Carry the pile's facing straight onto the campfire so the rotation matches.
+                    CodexManager.onItemObtained((ServerPlayer) player, "minecraft:campfire");
+
                     BlockState campfire = Blocks.CAMPFIRE.defaultBlockState()
                         .setValue(CampfireBlock.LIT, false)
                         .setValue(CampfireBlock.FACING, clickedState.getValue(FirewoodPileBlock.FACING));
+
                     level.setBlock(clicked, campfire, Block.UPDATE_ALL);
                 }
                 playPlace(level, clicked);
