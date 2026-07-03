@@ -1,5 +1,6 @@
 package com.bannerbound.antiquity;
 
+import com.bannerbound.core.codex.CodexTriggerContext;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
@@ -992,6 +993,7 @@ public final class AntiquityEvents {
                 giveOrDrop(player, new ItemStack(BannerboundAntiquity.FLINT_BLADE.get()));
                 playKnapping(level, pos);
                 spawnKnapParticles(level, pos, surface);
+                CodexManager.onItemObtained((ServerPlayer) player, BannerboundAntiquity.FLINT_BLADE.getId().toString());
             }
             handled = true;
         } else if (held.is(Items.BONE)) {
