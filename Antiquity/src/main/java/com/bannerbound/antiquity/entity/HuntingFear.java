@@ -6,11 +6,14 @@ import com.bannerbound.antiquity.BannerboundAntiquity;
 import com.bannerbound.antiquity.Config;
 
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
+
+import javax.annotation.Nullable;
 
 /**
  * Shared server-side state for immersive hunting — the "spine" the flee/herd/charge goals and the
@@ -130,5 +133,12 @@ public final class HuntingFear {
     public static void applyBleed(LivingEntity mob, int ticks) {
         int current = mob.getData(BannerboundAntiquity.BLEED_TICKS.get());
         mob.setData(BannerboundAntiquity.BLEED_TICKS.get(), Math.max(current, ticks));
+    }
+
+    public static void applyBleed(LivingEntity mob, int ticks, @Nullable Entity causedBy) {
+        applyBleed(mob, ticks);
+
+        if (causedBy != null)
+            mob.setData(BannerboundAntiquity.BLEED_BY.get(), causedBy.getStringUUID());
     }
 }

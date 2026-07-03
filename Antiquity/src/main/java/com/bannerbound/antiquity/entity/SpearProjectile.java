@@ -6,6 +6,7 @@ import java.util.List;
 import com.bannerbound.antiquity.BannerboundAntiquity;
 import com.bannerbound.antiquity.Config;
 
+import com.bannerbound.antiquity.client.SpearProjectileRenderer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -66,6 +67,7 @@ public class SpearProjectile extends AbstractArrow {
     public SpearProjectile(Level level, LivingEntity shooter, ItemStack spear, double damage) {
         super(BannerboundAntiquity.SPEAR_PROJECTILE.get(), shooter, level, spear.copy(), null);
         this.entityData.set(DATA_SPEAR, spear.copy());
+
         this.setBaseDamage(damage);
         // Recoverable as the same spear once it lands in a block.
         this.pickup = AbstractArrow.Pickup.ALLOWED;
@@ -226,7 +228,7 @@ public class SpearProjectile extends AbstractArrow {
                     BannerboundAntiquity.SPEAR_HIT_FLESH_SOUND.get(), net.minecraft.sounds.SoundSource.PLAYERS,
                     0.9F, 0.8F + this.random.nextFloat() * 0.4F);
                 if (Config.BLEED_ENABLED.get()) {
-                    HuntingFear.applyBleed(living, Config.BLEED_DURATION_TICKS.get()); // wound bleeds
+                    HuntingFear.applyBleed(living, Config.BLEED_DURATION_TICKS.get(), owner); // wound bleeds
                 }
                 if (living instanceof AbstractFish && this.level() instanceof ServerLevel serverLevel) {
                     // Spear fishing: spit blood at the wound, matching the hunting feel.

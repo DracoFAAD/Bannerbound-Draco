@@ -173,6 +173,10 @@ public class BannerboundAntiquity {
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Integer>> BLEED_TICKS =
         ATTACHMENT_TYPES.register("bleed_ticks", () -> AttachmentType.<Integer>builder(() -> 0).build());
 
+    /** Bleed inflicted by which entity */
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<String>> BLEED_BY =
+            ATTACHMENT_TYPES.register("bleed_by", () -> AttachmentType.<String>builder(() -> "").build());
+
     /** Game-time of the next blood-vomit at the lethal poison stage (transient; 0 = none scheduled). */
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Long>> POISON_NEXT_VOMIT =
         ATTACHMENT_TYPES.register("poison_next_vomit", () -> AttachmentType.<Long>builder(() -> 0L).build());

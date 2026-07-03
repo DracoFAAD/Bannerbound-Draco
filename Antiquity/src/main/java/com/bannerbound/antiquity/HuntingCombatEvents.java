@@ -65,7 +65,19 @@ public final class HuntingCombatEvents {
             int remaining = bleed - 1;
             animal.setData(BannerboundAntiquity.BLEED_TICKS.get(), remaining);
             if (remaining % Config.BLEED_INTERVAL_TICKS.get() == 0) {
-                animal.hurt(animal.damageSources().source(BannerboundAntiquity.BLEEDING_DAMAGE),
+                Entity owner = null;
+
+                String causedBy = animal.getData(BannerboundAntiquity.BLEED_BY.get());
+
+                if (!causedBy.isEmpty()) {
+                    try {
+                        owner = level.getEntity(java.util.UUID.fromString(causedBy));
+                    } catch (IllegalArgumentException e) {
+                        // Not a valid UUID; Idk when this would happen but ig yh
+                    }
+                }
+
+                animal.hurt(animal.damageSources().source(BannerboundAntiquity.BLEEDING_DAMAGE, owner),
                     (float) (double) Config.BLEED_DAMAGE_PER_TICK.get());
                 level.sendParticles(BannerboundAntiquity.BLOOD_DROP.get(),
                     animal.getX(), animal.getY() + animal.getBbHeight() * 0.6, animal.getZ(),
@@ -77,6 +89,11 @@ public final class HuntingCombatEvents {
                     GroundDecalEntity.spawnBlood(level, animal.getX(), animal.getY(), animal.getZ(),
                         animal.getRandom().nextInt(10000), animal);
                 }
+            }
+
+            if (remaining == 0) {
+                // clear up
+                animal.removeData(BannerboundAntiquity.BLEED_BY.get());
             }
         }
         dropFootprints(level, animal);
