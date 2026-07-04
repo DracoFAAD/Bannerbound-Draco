@@ -131,8 +131,10 @@ public final class Knapping {
      *  at least one perfect (100) tap to reach FINE — a clean run of merely-good taps tops out at
      *  Standard. Shared by the server roll and the client's live estimate so they never disagree. */
     public static QualityTier rollTier(int percentage_standard, int percentage_fine, List<Integer> scores, int reps) {
-        int amount_completed = Math.toIntExact(scores.stream().filter(score -> score > 0).count());
-        double percentage = (amount_completed / (double) reps) * 100;
+        int total_score = scores.stream().mapToInt(Integer::intValue).sum();
+        double percentage = (total_score / (double) (reps * 100)) * 100;
+
+        LogUtils.getLogger().info(total_score + " " + percentage + " " + percentage_fine + " " + reps);
 
         QualityTier tier;
 
