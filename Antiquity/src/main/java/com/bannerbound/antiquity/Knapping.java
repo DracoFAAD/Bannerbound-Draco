@@ -134,8 +134,6 @@ public final class Knapping {
         int total_score = scores.stream().mapToInt(Integer::intValue).sum();
         double percentage = (total_score / (double) (reps * 100)) * 100;
 
-        LogUtils.getLogger().info(total_score + " " + percentage + " " + percentage_fine + " " + reps);
-
         QualityTier tier;
 
         if (percentage >= percentage_fine) {
