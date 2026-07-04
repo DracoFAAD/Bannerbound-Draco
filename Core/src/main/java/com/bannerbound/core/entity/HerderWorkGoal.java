@@ -446,6 +446,14 @@ public class HerderWorkGoal extends OrderedWorkGoal {
         prevX = citizen.getX();
         prevZ = citizen.getZ();
 
+
+        // Telepport the remaining animals when the herder reaches the goal path. Becuz sometimes the herder is stuck for too long allowing other animals to get out.
+        double distToDest = citizen.distanceToSqr(dropCell.getX() + 0.5, dropCell.getY(), dropCell.getZ() + 0.5);
+        if (distToDest <= 2.25) {
+            placeBatch(sl);
+            return;
+        }
+
         // Each claimed animal FOLLOWS the herder via its own nav (HerdFollowGoal) — like a cow trailing a
         // player holding wheat. The herder posts just inside the gate, so the follow is a short hop straight
         // through the opening. Release each the moment it's genuinely inside; and if it has followed right up
