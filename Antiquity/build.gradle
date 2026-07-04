@@ -163,6 +163,8 @@ dependencies {
     localRuntime "maven.modrinth:sodium:${sodium_version}"
     localRuntime "maven.modrinth:iris:${iris_version}"
 
+    implementation "maven.modrinth:jade:${jade_version}"
+
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
