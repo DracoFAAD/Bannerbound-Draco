@@ -160,8 +160,6 @@ public class SettlementCitizensScreen extends PolishedScreen {
                     Component.translatable("bannerbound.townhall.citizens.recall"),
                     btn -> {
                         PacketDistributor.sendToServer(new RecallCitizenPayload(e.id()));
-                        // Close on click — server teleports the citizen; reopening shows fresh state.
-                        this.onClose();
                     })
                 .bounds(panelX + PANEL_WIDTH - 74, y + 3, 56, 18)
                 .accent(primaryAccent())
