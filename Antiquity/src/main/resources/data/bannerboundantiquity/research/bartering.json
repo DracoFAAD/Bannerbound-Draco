@@ -2,12 +2,12 @@
   "name": "Bartering",
   "description": "Goods change hands, and both sides walk away richer. Bartering opens the Town Hall to trade with other settlements — mark a stockpile for trading, make an offer, and settle on terms.",
   "cost": 14,
-  "x": 700,
+  "x": 900,
   "y": -300,
   "auto_unlock": false,
   "min_age": "ancient",
   "prerequisites": [
-    "bannerboundantiquity:storage_logistics"
+    "bannerboundantiquity:inventory_logistics"
   ],
   "insight": {
     "trigger": {

@@ -1,6 +1,9 @@
 package com.bannerbound.antiquity.poison;
 
 import java.util.List;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
 
 import com.bannerbound.antiquity.BannerboundAntiquity;
 import com.bannerbound.antiquity.Config;
@@ -13,6 +16,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.player.Player;
@@ -63,6 +68,13 @@ public final class Poisons {
     /** Inflict (or refresh) {@code type} on {@code victim}. Re-applying the same poison keeps the
      *  current stage and restarts that stage's clock; a different poison takes over at stage 1. */
     public static void applyPoison(LivingEntity victim, PoisonType type) {
+        applyPoison(victim, type, null);
+    }
+
+    /** As {@link #applyPoison(LivingEntity, PoisonType)}, additionally recording WHO administered the
+     *  dose (dart/arrow owner) so the eventual poison death still credits their settlement with the
+     *  kill — mirrors {@code HuntingFear.applyBleed}'s owner overload. Null = unattributed. */
+    public static void applyPoison(LivingEntity victim, PoisonType type, @Nullable Entity causedBy) {
         if (!Config.POISON_ENABLED.get() || type == null) {
             return;
         }
@@ -82,6 +94,7 @@ public final class Poisons {
             ? victim.level().getGameTime() + Config.POISON_STAGE_ADVANCE_TICKS.get()
             : Long.MAX_VALUE;
         setState(victim, new PoisonState(type, stage, stageEndsAt));
+        setPoisonedBy(victim, causedBy);
         type.onApplied(victim, freshInfection); // e.g. oleander arms its fixed cardiac clock
         // Impact cue, heard only by the afflicted player.
         if (victim instanceof ServerPlayer player && type.hitSound() != null) {
@@ -93,6 +106,13 @@ public final class Poisons {
      *  poisoned food, where the dose (number of coatings) sets the opening stage. Treated as a fresh
      *  infection so any per-poison clock (oleander/curare) arms from now. */
     public static void applyPoisonAtStage(LivingEntity victim, PoisonType type, int startStage) {
+        applyPoisonAtStage(victim, type, startStage, null);
+    }
+
+    /** As {@link #applyPoisonAtStage(LivingEntity, PoisonType, int)} with the administering entity
+     *  recorded for kill credit (see {@link #applyPoison(LivingEntity, PoisonType, Entity)}). */
+    public static void applyPoisonAtStage(LivingEntity victim, PoisonType type, int startStage,
+            @Nullable Entity causedBy) {
         if (!Config.POISON_ENABLED.get() || type == null) {
             return;
         }
@@ -109,6 +129,7 @@ public final class Poisons {
             ? victim.level().getGameTime() + Config.POISON_STAGE_ADVANCE_TICKS.get()
             : Long.MAX_VALUE;
         setState(victim, new PoisonState(type, stage, stageEndsAt));
+        setPoisonedBy(victim, causedBy);
         type.onApplied(victim, freshInfection);
         // Extra food doses beyond the first: a no-op for staged poisons (their stage was already set),
         // but oleander treats each as a re-dose that speeds up its cardiac clock.
@@ -150,6 +171,36 @@ public final class Poisons {
             }
         }
         setState(victim, PoisonState.NONE);
+        victim.removeData(BannerboundAntiquity.POISON_BY.get());
+    }
+
+    /** Record (or clear, when null) who administered the active dose. A null causedBy CLEARS any
+     *  previous inflictor rather than leaving it — an unattributed re-dose must not keep crediting
+     *  the old attacker. */
+    private static void setPoisonedBy(LivingEntity victim, @Nullable Entity causedBy) {
+        if (causedBy != null) {
+            victim.setData(BannerboundAntiquity.POISON_BY.get(), causedBy.getStringUUID());
+        } else {
+            victim.removeData(BannerboundAntiquity.POISON_BY.get());
+        }
+    }
+
+    /** The poison damage source, attributed to whoever administered the dose (if they're still
+     *  loaded) — so DropGatingEvents' kill-credit resolution sees the hunter, not a wild death.
+     *  Also selects the "%1$s succumbed to poison whilst fighting %2$s" death line. */
+    private static DamageSource poisonDamage(LivingEntity victim) {
+        Entity owner = null;
+        if (victim.level() instanceof ServerLevel sl) {
+            String by = victim.getData(BannerboundAntiquity.POISON_BY.get());
+            if (!by.isEmpty()) {
+                try {
+                    owner = sl.getEntity(UUID.fromString(by));
+                } catch (IllegalArgumentException ignored) {
+                    // malformed attachment (hand-edited NBT) — treat as unattributed
+                }
+            }
+        }
+        return victim.damageSources().source(BannerboundAntiquity.POISON_DAMAGE, owner);
     }
 
     private static void setState(LivingEntity victim, PoisonState state) {
@@ -176,7 +227,7 @@ public final class Poisons {
                 stage++;
                 setState(victim, new PoisonState(type, stage, now + Config.POISON_STAGE_ADVANCE_TICKS.get()));
             } else if (type.lethalAtMaxStage() && (isPlayer || type.toxicToAnimals())) {
-                victim.hurt(victim.damageSources().source(BannerboundAntiquity.POISON_DAMAGE),
+                victim.hurt(poisonDamage(victim),
                     victim.getMaxHealth() * 10.0F + 1000.0F); // guaranteed lethal, "succumbed to poison"
                 return;
             } else {
@@ -229,7 +280,7 @@ public final class Poisons {
         if (dmg <= 0.0F) {
             return;
         }
-        victim.hurt(victim.damageSources().source(BannerboundAntiquity.POISON_DAMAGE), dmg);
+        victim.hurt(poisonDamage(victim), dmg);
     }
 
     // ── Oleander signature: anti-heal + a fixed cardiac countdown ───────────────────────────────
@@ -281,7 +332,7 @@ public final class Poisons {
         if (now >= deadline) {
             clearOleanderClock(victim);
             // Cardiac arrest: guaranteed lethal (players and animals — oleander is toxicToAnimals).
-            victim.hurt(victim.damageSources().source(BannerboundAntiquity.POISON_DAMAGE),
+            victim.hurt(poisonDamage(victim),
                 victim.getMaxHealth() * 10.0F + 1000.0F);
             return;
         }
@@ -291,7 +342,7 @@ public final class Poisons {
         if (now >= nextCough) {
             if (nextCough > 0L) {
                 vomit(victim, level, PoisonType.WOLFSBANE.belchSound());
-                victim.hurt(victim.damageSources().source(BannerboundAntiquity.POISON_DAMAGE), 3.0F);
+                victim.hurt(poisonDamage(victim), 3.0F);
             }
             double clock = Math.max(1.0, Config.POISON_OLEANDER_CLOCK_TICKS.get());
             double f = Math.max(0.0, Math.min(1.0, 1.0 - (deadline - now) / clock)); // 0 at infection → 1 at arrest

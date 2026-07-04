@@ -110,7 +110,7 @@ public class BlowdartProjectile extends AbstractArrow {
         DamageSource source = this.damageSources().arrow(this, owner == null ? this : owner);
         target.hurt(source, (float) this.getBaseDamage());
         if (!this.level().isClientSide && target instanceof LivingEntity living && living.isAlive()) {
-            Poisons.applyPoison(living, poison);
+            Poisons.applyPoison(living, poison, owner); // recorded so the eventual poison kill credits the shooter
         }
         this.discard();
     }

@@ -86,6 +86,7 @@ public class HerderWorkGoal extends OrderedWorkGoal {
     private static final int SEEK_TIMEOUT = 200;       // give up walking to one wild animal after ~10s
     private static final int LEAD_TIMEOUT = 600;       // give up walking the batch in after ~30s → just place
     private static final int HERDER_STUCK_LIMIT = 40;  // herder not moving while leading for ~2s → teleport to centre
+    private static final int LEAD_STALL_LIMIT = 80;    // posted at the gate but nothing walked in for ~4s → place remainder
     private static final int FEED_WORK_TICKS = 24;     // short, visible feeding action before love mode
     private static final int DEFAULT_BUTCHER_DAMAGE = 4; // wood-sword baseline; actual weapon age may override
     private static final double DEFAULT_BUTCHER_ATTACK_SPEED = 1.6;
@@ -111,6 +112,7 @@ public class HerderWorkGoal extends OrderedWorkGoal {
     private BlockPos gatePos;        // the pen's gate (cached when the pen is scanned), auto opened/closed
     private int leadTicks;           // watchdog so a stuck lead eventually just places the batch
     private int herderStuck;         // herder-not-moving counter → teleport the herder to its gate-side post
+    private int leadStall;           // ticks posted at the gate with no animal walking in → place the stuck remainder
     private double prevX, prevZ;     // herder's last position, to detect it being stuck while leading
     private BlockPos restSpot;       // a spot OUTSIDE the pen the herder walks to when idle (leaves it to the herd)
     private Animal breedA, breedB;   // the pair to tend
@@ -419,6 +421,7 @@ public class HerderWorkGoal extends OrderedWorkGoal {
         dropCell = findDropCell(sl, r);
         leadTicks = 0;
         herderStuck = 0;
+        leadStall = 0;
         prevX = citizen.getX();
         prevZ = citizen.getZ();
         phase = Phase.LEAD;
@@ -446,13 +449,13 @@ public class HerderWorkGoal extends OrderedWorkGoal {
         prevX = citizen.getX();
         prevZ = citizen.getZ();
 
-
-        // Telepport the remaining animals when the herder reaches the goal path. Becuz sometimes the herder is stuck for too long allowing other animals to get out.
-        double distToDest = citizen.distanceToSqr(dropCell.getX() + 0.5, dropCell.getY(), dropCell.getZ() + 0.5);
-        if (distToDest <= 2.25) {
-            placeBatch(sl);
-            return;
-        }
+        // Is the herder posted at its gate-side cell? Arrival alone is NOT completion — the flock
+        // still walks in through the gate below. But once posted, the batch should make steady
+        // progress; if nothing walks in for a few seconds (an animal wedged on a fence, out of
+        // follow range, etc.) the whole lead would stall while the rest of the pen drifts, so we
+        // place the stuck remainder instead of waiting out the full LEAD_TIMEOUT.
+        boolean posted = citizen.distanceToSqr(
+            dropCell.getX() + 0.5, dropCell.getY(), dropCell.getZ() + 0.5) <= 2.25;
 
         // Each claimed animal FOLLOWS the herder via its own nav (HerdFollowGoal) — like a cow trailing a
         // player holding wheat. The herder posts just inside the gate, so the follow is a short hop straight
@@ -476,10 +479,12 @@ public class HerderWorkGoal extends OrderedWorkGoal {
                 a.setPersistenceRequired();
                 a.removeData(BannerboundCore.HERDED_BY.get());   // penned now — stays domesticated
                 it.remove();
+                leadStall = 0;                                   // progress — the lead isn't stalled
                 citizen.grantJobXp(JOB_TYPE_ID, 0.5F, "herd");
             }
         }
         if (batch.isEmpty()) { assess(sl); return; }
+        if (posted && ++leadStall > LEAD_STALL_LIMIT) { placeBatch(sl); return; }
         if (++leadTicks > LEAD_TIMEOUT) placeBatch(sl);          // couldn't walk them all in → place remainder
     }
 
@@ -499,6 +504,7 @@ public class HerderWorkGoal extends OrderedWorkGoal {
         batch.clear();
         dropCell = null;
         leadTicks = 0;
+        leadStall = 0;
         assess(sl);
     }
 

@@ -94,9 +94,10 @@ public class SpearFisherWorkGoal extends GathererWorkGoal {
     private boolean reelSoundPlayed; // the reel sound plays once per reel, when the pull-in starts
     private AbstractFish windupTarget;  // the fish we're winding up to spear (raise-spear pose)
     private int windupTicks;            // ticks left in the raise-spear windup before the throw
-    private final List<Spot> standCache = new ArrayList<>();  // cached shore stands near the drop-off
+    private final List<Spot> standCache = new ArrayList<>();  // cached shore stands near the fisher
     private int standCacheCooldown;     // ticks until the shore-stand geometry is rescanned
-    private BlockPos cacheOrigin;       // drop-off the cache was built for (rebuild if it moves)
+    private BlockPos cacheOrigin;       // position the cache was built around (rebuild when she LEAVES
+                                        // that 16-block cell — never on ordinary within-cell movement)
     private int dbgWaterSeen, dbgClaimedWater;  // last scan: surface-water columns seen / of those, claimed
 
     // TEMP diagnostics — throttled so they don't spam. Remove once the AI is verified in-world.
@@ -581,11 +582,16 @@ public class SpearFisherWorkGoal extends GathererWorkGoal {
         return null;
     }
 
-    /** Rebuild the shore-stand cache when it's stale, empty, or the drop-off moved. The block scan is
-     *  the expensive part, so it runs ~once a minute instead of every fish poll. */
+    /** Rebuild the shore-stand cache when it's stale, empty, or the fisher moved to a different
+     *  16-block cell. The block scan is the expensive part, so it runs ~once a minute instead of
+     *  every fish poll — the cell quantisation keeps ordinary walking (patrol steps, relocating a
+     *  few blocks along the bank) from invalidating it every block boundary. */
     private void ensureStandCache() {
         BlockPos origin = citizen.blockPosition();
-        if (standCacheCooldown > 0 && !standCache.isEmpty() && origin != null && origin.equals(cacheOrigin)) {
+        boolean sameCell = cacheOrigin != null
+            && (origin.getX() >> 4) == (cacheOrigin.getX() >> 4)
+            && (origin.getZ() >> 4) == (cacheOrigin.getZ() >> 4);
+        if (standCacheCooldown > 0 && !standCache.isEmpty() && sameCell) {
             standCacheCooldown--;
             return;
         }

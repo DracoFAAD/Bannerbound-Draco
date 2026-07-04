@@ -48,7 +48,9 @@ public class FirewoodItem extends Item {
                     level.setBlock(clicked, clickedState.setValue(FirewoodPileBlock.LOGS, logs + 1),
                         Block.UPDATE_ALL);
                 } else {
-                    CodexManager.onItemObtained((ServerPlayer) player, "minecraft:campfire");
+                    if (player instanceof ServerPlayer sp) {  // getPlayer() is nullable — never cast blind
+                        CodexManager.onItemObtained(sp, "minecraft:campfire");
+                    }
 
                     BlockState campfire = Blocks.CAMPFIRE.defaultBlockState()
                         .setValue(CampfireBlock.LIT, false)

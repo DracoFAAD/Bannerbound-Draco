@@ -1,0 +1,16 @@
+{
+  "ingredients": [
+    {
+      "item": "minecraft:cherry_log",
+      "count": 2
+    },
+    {
+      "item": "minecraft:stick",
+      "count": 2
+    }
+  ],
+  "result": {
+    "id": "bannerboundantiquity:cherry_rope_fence_gate",
+    "count": 1
+  }
+}

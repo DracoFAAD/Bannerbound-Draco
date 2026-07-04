@@ -1,0 +1,16 @@
+{
+  "ingredients": [
+    {
+      "item": "minecraft:acacia_log",
+      "count": 2
+    },
+    {
+      "item": "minecraft:stick",
+      "count": 2
+    }
+  ],
+  "result": {
+    "id": "bannerboundantiquity:acacia_rope_fence_gate",
+    "count": 1
+  }
+}

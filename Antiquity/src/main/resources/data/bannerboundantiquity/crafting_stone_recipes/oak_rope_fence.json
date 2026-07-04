@@ -1,0 +1,16 @@
+{
+  "ingredients": [
+    {
+      "item": "minecraft:oak_log",
+      "count": 1
+    },
+    {
+      "item": "minecraft:stick",
+      "count": 4
+    }
+  ],
+  "result": {
+    "id": "bannerboundantiquity:oak_rope_fence",
+    "count": 4
+  }
+}

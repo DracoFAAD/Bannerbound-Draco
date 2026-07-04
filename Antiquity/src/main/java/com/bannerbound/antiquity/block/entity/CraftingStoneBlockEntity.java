@@ -164,7 +164,7 @@ public class CraftingStoneBlockEntity extends BlockEntity implements GhostRecipe
     public ItemStack craft() {
         if (cachedResult.isEmpty()) return ItemStack.EMPTY;
         ItemStack out = cachedResult.copy();
-        CraftingStoneRecipe recipe = CraftingStoneRecipeManager.find(contents);
+        CraftingStoneRecipe recipe = resolveRecipe();
         if (recipe != null && recipe.transferQuality()) {
             com.bannerbound.core.api.quality.QualityTier best = bestQualityIn(contents);
             if (best != null) com.bannerbound.antiquity.Fletching.applyQuality(out, best);
@@ -191,29 +191,29 @@ public class CraftingStoneBlockEntity extends BlockEntity implements GhostRecipe
         return best;
     }
 
+    /** The recipe the current pile makes: among all exact matches, the one whose result is the
+     *  player's browsed/locked ghost choice wins (two recipes can share the same contents). Used by
+     *  BOTH the preview ({@link #recomputeResult}) and {@link #craft}, so what's shown — including
+     *  its {@code transfer_quality} behaviour — is always what's crafted. Null when nothing matches. */
+    private CraftingStoneRecipe resolveRecipe() {
+        List<CraftingStoneRecipe> recipes = CraftingStoneRecipeManager.findMatching(contents);
+        if (recipes == null || recipes.isEmpty()) return null;
+        for (CraftingStoneRecipe c : recipes) {
+            if (c.result().is(ghostChoice)) return c;
+        }
+        return recipes.getFirst();
+    }
+
     private void recomputeResult() {
         ghostIngredients = List.of();
         ghostResult = ItemStack.EMPTY;
         ghostCandidateCount = 0;
-        List<CraftingStoneRecipe> recipes = CraftingStoneRecipeManager.findMatching(contents);
+        CraftingStoneRecipe recipe = resolveRecipe();
 
-        if (recipes == null || recipes.isEmpty()) {
+        if (recipe == null) {
             cachedResult = ItemStack.EMPTY;
             recomputeGhost();
             return;
-        }
-
-        CraftingStoneRecipe recipe = recipes.getFirst();
-
-        if (recipes.size() > 1) {
-            // check if one of the recipes is our locked one, if yes then prefer that one.
-
-            for (CraftingStoneRecipe c : recipes) {
-                if (c.result().is(ghostChoice)) {
-                    recipe = c;
-                    break;
-                }
-            }
         }
 
         if (!com.bannerbound.core.api.research.CraftGating.canProduceAt(

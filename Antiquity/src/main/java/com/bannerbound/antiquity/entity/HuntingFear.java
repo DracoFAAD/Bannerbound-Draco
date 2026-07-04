@@ -138,7 +138,12 @@ public final class HuntingFear {
     public static void applyBleed(LivingEntity mob, int ticks, @Nullable Entity causedBy) {
         applyBleed(mob, ticks);
 
-        if (causedBy != null)
+        if (causedBy != null) {
             mob.setData(BannerboundAntiquity.BLEED_BY.get(), causedBy.getStringUUID());
+        } else {
+            // An unattributed re-wound (shooter despawned before impact) must CLEAR the old
+            // inflictor — otherwise the refreshed bleed keeps crediting the previous attacker.
+            mob.removeData(BannerboundAntiquity.BLEED_BY.get());
+        }
     }
 }

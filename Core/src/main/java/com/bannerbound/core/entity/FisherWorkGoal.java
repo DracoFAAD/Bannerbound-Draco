@@ -78,7 +78,7 @@ public class FisherWorkGoal extends GathererWorkGoal {
     private static final int SAIL_DEPTH_MIN = 4;          // only sail for water this deep (the 2× bite zone)
     private static final int SAIL_DEPTH_CAP = 16;         // sail scoring probes this deep — true deep sea
                                                           // out-scores the first shelf off the beach
-    private static final int SAIL_SCAN_RADIUS = 48;       // how far from the drop-off deep water is hunted
+    private static final int SAIL_SCAN_RADIUS = 48;       // how far from the home anchor (town hall) deep water is hunted
     private static final int SAIL_SCAN_STEP = 2;          // column stride of the deep-water scan (centers are big)
     private static final int MIN_SAIL_DIST = 20;          // a sail target is a REAL trip out, not 5 blocks off the sand
     private static final int BOAT_SEPARATION = 8;         // min blocks between two fishers' anchored vessels
@@ -160,14 +160,19 @@ public class FisherWorkGoal extends GathererWorkGoal {
         return !stack.isEmpty() && stack.getItem() instanceof net.minecraft.world.item.FishingRodItem;
     }
 
-    private boolean hasFishingRod() {
-        return JOB_TYPE_ID.equals(citizen.getJobType()) && isFishingRod(citizen.getJobTool());
+    /** The single readiness gate for start/keep/tick — job + pool-backed depot via
+     *  {@link CitizenEntity#isFisherReady}, plus an actual fishing rod as the job tool. In anarchy
+     *  the rod is waived (a self-organizing citizen fishes bare-handed, slower — see the tool-free
+     *  recast path), mirroring {@code isFisherReady}'s own anarchy branch. */
+    private boolean fisherReady() {
+        if (citizen.isAnarchy()) return citizen.isFisherReady();
+        return citizen.isFisherReady() && isFishingRod(citizen.getJobTool());
     }
 
     @Override
     protected boolean canStartWork() {
         citizen.validateJobStorage();   // clear a broken drop-off so we don't fish for a dead container
-        boolean ready = hasFishingRod();
+        boolean ready = fisherReady();
 
         Container depot = resolveDepot();
         boolean depotOk = depot != null && DropOffContainers.hasFreeSlot(depot);
@@ -179,9 +184,10 @@ public class FisherWorkGoal extends GathererWorkGoal {
         // step off instead — the orphaned ghost vessel despawns itself (see RaftEntity).
         if (!sailing && citizen.getVehicle() instanceof net.minecraft.world.entity.vehicle.Boat b) {
             if (citizen.level() instanceof ServerLevel sl) {
-                BlockPos origin = citizen.getDropOff();
+                // Home bank hunted around the BOAT — workers no longer mark a drop-off, so the old
+                // getDropOff() origin was null for everyone and she'd step off into deep water.
                 BlockPos here = b.blockPosition();
-                BlockPos launch = origin == null ? null : findLaunchStand(sl, origin, here);
+                BlockPos launch = findLaunchStand(sl, here, here);
                 if (launch != null && FisherShoreRegistry.tryClaim(citizen.getUUID(), here)) {
                     sailing = true;
                     vessel = b;
@@ -258,7 +264,7 @@ public class FisherWorkGoal extends GathererWorkGoal {
         if (sailing && phase == Phase.SAIL_BACK) {
             return vessel != null && vessel.isAlive() && citizen.getVehicle() == vessel;
         }
-        if (!citizen.isFisherReady()) return false;
+        if (!fisherReady()) return false;
         Container depot = resolveDepot();
         boolean depotOk = depot != null && DropOffContainers.hasFreeSlot(depot);
         // Sailing trip: while walking to the launch we only need the stand; afloat we need the vessel
@@ -329,7 +335,7 @@ public class FisherWorkGoal extends GathererWorkGoal {
 
     @Override
     public void tick() {
-        if (!citizen.isFisherReady() || shorePos == null) return;
+        if (!fisherReady() || shorePos == null) return;
         phaseAge++;
         if (avoidTicks > 0) avoidTicks--;
         // Periodically re-evaluate: if a clearly better spot has appeared (e.g. the player just built
@@ -737,14 +743,17 @@ public class FisherWorkGoal extends GathererWorkGoal {
      * faster. Needs the {@link FishingVessels#FLAG_SAILING sailing} research, a vessel provider, a
      * {@link #SAIL_DEPTH_MIN}-deep open spot within {@link #SAIL_SCAN_RADIUS} of the drop-off, and a
      * walkable launch bank. Claims do NOT bound the trip — sailing is the sanctioned excursion past
-     * the territory; the drop-off radius is the only leash. {@code null} → fall back to shore casting.
+     * the territory; the fixed scan radius around the town hall is the only leash. (It must be a
+     * FIXED anchor: planning from the citizen's own position let every trip end ashore farther out
+     * and plan the next one from there — fishers migrated down the coast indefinitely.)
+     * {@code null} → fall back to shore casting.
      */
     private SailPlan planSailTrip() {
         Settlement settlement = citizen.getSettlement();
         if (settlement == null || !(citizen.level() instanceof ServerLevel sl)) return null;
         if (!FishingVessels.hasProvider() || !FishingVessels.isSailingUnlocked(settlement)) return null;
         if (isBedtimeSoon()) return null;   // wind-down: don't launch a trip she'd immediately turn around
-        BlockPos origin = citizen.blockPosition();
+        BlockPos origin = settlement.townHallPos() != null ? settlement.townHallPos() : citizen.blockPosition();
         BlockPos deep = findDeepOpenWater(sl, origin);
         if (deep == null) return null;
         BlockPos launch = findLaunchStand(sl, origin, deep);
@@ -765,7 +774,7 @@ public class FisherWorkGoal extends GathererWorkGoal {
         return depth;
     }
 
-    /** Deepest / most open water surface within {@link #SAIL_SCAN_RADIUS} of the drop-off with depth ≥
+    /** Deepest / most open water surface within {@link #SAIL_SCAN_RADIUS} of the home anchor with depth ≥
      *  {@link #SAIL_DEPTH_MIN} — unbounded by claims, at least {@link #MIN_SAIL_DIST} out (a real trip),
      *  and {@link #BOAT_SEPARATION} clear of other fishers' claimed sea spots. Distance is a mild BONUS,
      *  so the fisher heads for open sea rather than hugging the first drop-off. */

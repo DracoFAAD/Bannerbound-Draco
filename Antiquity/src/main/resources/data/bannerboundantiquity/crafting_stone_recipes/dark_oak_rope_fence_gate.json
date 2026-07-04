@@ -1,0 +1,16 @@
+{
+  "ingredients": [
+    {
+      "item": "minecraft:dark_oak_log",
+      "count": 2
+    },
+    {
+      "item": "minecraft:stick",
+      "count": 2
+    }
+  ],
+  "result": {
+    "id": "bannerboundantiquity:dark_oak_rope_fence_gate",
+    "count": 1
+  }
+}

@@ -127,9 +127,9 @@ public final class Knapping {
         return false;
     }
 
-    /** The tier a set of per-tap scores earns. Caps at FINE (hand-craft), and additionally REQUIRES
-     *  at least one perfect (100) tap to reach FINE — a clean run of merely-good taps tops out at
-     *  Standard. Shared by the server roll and the client's live estimate so they never disagree. */
+    /** The tier a set of per-tap scores earns: total score as a percentage of the possible
+     *  {@code reps * 100}, against the shape's data-driven thresholds. Caps at FINE (hand-craft).
+     *  Shared by the server roll and the client's live estimate so they never disagree. */
     public static QualityTier rollTier(int percentage_standard, int percentage_fine, List<Integer> scores, int reps) {
         int total_score = scores.stream().mapToInt(Integer::intValue).sum();
         double percentage = (total_score / (double) (reps * 100)) * 100;
@@ -151,8 +151,14 @@ public final class Knapping {
         KnappingShape shape = KnappingShapeManager.byHead(headItem);
         if (shape == null) return; // unknown/forged head id — ignore
         if (UnknownItemBlocker.isUnknownForPlayer(player, headItem)) return; // shape not unlocked
+        int reps = 9 - shape.keep().size();  // one rhythm rep per chipped-away cell
+        if (payload.scores().size() != reps) return;
+        if (!MinigameGuard.elapsedOk(player, session.startTime, reps, 6)) return;
+        List<Integer> scores = new ArrayList<>(reps);
+        for (int s : payload.scores()) scores.add(MinigameGuard.clampScore(s));
 
-        QualityTier tier = rollTier(shape.percentage_standard(), shape.percentage_fine(), payload.scores(), 9 - shape.keep().size());
+        QualityTier tier = com.bannerbound.antiquity.item.Intoxication.craftQuality(player,
+            rollTier(shape.percentage_standard(), shape.percentage_fine(), scores, reps));
 
         ItemStack head = Fletching.applyQuality(new ItemStack(headItem), tier);
         giveOrDrop(player, head);

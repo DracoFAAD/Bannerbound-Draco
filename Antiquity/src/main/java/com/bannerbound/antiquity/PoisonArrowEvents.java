@@ -58,7 +58,7 @@ public final class PoisonArrowEvents {
                 && CurareDragEvents.sameSettlement(shooter, living)) {
                 return;
             }
-            Poisons.applyPoison(living, poison);
+            Poisons.applyPoison(living, poison, arrow.getOwner()); // credit the eventual poison kill to the shooter
         }
     }
 

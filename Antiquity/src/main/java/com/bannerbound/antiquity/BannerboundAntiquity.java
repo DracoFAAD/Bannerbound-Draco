@@ -181,6 +181,14 @@ public class BannerboundAntiquity {
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Long>> POISON_NEXT_VOMIT =
         ATTACHMENT_TYPES.register("poison_next_vomit", () -> AttachmentType.<Long>builder(() -> 0L).build());
 
+    /** Who administered the active poison (UUID string; "" = none/environmental). SERIALIZED alongside
+     *  {@code POISON_STATE} so a poison death after reload still credits the hunter's settlement with
+     *  the kill (drops + insight) — the poison twin of {@link #BLEED_BY}. */
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<String>> POISON_BY =
+        ATTACHMENT_TYPES.register("poison_by", () -> AttachmentType.<String>builder(() -> "")
+            .serialize(Codec.STRING)
+            .build());
+
     /** Oleander's absolute cardiac deadline (game-time the heart gives out). SERIALIZED (survives
      *  reload mid-clock) and SYNCED so the client can drive the continuous blood-vignette + accelerating
      *  heartbeat from how close it is. 0 = no clock running. */

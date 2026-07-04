@@ -1,6 +1,6 @@
 {
-  "name": "Storage Logistics",
-  "description": "What one citizen gathers, all may draw upon. A common stockpile gives the settlement a single shared store — baskets in, baskets out, and nothing left to a private hoard.",
+  "name": "Storage",
+  "description": "What one citizen gathers, all may draw upon. Woven baskets give the settlement its first common stores — baskets in, baskets out, and nothing left to a private hoard.",
   "cost": 12,
   "x": 475,
   "y": -200,
@@ -16,12 +16,11 @@
       "count": 8
     },
     "boost": 0.4,
-    "message": "Storage Logistics"
+    "message": "Storage"
   },
   "unlocks": {
     "items": [
-      "bannerboundantiquity:basket",
-      "bannerbound:stockpile"
+      "bannerboundantiquity:basket"
     ],
     "features": [],
     "flags": [

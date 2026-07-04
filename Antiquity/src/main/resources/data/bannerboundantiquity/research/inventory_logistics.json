@@ -1,0 +1,28 @@
+{
+  "name": "Inventory Logistics",
+  "description": "Baskets scatter; a stockpile counts. Ordered rows and a tally of what lies where turn loose stores into a true common inventory — the settlement's goods gathered in one open yard, ready to be drawn on, stocked, and traded.",
+  "cost": 24,
+  "x": 700,
+  "y": -300,
+  "auto_unlock": false,
+  "min_age": "ancient",
+  "prerequisites": [
+    "bannerboundantiquity:storage_logistics"
+  ],
+  "insight": {
+    "trigger": {
+      "type": "obtain_item",
+      "target": "bannerboundantiquity:basket",
+      "count": 8
+    },
+    "boost": 0.4,
+    "message": "Inventory Logistics"
+  },
+  "unlocks": {
+    "items": [
+      "bannerbound:stockpile"
+    ],
+    "features": [],
+    "flags": []
+  }
+}
