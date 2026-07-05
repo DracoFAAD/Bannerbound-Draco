@@ -432,6 +432,9 @@
   "item.bannerboundantiquity.dried_rabbit": "Dried Rabbit",
   "item.bannerboundantiquity.dried_cod": "Dried Cod",
   "item.bannerboundantiquity.dried_salmon": "Dried Salmon",
+  "item.bannerboundantiquity.worm": "Worm",
+  "entity.bannerboundantiquity.worm_bait": "Worm",
+  "block.bannerboundantiquity.worm_crate": "Worm Crate",
 
   "message.bannerboundantiquity.rope_fence.cancel": "Rope connection cancelled",
   "message.bannerboundantiquity.rope_fence.too_far": "That post is too far away for one rope",
@@ -519,6 +522,7 @@
   "bannerboundantiquity.jei.info.stone_anvil": "Place a cast head or blade on the anvil and cold-hammer it with a hammer. The timing minigame sets quality; anneal a brittle piece in a Bloomery to keep working it.",
   "bannerboundantiquity.jei.info.salt": "Hold Salt in one hand and perishable food in the other, then hold use to salt it. Salted food lasts 25% longer and shows Salted in its tooltip.",
   "bannerboundantiquity.jei.info.spoiled_food": "Spoiled or poisoned food contributes no settlement food rate, even when it sits in claimed storage.",
+  "bannerboundantiquity.jei.knapping": "Knapping",
 
   "bannerboundantiquity.ponder.tag.bloomery": "The Bloomery",
   "bannerboundantiquity.ponder.tag.bloomery.description": "Smelting iron without electricity — the Antiquity-era forge.",
