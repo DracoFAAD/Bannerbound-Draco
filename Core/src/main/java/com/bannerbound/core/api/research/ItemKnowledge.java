@@ -81,9 +81,14 @@ public final class ItemKnowledge {
             return false;
         }
         // Both trees grant item knowledge: science AND culture unlocks.items are first-class.
+
+        return settlement.knownItems().contains(id.toString());
+
+        /*
         if (ResearchManager.computeUnlockedItems(settlement).contains(id.toString())) {
             return true;
         }
         return CultureManager.computeUnlockedItems(settlement).contains(id.toString());
+         */
     }
 }

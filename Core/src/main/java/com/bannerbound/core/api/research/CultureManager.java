@@ -1,6 +1,5 @@
 package com.bannerbound.core.api.research;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -74,12 +73,7 @@ public final class CultureManager {
     }
 
     public static Set<String> computeUnlockedItems(Settlement settlement) {
-        Set<String> out = new HashSet<>();
-        for (String id : settlement.completedCultureResearches()) {
-            ResearchDefinition def = CultureTreeLoader.get(id);
-            if (def != null) out.addAll(def.unlocksItems());
-        }
-        return out;
+        return settlement.computeKnownCultureItems();
     }
 
     /** Age-regression twin of {@link ResearchManager#regressResearchAfterAgeChange}: culture
@@ -120,6 +114,7 @@ public final class CultureManager {
             }
         }
         if (changed) {
+            s.recomputeKnownItems();
             broadcastStateToSettlement(server, s);
             // Culture unlocks.items ride the science payload's known-item union — refresh it.
             ResearchManager.broadcastStateToSettlement(server, s);
@@ -345,6 +340,7 @@ public final class CultureManager {
             settlement.setActiveCultureResearch(null);
         }
         if (removed || clearedProgress) {
+            settlement.recomputeKnownItems();
             broadcastStateToSettlement(server, settlement);
             return true;
         }

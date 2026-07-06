@@ -1,7 +1,8 @@
 package com.bannerbound.core.api.settlement;
 
-import com.bannerbound.core.api.research.data.ToolAgeLoader;
-import com.bannerbound.core.api.research.ToolAge;
+import com.bannerbound.core.api.research.ResearchDefinition;
+import com.bannerbound.core.api.research.data.CultureTreeLoader;
+import com.bannerbound.core.api.research.data.ResearchTreeLoader;
 import com.bannerbound.core.social.Conversation;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.server.level.ServerLevel;
 
 /**
  * A single bannerbound's per-settlement state â€” its identity, members, claimed chunks, town
@@ -92,6 +94,8 @@ public final class Settlement {
     private Era age;
 
     private final Set<String> completedResearches;
+    private final Set<String> knownItems;
+
     private final Map<String, Double> researchProgress;
     /** Insight keys are tree-qualified ("science|namespace:id") to avoid cross-tree collisions. */
     private final Map<String, Integer> insightCounters = new HashMap<>();
@@ -543,6 +547,7 @@ public final class Settlement {
         this.tabletsIssued = 0;
         this.age = Era.ANCIENT;
         this.completedResearches = new HashSet<>();
+        this.knownItems = new HashSet<>();
         this.researchProgress = new HashMap<>();
         this.researchQueue = new ArrayList<>();
         this.activeResearch = null;
@@ -560,7 +565,7 @@ public final class Settlement {
 
     private Settlement(UUID id, String name, SettlementColor color, UUID owner, Set<UUID> members,
                        Set<Long> claimedChunks, BlockPos townHallPos, int tabletsIssued, Era age,
-                       Set<String> completedResearches, Map<String, Double> researchProgress,
+                       Set<String> completedResearches, Set<String> knownItems, Map<String, Double> researchProgress,
                        List<String> researchQueue, String activeResearch, double sciencePerSecond,
                        List<Citizen> citizens, double foodPerSecond, double culturePerSecond,
                        double foodStored, double cultureStored,
@@ -593,6 +598,7 @@ public final class Settlement {
         this.bonusCultureCapacity = bonusCultureCapacity;
         this.bonusCitizenSpeed = bonusCitizenSpeed;
         this.workstations = workstations;
+        this.knownItems = knownItems;
     }
 
     public UUID id() { return id; }
@@ -1349,10 +1355,52 @@ public final class Settlement {
     }
 
     public Set<String> completedResearches() { return completedResearches; }
+    public Set<String> knownItems() { return knownItems; }
+
+    public static Set<String> computeKnownItems(Set<String> completedResearches) {
+        Set<String> out = new HashSet<>();
+        for (String id : completedResearches) {
+            ResearchDefinition def = ResearchTreeLoader.get(id);
+            if (def != null) {
+                out.addAll(def.unlocksItems());
+            }
+        }
+        return out;
+    }
+
+    public static Set<String> computeKnownCultureItems(Set<String> completedCultureResearches) {
+        Set<String> out = new HashSet<>();
+        for (String id : completedCultureResearches) {
+            ResearchDefinition def = CultureTreeLoader.get(id);
+            if (def != null) {
+                out.addAll(def.unlocksItems());
+            }
+        }
+        return out;
+    }
+
+    public Set<String> computeKnownItems() {
+        return computeKnownItems(completedResearches());
+    }
+
+    public Set<String> computeKnownCultureItems() {
+        return computeKnownCultureItems(completedCultureResearches());
+    }
+
+    public void recomputeKnownItems() {
+        Set<String> knownItems = computeKnownItems();
+        knownItems.addAll(computeKnownCultureItems());
+    }
+
     public boolean hasCompletedResearch(String id) { return completedResearches.contains(id); }
     public void markResearchComplete(String id) {
         completedResearches.add(id);
         researchProgress.remove(id);
+
+        ResearchDefinition def = ResearchTreeLoader.get(id);
+        if (def != null) {
+            knownItems.addAll(def.unlocksItems());
+        }
     }
 
     public Map<String, Double> researchProgress() { return researchProgress; }
@@ -2195,6 +2243,9 @@ public final class Settlement {
         for (int i = 0; i < completedList.size(); i++) {
             completed.add(completedList.getString(i));
         }
+
+        Set<String> knownItems = computeKnownItems(completed);
+
         Map<String, Double> progress = new HashMap<>();
         if (tag.contains("ResearchProgress")) {
             CompoundTag p = tag.getCompound("ResearchProgress");
@@ -2247,10 +2298,12 @@ public final class Settlement {
         }
 
         Settlement settlement = new Settlement(id, name, color, owner, members, claims, townHallPos, tabletsIssued, age,
-            completed, progress, queue, active, sciPerSec,
+            completed, knownItems, progress, queue, active, sciPerSec,
             citizens, foodPerSec, culturePerSec, foodStored, cultureStored,
             bonusFoodCap, bonusCultureCap, bonusCitizenSpd, workstations, languageSeed);
+
         settlement.setFactionName(factionName);
+
         if (tag.contains("InsightCounters")) {
             CompoundTag counts = tag.getCompound("InsightCounters");
             for (String key : counts.getAllKeys()) settlement.insightCounters.put(key, counts.getInt(key));
@@ -2366,6 +2419,12 @@ public final class Settlement {
             ListTag cList = tag.getList("CompletedCultureResearches", Tag.TAG_STRING);
             for (int i = 0; i < cList.size(); i++) {
                 settlement.completedCultureResearches.add(cList.getString(i));
+            }
+
+            // add to knownItems
+            for (String cultureResearchID : settlement.completedCultureResearches()) {
+                ResearchDefinition def = CultureTreeLoader.get(cultureResearchID);
+                if (def != null) settlement.knownItems.addAll(def.unlocksItems());
             }
         }
         if (tag.contains("CultureResearchProgress")) {
