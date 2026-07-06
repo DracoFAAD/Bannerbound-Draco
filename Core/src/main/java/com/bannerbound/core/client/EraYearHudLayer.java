@@ -60,6 +60,13 @@ public final class EraYearHudLayer implements LayeredDraw.Layer {
         int eraHeight = (int) Math.ceil(font.lineHeight * ERA_SCALE);
         int yearWidth = font.width(yearLine);
 
+        // Keep the top-left cluster the same fraction of the screen at any GUI scale / resolution,
+        // in lockstep with the "Currently in" line and the journal tracker below it (see HudScale).
+        // Anchored near the top-left origin, so scaling about (0,0) just shrinks it in place.
+        float uiScale = HudScale.factor(mc);
+        graphics.pose().pushPose();
+        graphics.pose().scale(uiScale, uiScale, 1.0f);
+
         int boxLeft = MARGIN_X - 2;
         int boxTop = MARGIN_Y - 2;
         int boxRight = MARGIN_X + Math.max(eraWidth, yearWidth) + 2;
@@ -77,5 +84,7 @@ public final class EraYearHudLayer implements LayeredDraw.Layer {
 
         int yearY = MARGIN_Y + eraHeight + LINE_GAP;
         graphics.drawString(font, yearLine, MARGIN_X, yearY, 0xFFFFFFFF, false);
+
+        graphics.pose().popPose();
     }
 }

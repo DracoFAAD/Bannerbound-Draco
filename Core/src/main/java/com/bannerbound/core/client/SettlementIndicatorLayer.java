@@ -50,7 +50,13 @@ public final class SettlementIndicatorLayer implements LayeredDraw.Layer {
         int x = 8;
         int y = 36;
 
+        // Shrink in lockstep with the era/year banner above and the journal below so the whole
+        // top-left cluster keeps the same on-screen fraction at any GUI scale (see HudScale).
+        float uiScale = HudScale.factor(mc);
+        graphics.pose().pushPose();
+        graphics.pose().scale(uiScale, uiScale, 1f);
         graphics.fill(x - 3, y - 2, x + textWidth + 3, y + 11, 0x66000000);
         graphics.drawString(mc.font, combined, x, y, 0xFFFFFFFF);
+        graphics.pose().popPose();
     }
 }

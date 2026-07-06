@@ -15,18 +15,24 @@ import net.neoforged.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 @ApiStatus.Internal
 public final class ClientCultureStyleState {
-    /** One selectable style: its id (sent back in the settle request) and its name lang key. */
-    public record Entry(String id, String nameKey) {}
+    /** One selectable style: its id (sent back in the settle request), its display name, and the
+     *  ResourceLocation string of its preview image. */
+    public record Entry(String id, String nameKey, String image) {}
 
     private static volatile List<Entry> STYLES = List.of();
 
     private ClientCultureStyleState() {
     }
 
-    public static void replace(List<String> ids, List<String> nameKeys) {
+    public static void replace(List<String> ids, List<String> nameKeys, List<String> images) {
         List<Entry> list = new ArrayList<>();
         for (int i = 0; i < ids.size() && i < nameKeys.size(); i++) {
-            list.add(new Entry(ids.get(i), nameKeys.get(i)));
+            // Images sync as a parallel list; tolerate a short/absent one so a name-only payload
+            // still populates the picker (image falls back to the id-based convention).
+            String image = i < images.size() && !images.get(i).isBlank()
+                ? images.get(i)
+                : "bannerbound:textures/gui/culture/" + ids.get(i) + ".png";
+            list.add(new Entry(ids.get(i), nameKeys.get(i), image));
         }
         STYLES = List.copyOf(list);
     }

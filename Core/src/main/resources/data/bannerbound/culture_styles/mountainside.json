@@ -1,6 +1,7 @@
 {
   "id": "mountainside",
   "name": "Mountainside",
+  "image": "bannerbound:textures/gui/culture/mountainside.png",
   "overrides": {
     "bannerboundantiquity:acacia_drying_rack": -0.2,
     "bannerboundantiquity:acacia_fermentation_trough": -0.2,

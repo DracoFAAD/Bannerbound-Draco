@@ -1,6 +1,7 @@
 {
   "id": "waterside",
   "name": "Waterside",
+  "image": "bannerbound:textures/gui/culture/waterside.png",
   "overrides": {
     "bannerboundantiquity:acacia_drying_rack": -0.12,
     "bannerboundantiquity:acacia_fermentation_trough": -0.12,

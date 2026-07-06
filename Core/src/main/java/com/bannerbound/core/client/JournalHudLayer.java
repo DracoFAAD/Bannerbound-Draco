@@ -42,15 +42,6 @@ public final class JournalHudLayer implements LayeredDraw.Layer {
     private static final int PADDING = 8;
     private static final int MAX_ENTRIES = 4;
     private static final int ENTRY_GAP = 8;
-    // The panel is a fixed number of GUI-scaled pixels, so its on-screen fraction depends only on
-    // the scaled resolution (physicalRes / guiScale). With a fixed GUI scale a small monitor gets a
-    // small scaled resolution and the panel balloons to fill it, while a 4K monitor barely notices.
-    // We scale the whole panel by scaled width/height against a reference so it stays roughly the
-    // same fraction of the screen everywhere. Reference ~= the scaled size at which it looks right.
-    private static final float REFERENCE_WIDTH = 900f;
-    private static final float REFERENCE_HEIGHT = 506f;
-    /** Never shrink past this fraction, or the text becomes unreadable. */
-    private static final float MIN_UI_SCALE = 0.5f;
     private static final long EXIT_SLIDE_TICKS = 14L;
     private static final int CRISIS_BORDER = 0xFFD4AF37;
     private static final ResourceLocation CHECKBOX =
@@ -79,14 +70,13 @@ public final class JournalHudLayer implements LayeredDraw.Layer {
         float minimized = ClientJournalState.minimizeProgress(nowMs);
 
         // Scale the whole layer down on small scaled resolutions so the panel keeps roughly the same
-        // fraction of the screen everywhere. Anchored at the top-left (X,Y); we lay out against the
-        // inflated logical space so the same margins/clamps still apply, then the pose shrinks it.
-        int rawW = mc.getWindow().getGuiScaledWidth();
-        int rawH = mc.getWindow().getGuiScaledHeight();
-        float uiScale = Math.max(MIN_UI_SCALE,
-            Math.min(1f, Math.min(rawW / REFERENCE_WIDTH, rawH / REFERENCE_HEIGHT)));
-        int screenW = Math.round(rawW / uiScale);
-        int screenH = Math.round(rawH / uiScale);
+        // fraction of the screen everywhere — shared with the era/year banner and "Currently in" line
+        // above it via HudScale, so the top-left cluster shrinks as one. Anchored at the top-left
+        // (X,Y); we lay out against the inflated logical space so the same margins/clamps still apply,
+        // then the pose shrinks it.
+        float uiScale = HudScale.factor(mc);
+        int screenW = Math.round(mc.getWindow().getGuiScaledWidth() / uiScale);
+        int screenH = Math.round(mc.getWindow().getGuiScaledHeight() / uiScale);
 
         graphics.pose().pushPose();
         graphics.pose().scale(uiScale, uiScale, 1f);

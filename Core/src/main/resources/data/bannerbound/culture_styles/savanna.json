@@ -1,6 +1,7 @@
 {
   "id": "savanna",
   "name": "Savanna",
+  "image": "bannerbound:textures/gui/culture/savanna.png",
   "overrides": {
     "bannerboundantiquity:acacia_drying_rack": 0.3,
     "bannerboundantiquity:acacia_fermentation_trough": 0.3,

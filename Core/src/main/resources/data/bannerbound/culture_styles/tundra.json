@@ -1,6 +1,7 @@
 {
   "id": "tundra",
   "name": "Tundra",
+  "image": "bannerbound:textures/gui/culture/tundra.png",
   "overrides": {
     "bannerboundantiquity:acacia_drying_rack": -0.3,
     "bannerboundantiquity:acacia_fermentation_trough": -0.3,

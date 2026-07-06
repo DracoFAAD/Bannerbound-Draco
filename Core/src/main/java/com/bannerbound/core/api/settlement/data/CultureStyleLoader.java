@@ -27,7 +27,8 @@ import net.minecraft.world.level.block.Block;
  * <pre>{@code
  * {
  *   "id": "desert",
- *   "name": "bannerbound.culture_style.desert",
+ *   "name": "Desert",
+ *   "image": "bannerbound:textures/gui/culture/desert.png",
  *   "overrides":      { "minecraft:sandstone": 0.6, "minecraft:oak_log": -0.5 },
  *   "food_overrides": { "minecraft:cactus": 0.8, "minecraft:apple": 0.2 }
  * }
@@ -38,8 +39,8 @@ import net.minecraft.world.level.block.Block;
  * and skipped. {@code food_overrides} are per-item food values that replace the base table from
  * {@link FoodValueLoader} (see {@code FoodValueLoader.effective}) — same semantics for items.
  * Both blocks are optional; omit either to leave the corresponding base table untouched. The
- * {@code "id"} defaults to the file stem and {@code "name"} to
- * {@code bannerbound.culture_style.<id>} when omitted.
+ * {@code "id"} defaults to the file stem, {@code "name"} to the id, and {@code "image"} to
+ * {@code bannerbound:textures/gui/culture/<id>.png} when omitted.
  */
 public class CultureStyleLoader extends SimpleJsonResourceReloadListener {
     public static final String FOLDER = "culture_styles";
@@ -63,6 +64,11 @@ public class CultureStyleLoader extends SimpleJsonResourceReloadListener {
                 // settle screen), NOT a lang key. Fall back to the id when absent so a missing
                 // name shows something readable rather than a dead translation key.
                 String nameKey = GsonHelper.getAsString(obj, "name", id);
+                // "image" is the ResourceLocation of the preview thumbnail shown in the founding
+                // picker. Defaults to bannerbound:textures/gui/culture/<id>.png so a style that
+                // follows the naming convention needs no explicit entry.
+                String image = GsonHelper.getAsString(obj, "image",
+                    "bannerbound:textures/gui/culture/" + id + ".png");
 
                 Map<Block, Float> overrides = new HashMap<>();
                 if (obj.has("overrides")) {
@@ -94,7 +100,7 @@ public class CultureStyleLoader extends SimpleJsonResourceReloadListener {
                     }
                 }
 
-                map.put(id, new CultureStyle(id, nameKey, overrides, foodOverrides));
+                map.put(id, new CultureStyle(id, nameKey, image, overrides, foodOverrides));
             } catch (Exception ex) {
                 BannerboundCore.LOGGER.error("Failed to parse culture style {}", key, ex);
             }

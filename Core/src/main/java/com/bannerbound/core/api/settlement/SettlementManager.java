@@ -2470,14 +2470,17 @@ public final class SettlementManager {
     public static void sendCultureStylesTo(ServerPlayer player) {
         List<String> ids = new ArrayList<>();
         List<String> names = new ArrayList<>();
+        List<String> images = new ArrayList<>();
         for (String id : com.bannerbound.core.api.settlement.data.CultureStyleLoader.ids()) {
             com.bannerbound.core.api.settlement.CultureStyle style =
                 com.bannerbound.core.api.settlement.data.CultureStyleLoader.get(id);
             ids.add(id);
             names.add(style != null ? style.nameKey() : "bannerbound.culture_style." + id);
+            images.add(style != null ? style.imageKey()
+                : "bannerbound:textures/gui/culture/" + id + ".png");
         }
         PacketDistributor.sendToPlayer(player,
-            new com.bannerbound.core.network.CultureStyleSyncPayload(ids, names));
+            new com.bannerbound.core.network.CultureStyleSyncPayload(ids, names, images));
     }
 
     /**

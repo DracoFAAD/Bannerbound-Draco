@@ -483,7 +483,10 @@ public final class ImmigrationManager {
             s.governmentType().ordinal(),
             new java.util.ArrayList<>(s.members()),
             s.foodConsumptionPerSecond(),
-            s.foodProductionRates()
+            s.foodProductionRates(),
+            // Territory-appeal share of the culture rate — same sum folded into
+            // effectiveCulturePerSecond above, broken out for the Town Hall culture tooltip.
+            level == null ? 0.0 : ChunkBeautyManager.cultureBonus(level, s)
         );
     }
 

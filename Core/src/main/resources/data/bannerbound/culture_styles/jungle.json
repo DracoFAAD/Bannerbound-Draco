@@ -1,6 +1,7 @@
 {
   "id": "jungle",
   "name": "Jungle",
+  "image": "bannerbound:textures/gui/culture/jungle.png",
   "overrides": {
     "bannerboundantiquity:acacia_drying_rack": -0.15,
     "bannerboundantiquity:acacia_fermentation_trough": -0.15,

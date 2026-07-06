@@ -1,6 +1,7 @@
 {
   "id": "desert",
   "name": "Desert",
+  "image": "bannerbound:textures/gui/culture/desert.png",
   "overrides": {
     "bannerboundantiquity:acacia_drying_rack": 0.1,
     "bannerboundantiquity:acacia_fermentation_trough": 0.1,

@@ -1,6 +1,7 @@
 {
   "id": "dark_oak",
   "name": "Dark Oak",
+  "image": "bannerbound:textures/gui/culture/dark_oak.png",
   "overrides": {
     "bannerboundantiquity:acacia_drying_rack": -0.2,
     "bannerboundantiquity:acacia_fermentation_trough": -0.2,

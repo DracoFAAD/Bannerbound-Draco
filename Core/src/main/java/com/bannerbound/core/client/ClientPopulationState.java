@@ -21,6 +21,9 @@ public final class ClientPopulationState {
     private static volatile int populationMax = Settlement.IMMIGRATION_CAP;
     private static volatile double foodPerSecond = 0.0;
     private static volatile double culturePerSecond = 0.0;
+    /** Portion of {@code culturePerSecond} that comes from claimed-territory block appeal
+     *  (signed — attractive chunks add, ugly ones subtract). Drives the culture-bar tooltip. */
+    private static volatile double appealCulturePerSecond = 0.0;
     private static volatile double foodStored = 0.0;
     private static volatile double cultureStored = 0.0;
     private static volatile double storedFoodValue = 0.0;
@@ -51,13 +54,15 @@ public final class ClientPopulationState {
                               double fCost, double cCost,
                               double fCap, double cCap, int govOrdinal,
                               java.util.List<java.util.UUID> memberList,
-                              double foodConsumption, java.util.Map<String, Double> sourceRates) {
+                              double foodConsumption, java.util.Map<String, Double> sourceRates,
+                              double appealCps) {
         members = memberList == null ? java.util.Set.of() : java.util.Set.copyOf(memberList);
         settlementId = id;
         population = pop;
         populationMax = popMax;
         foodPerSecond = fps;
         culturePerSecond = cps;
+        appealCulturePerSecond = appealCps;
         foodStored = fStored;
         cultureStored = cStored;
         storedFoodValue = storageFoodValue;
@@ -81,6 +86,8 @@ public final class ClientPopulationState {
     public static int getPopulationMax() { return populationMax; }
     public static double getFoodPerSecond() { return foodPerSecond; }
     public static double getCulturePerSecond() { return culturePerSecond; }
+    /** Signed culture/sec from claimed-territory block appeal (already part of the culture rate). */
+    public static double getAppealCulturePerSecond() { return appealCulturePerSecond; }
     public static double getFoodStored() { return foodStored; }
     public static double getCultureStored() { return cultureStored; }
     public static double getStoredFoodValue() { return storedFoodValue; }

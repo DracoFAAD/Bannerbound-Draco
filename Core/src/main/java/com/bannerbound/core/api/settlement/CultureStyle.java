@@ -23,11 +23,13 @@ import net.minecraft.world.level.block.Block;
  *
  * @param id             style id, matching its JSON file stem (e.g. {@code "forest"})
  * @param nameKey        translation key for the player-facing style name
+ * @param imageKey       ResourceLocation string of the preview image shown in the founding picker
+ *                       (e.g. {@code "bannerbound:textures/gui/culture/forest.png"})
  * @param overrides      per-block appeal values that override the base appeal for those blocks
  * @param foodOverrides  per-item food values that override the base food value for those items
  */
 @ApiStatus.Internal
-public record CultureStyle(String id, String nameKey,
+public record CultureStyle(String id, String nameKey, String imageKey,
                             Map<Block, Float> overrides,
                             Map<Item, Float> foodOverrides) {
     /** Whether this style sets an appeal value for {@code block}. */

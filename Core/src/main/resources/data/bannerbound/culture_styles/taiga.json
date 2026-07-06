@@ -1,6 +1,7 @@
 {
   "id": "taiga",
   "name": "Taiga",
+  "image": "bannerbound:textures/gui/culture/taiga.png",
   "overrides": {
     "bannerboundantiquity:acacia_drying_rack": -0.2,
     "bannerboundantiquity:acacia_fermentation_trough": -0.2,

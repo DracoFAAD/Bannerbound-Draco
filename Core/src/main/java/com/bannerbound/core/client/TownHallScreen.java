@@ -3123,6 +3123,7 @@ public class TownHallScreen extends Screen {
 
         // Culture block: same structure as food.
         lineY += 31;
+        int cultureHoverTop = lineY;
         MutableComponent cultureTitle = Component.translatable("bannerbound.townhall.culture_title")
             .append(Icons.culture(era))
             .append(Component.literal(":"));
@@ -3137,6 +3138,31 @@ public class TownHallScreen extends Screen {
             .append(Icons.culture(era));
         OutlinedText.draw(graphics, this.font, cultureLine, x, lineY, 0xFFC97FFF);
         drawStockpileBar(graphics, x, lineY + 13, width, cultureStored, cultureCost, cultureCap, 0xFFC97FFF);
+        // Hovering the culture block breaks the rate down so it's clear that claimed-territory block
+        // appeal feeds culture: the total (which already folds appeal in), then the signed appeal share
+        // (+ from attractive chunks, − from ugly ones) and a nudge to beautify the territory.
+        if (mouseX >= x && mouseX <= x + width && mouseY >= cultureHoverTop && mouseY <= lineY + 24) {
+            double appealCulture = ClientPopulationState.getAppealCulturePerSecond();
+            // Everything that isn't territory appeal: the flat baseline (DEFAULT_CULTURE_PER_SECOND)
+            // plus any culture research / faith / status bonuses folded into culturePerSecond.
+            double baseCulture = culturePerSec - appealCulture;
+            java.util.List<Component> tooltip = new java.util.ArrayList<>();
+            tooltip.add(Component.translatable("bannerbound.townhall.culture_tooltip.total",
+                String.format("%.2f", culturePerSec)).withStyle(ChatFormatting.LIGHT_PURPLE));
+            tooltip.add(Component.translatable("bannerbound.townhall.culture_tooltip.base",
+                String.format("%+.2f", baseCulture))
+                .withStyle(baseCulture > 0.0001 ? ChatFormatting.GREEN
+                    : baseCulture < -0.0001 ? ChatFormatting.RED
+                    : ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("bannerbound.townhall.culture_tooltip.appeal",
+                String.format("%+.2f", appealCulture))
+                .withStyle(appealCulture > 0.0001 ? ChatFormatting.GREEN
+                    : appealCulture < -0.0001 ? ChatFormatting.RED
+                    : ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("bannerbound.townhall.culture_tooltip.appeal_desc")
+                .withStyle(ChatFormatting.DARK_GRAY));
+            graphics.renderComponentTooltip(this.font, tooltip, mouseX, mouseY);
+        }
 
         // Devotion block — directly below culture generation (FAITH_PLAN.md), shown once a
         // faith is followed. Same title-above-values rhythm as Food/Culture (no stockpile

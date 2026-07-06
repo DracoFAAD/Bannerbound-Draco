@@ -41,7 +41,11 @@ public record PopulationStatePayload(
     double foodConsumptionPerSecond,
     /** Per-source production rate (food-stuff/sec) keyed by source ("farming"/"fishing"/"livestock"),
      *  so the Town Hall food tooltip can show where the settlement's food is coming from. */
-    java.util.Map<String, Double> foodSourceRates
+    java.util.Map<String, Double> foodSourceRates,
+    /** Culture/sec contributed by claimed-territory block appeal — already included in
+     *  {@code culturePerSecond}. Signed: attractive chunks add, ugly chunks subtract. Broken out so
+     *  the Town Hall culture tooltip can show how much of the culture rate comes from territory appeal. */
+    double appealCulturePerSecond
 ) implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<PopulationStatePayload> TYPE =
         new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(BannerboundCore.MODID, "population_state"));
@@ -72,6 +76,7 @@ public record PopulationStatePayload(
                 ByteBufCodecs.STRING_UTF8.encode(buf, e.getKey());
                 ByteBufCodecs.DOUBLE.encode(buf, e.getValue());
             }
+            ByteBufCodecs.DOUBLE.encode(buf, p.appealCulturePerSecond());
         },
         buf -> {
             String settlementId = ByteBufCodecs.STRING_UTF8.decode(buf);
@@ -100,10 +105,11 @@ public record PopulationStatePayload(
                 String key = ByteBufCodecs.STRING_UTF8.decode(buf);
                 foodSourceRates.put(key, ByteBufCodecs.DOUBLE.decode(buf));
             }
+            double appealCulturePerSecond = ByteBufCodecs.DOUBLE.decode(buf);
             return new PopulationStatePayload(settlementId, population, populationMax, foodPerSecond,
                 culturePerSecond, foodStored, cultureStored, storedFoodValue, storedFoodPerSecond,
                 nextFoodCost, nextCultureCost, foodCap, cultureCap, governmentOrdinal, members,
-                foodConsumptionPerSecond, foodSourceRates);
+                foodConsumptionPerSecond, foodSourceRates, appealCulturePerSecond);
         }
     );
 
