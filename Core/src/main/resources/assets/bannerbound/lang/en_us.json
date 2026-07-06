@@ -926,6 +926,7 @@
   "bannerbound.foremans_rod.point_b_set": "Point B set at %s, %s, %s.",
   "bannerbound.foremans_rod.selection_committed": "Selection committed: %s blocks.",
   "bannerbound.foremans_rod.field_expanded": "Field expanded to %s blocks.",
+  "bannerbound.foremans_rod.no_farmland": "The selected region does not include a farmland / grass block",
   "bannerbound.foremans_rod.tooltip.expand_hint": "Sneak + right-click to expand an adjacent field instead of making a new one.",
   "bannerbound.foremans_rod.picker.title": "Choose Workstation",
   "bannerbound.foremans_rod.picker.clear": "Clear Selection",

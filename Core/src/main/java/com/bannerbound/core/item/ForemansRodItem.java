@@ -28,6 +28,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.GrassBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 /**
@@ -112,9 +118,8 @@ public class ForemansRodItem extends Item {
             return InteractionResultHolder.success(stack);
         }
         if (player.isShiftKeyDown()) {
-            // For an ordered-worker rod (digger/farmer), shift-right-click in the AIR switches its
-            // target to "all" of that type (clears the bound citizen). Otherwise open the type picker.
-            String wsTypeNow = stack.get(BannerboundCore.FOREMAN_WORKSTATION_TYPE.get());
+            // TODO:
+            /*String wsTypeNow = stack.get(BannerboundCore.FOREMAN_WORKSTATION_TYPE.get());
             if (isOrderedType(wsTypeNow)) {
                 stack.remove(BannerboundCore.FOREMAN_TARGET_CITIZEN.get());
                 stack.remove(BannerboundCore.FOREMAN_TARGET_NAME.get());
@@ -125,11 +130,11 @@ public class ForemansRodItem extends Item {
                     Component.translatable("bannerbound.foremans_rod.all", wname)
                         .withStyle(ChatFormatting.AQUA), true);
                 return InteractionResultHolder.consume(stack);
-            }
+            }*/
             PacketDistributor.sendToPlayer(serverPlayer, new OpenForemansRodPickerPayload());
             return InteractionResultHolder.consume(stack);
         }
-        // Non-shift right-click in air: hint to pick a workstation if none chosen yet.
+
         String wsType = stack.get(BannerboundCore.FOREMAN_WORKSTATION_TYPE.get());
         if (wsType == null || wsType.isEmpty()) {
             serverPlayer.displayClientMessage(
@@ -350,6 +355,27 @@ public class ForemansRodItem extends Item {
                 } catch (IllegalArgumentException ignored) { /* malformed → leave open to all */ }
             }
         }
+
+        if (FARMER_TYPE.equals(wsType)) {
+            int amountOfFarmland = 0;
+
+            for (BlockPos pos : BlockPos.betweenClosed(a, b)) {
+                BlockState state = overworld.getBlockState(pos);
+                Block block = state.getBlock();
+
+                if (block instanceof FarmBlock || block instanceof GrassBlock) {
+                    amountOfFarmland++;
+                }
+            }
+
+            if (amountOfFarmland == 0) {
+                player.displayClientMessage(
+                    Component.translatable("bannerbound.foremans_rod.no_farmland")
+                        .withStyle(ChatFormatting.RED), true);
+                return;
+            }
+        }
+
         BlockSelectionRegistry registry = BlockSelectionRegistry.get(overworld);
 
         // Split the things this box overlaps into mergeable same-type fields vs hard conflicts.
