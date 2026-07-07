@@ -92,7 +92,7 @@ config="${mod_id}.mixins.json"
 [[dependencies.${mod_id}]]
     modId="bannerbound"
     type="required"
-    versionRange="[1.0.0,)"
+    versionRange="[0.0.4,)"
     ordering="AFTER"
     side="BOTH"
 

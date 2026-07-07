@@ -1,21 +1,68 @@
-MIT License
+BANNERBOUND LICENSE
 
-Copyright (c) 2026 Nitsu (Nitsu430)
+Copyright (c) 2026 Nitsu (Nitsu430) and DracoFAAD
+All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This license governs Bannerbound -- its source code, compiled builds, and all
+associated assets including but not limited to textures, models, animations,
+sounds, and music (together, "the Mod") -- for all versions published after
+7 July 2026. For earlier versions, see "PRIOR VERSIONS" below.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+LIMITED PERMISSIONS
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Subject to the conditions of this license, permission is granted, free of
+charge, to any person to:
+
+1. VIEW AND FORK ON GITHUB. View the source code of the official repository
+   (https://github.com/Nitsu430/Bannerbound) and fork it within GitHub solely
+   for the purposes of reading the code and preparing contributions (pull
+   requests) to the official repository.
+
+2. PERSONAL USE. Compile the Mod from the official repository and use official
+   release builds for playing Minecraft, including on multiplayer servers you
+   play on or operate. Players and server operators must obtain the Mod from
+   the official repository or official project pages.
+
+3. MODPACKS. Include unmodified official release files of the Mod in modpacks,
+   provided the modpack is distributed free of charge and the Mod is credited
+   as "Bannerbound" with a link to the official repository or an official
+   project page.
+
+ALL OTHER RIGHTS RESERVED
+
+Except as expressly permitted above, you may not, in whole or in part:
+
+- re-upload, mirror, or otherwise redistribute the Mod, its source code, or
+  its assets outside the official repository and official project pages;
+- distribute modified versions or derivative works of the Mod;
+- use the Mod's source code, textures, models, sounds, music, or other assets
+  in any other project;
+- sell the Mod, charge for access to it, or monetize it in any form.
+
+CONTRIBUTIONS
+
+By submitting a contribution (including a pull request) to the official
+repository, you represent that the contribution is your own work, and you
+grant the copyright holders a perpetual, worldwide, irrevocable, royalty-free
+license to use, reproduce, modify, sublicense, and distribute your
+contribution as part of the Mod, under this license or any future license
+applied to the Mod. You retain copyright in your contribution.
+
+PRIOR VERSIONS
+
+All versions of the Mod published on or before 7 July 2026 -- that is, all
+commits in the official repository up to and including
+c82d84598119b52e11d398402055ebc50617d751 (branch code-cleanup) and
+aac8526a1b7ae3a7385db9f0389885e3e3a2b074 (branch main), and all release files
+built from them -- were published under the MIT License. That grant is
+irrevocable and continues to apply to those versions only. This license
+governs all later versions and all previously unpublished work.
+
+DISCLAIMER
+
+THE MOD IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE MOD OR THE USE OR OTHER DEALINGS IN THE MOD.
