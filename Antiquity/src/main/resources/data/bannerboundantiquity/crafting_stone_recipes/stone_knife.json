@@ -1,0 +1,9 @@
+{
+  "ingredients": [
+    { "item": "bannerboundantiquity:stone_knife_head", "count": 1 },
+    { "item": "minecraft:stick", "count": 1 },
+    { "item": "bannerboundantiquity:plant_fiber", "count": 1 }
+  ],
+  "result": { "id": "bannerboundantiquity:stone_knife", "count": 1 },
+  "transfer_quality": true
+}

@@ -35,8 +35,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
  * a block is removed the rest clamp up. Player place/break update queues incrementally
  * (recordPlace/recordBreak); fullScan reconciles - blocks still present keep their known order,
  * newly found ones (non-player changes, initial scan) append in canonical scan order. The chunk
- * score depends only on each type's count, so ordering never changes the score - the queue exists
- * so a specific block can be told which slot it occupies (queuePositionOf).
+ * score depends only on each type's count, so ordering never changes the score.
  *
  * <p>recomputeScore is cheap (no block reads) and self-skipping: scoreStale plus a hash of the
  * (styles, palettes) inputs let the per-second refresh skip chunks where nothing changed - it
@@ -77,14 +76,6 @@ public class ChunkAppealData {
     private boolean inBand(BlockPos pos) {
         int ref = refY[idx(pos.getX() & 15, pos.getZ() & 15)];
         return ref != UNCAPTURED && pos.getY() >= ref;
-    }
-
-    public int queuePositionOf(BlockPos target) {
-        for (List<BlockPos> queue : queues.values()) {
-            int i = queue.indexOf(target);
-            if (i >= 0) return i + 1;
-        }
-        return 0;
     }
 
     public void recordPlace(BlockPos pos, Block placed) {

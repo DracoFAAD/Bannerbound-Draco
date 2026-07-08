@@ -104,6 +104,14 @@ public class KilnBlockEntity extends BlockEntity {
         return litTicks;
     }
 
+    public int getSmeltProgress() {
+        return smeltProgress;
+    }
+
+    public boolean isSmelting() {
+        return smeltingActive;
+    }
+
     public void ignite() {
         boolean wasLit = litTicks > 0;
         litTicks = MAX_LIT_TICKS;

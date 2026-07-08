@@ -52,9 +52,11 @@ import net.neoforged.neoforge.network.PacketDistributor;
  *
  * Login (onPlayerLoggedIn) fans out the one-time client sync: claim map, custom language, the faith
  * sky (seed + celestialSpeed, from which the client regenerates the whole star field / solar system),
- * faith + diplomacy + pantheon + journal + crisis + codex state, and a mirror of the block-selection
- * registry so a Foreman's Rod renders existing selections without waiting for the next mutation
- * broadcast. It also re-pushes any seed-picker prompts that queued while the player was offline;
+ * faith + diplomacy + pantheon + journal + crisis + codex state, the settlement's current
+ * food-warning banner level (the periodic broadcast only fires on level CHANGE, so a fresh login
+ * would otherwise miss an ongoing warning; the client wiped its copy on logout), and a mirror of
+ * the block-selection registry so a Foreman's Rod renders existing selections without waiting for
+ * the next mutation broadcast. It also re-pushes any seed-picker prompts that queued while the player was offline;
  * AwaitingSeedRegistry.drainFor is idempotent (it removes drained entries so a re-login cannot
  * double-send), and stale entries whose selection was deleted offline are silently dropped.
  *
@@ -94,6 +96,13 @@ public final class FactionEvents {
                 if (faithSettlement != null) {
                     com.bannerbound.core.api.faith.FaithManager.sendStateTo(
                         loginServer, faithSettlement, player);
+                    int foodWarnLevel = faithSettlement.lastFoodWarningLevel();
+                    if (foodWarnLevel > com.bannerbound.core.network
+                            .SettlementFoodWarningPayload.LEVEL_OK) {
+                        PacketDistributor.sendToPlayer(player,
+                            new com.bannerbound.core.network.SettlementFoodWarningPayload(
+                                foodWarnLevel));
+                    }
                     com.bannerbound.core.api.settlement.DiplomacyManager.sendDiplomacyState(player);
                     if (!com.bannerbound.core.api.settlement.DiplomacyManager.isPublicStandardValid(
                             loginServer.overworld(), faithSettlement)) {

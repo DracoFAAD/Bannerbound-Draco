@@ -12,6 +12,7 @@ import java.util.Map;
 
 import com.bannerbound.core.api.settlement.Era;
 import com.bannerbound.core.network.EnqueueResearchPayload;
+import com.bannerbound.core.network.MenuOpenedPayload;
 import com.bannerbound.core.network.StartResearchPayload;
 import com.bannerbound.core.api.research.ResearchDefinition;
 import com.bannerbound.core.api.research.ResearchPonderBridge;
@@ -59,6 +60,9 @@ import net.neoforged.neoforge.network.PacketDistributor;
  * to the chief (sendSuggestOrRetract); Council and NONE pass straight through. The per-tab ambience
  * backdrops are era-aware screen-space cosmetics only (no real data). prereqClosure() is bounded by
  * a visited set so a malformed cyclic graph cannot loop forever.
+ *
+ * init() re-runs on every resize, so announcedOpen gates the one-shot MenuOpenedPayload (fires
+ * the "menu_opened"/"research_tree" tutorial trigger) to send exactly once per screen instance.
  */
 @OnlyIn(Dist.CLIENT)
 @ApiStatus.Internal
@@ -106,6 +110,7 @@ public class ResearchScreen extends Screen {
 
     private static final double ZOOM_FACTOR = 1.12;
     private boolean dragging = false;
+    private boolean announcedOpen = false;
     private ResearchDefinition hovered;
 
     private ResearchDefinition hoveredInsight;
@@ -797,6 +802,10 @@ public class ResearchScreen extends Screen {
     @Override
     protected void init() {
 
+        if (!announcedOpen) {
+            announcedOpen = true;
+            PacketDistributor.sendToServer(new MenuOpenedPayload("research_tree"));
+        }
         if (pendingFocusId != null) {
             activeTab = pendingFocusCulture ? Tab.CULTURE : Tab.SCIENCE;
             ResearchDefinition focusDef = currentTree().get(pendingFocusId);
@@ -1313,10 +1322,16 @@ public class ResearchScreen extends Screen {
             footer.add(Component.translatable("bannerbound.research.queue_position", queuePos)
                 .withStyle(ChatFormatting.AQUA));
         }
-        if (!currentAgeMet(def) && !currentIsCompleted(def.id())) {
-            footer.add(Component.translatable("bannerbound.research.age_locked",
-                    def.minAge().displayName())
-                .withStyle(ChatFormatting.RED));
+        if (!currentIsCompleted(def.id())) {
+            if (isFutureEra(def)) {
+                footer.add(Component.translatable("bannerbound.research.age_locked",
+                        def.minAge().displayName())
+                    .withStyle(ChatFormatting.RED));
+            }
+            if (def.requiresTribe() && !ClientPopulationState.isTribe()) {
+                footer.add(Component.translatable("bannerbound.research.tribe_locked")
+                    .withStyle(ChatFormatting.RED));
+            }
         }
         if (!currentPrereqsMet(def) && !currentIsCompleted(def.id())) {
             footer.add(Component.translatable("bannerbound.research.prereq_locked").withStyle(ChatFormatting.RED));

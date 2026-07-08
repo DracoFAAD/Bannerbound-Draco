@@ -4,7 +4,7 @@
   "ingredients": [
     { "item": "bannerboundantiquity:flint_blade" },
     { "item": "minecraft:stick" },
-    { "item": "bannerboundantiquity:plant_fiber" }
+    { "tag": "bannerboundantiquity:fibers" }
   ],
   "result": { "id": "bannerboundantiquity:flint_knife", "count": 1 }
 }

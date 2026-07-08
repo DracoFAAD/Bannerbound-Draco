@@ -114,6 +114,10 @@ public final class ClientPayloadHandler {
         context.enqueueWork(() -> com.bannerbound.core.client.ClientChronicleState.enqueueToast(payload));
     }
 
+    public static void handleShowTutorialPopup(ShowTutorialPopupPayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> com.bannerbound.core.client.ClientTutorialPopups.enqueue(payload));
+    }
+
     public static void handleCrisisState(CrisisStatePayload payload, IPayloadContext context) {
         context.enqueueWork(() -> com.bannerbound.core.client.ClientCrisisState.replace(payload));
     }
@@ -286,12 +290,6 @@ public final class ClientPayloadHandler {
                 s.applyStorageUpdate(payload);
             }
         });
-    }
-
-    public static void handleBlockAppealDebug(BlockAppealDebugPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> com.bannerbound.core.client.ClientBeautyDebug.setResult(
-            payload.pos(), payload.queuePosition(), payload.tracked(), payload.inHouse(),
-            payload.appeal()));
     }
 
     public static void handleResearchTreeSync(ResearchTreeSyncPayload payload, IPayloadContext context) {

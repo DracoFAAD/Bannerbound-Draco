@@ -29,7 +29,7 @@
     "duration_ticks": 6000,
     "requires_government": true
   },
-  "chronicle_entry": "bannerboundantiquity:housing",
+  "chronicle_entry": "",
   "choices": [
     {
       "id": "raise_homes",

@@ -27,7 +27,10 @@ import com.bannerbound.antiquity.craft.Tannery;
  * the marked set, never registered work blocks), the same pattern as the tannery's clay tank.
  * inFlight counts a recipe's units that hang on the racks whether still drying or dry-but-
  * uncollected: both are committed, so the Workshops.wantsAnother demand check must subtract them
- * or executors keep hanging extra inputs. takeDry returns EMPTY if the slot was raced away.
+ * or executors keep hanging extra inputs. Executors subtract inFlightForResult, not per-recipe
+ * inFlight: two recipes can dry into the SAME item (plant fiber and dry fiber both -> thatch
+ * bundle), and counting only one recipe's hangs lets its sibling double-fill the demand.
+ * takeDry returns EMPTY if the slot was raced away.
  */
 @ApiStatus.Internal
 final class RackTending {
@@ -88,6 +91,15 @@ final class RackTending {
             for (int i = 0; i < DryingRackBlockEntity.SLOTS; i++) {
                 if (rack.input(i).is(recipe.input())) count += Math.max(1, recipe.result().getCount());
             }
+        }
+        return count;
+    }
+
+    static int inFlightForResult(ServerLevel sl, List<BlockPos> racks, String category,
+                                 net.minecraft.world.item.Item result) {
+        int count = 0;
+        for (DryingRackRecipe recipe : recipes(category)) {
+            if (recipe.result().getItem() == result) count += inFlight(sl, racks, recipe);
         }
         return count;
     }

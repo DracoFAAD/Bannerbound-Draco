@@ -44,7 +44,9 @@ public final class CodexPlayerData extends SavedData {
             playerTag.putUUID("Player", entry.getKey());
             playerTag.put("Unlocked", writeStrings(entry.getValue().unlocked));
             playerTag.put("Seen", writeStrings(entry.getValue().seen));
+            playerTag.put("PopupsFired", writeStrings(entry.getValue().popupsFired));
             playerTag.putBoolean("AutoPinTutorial", entry.getValue().autoPinTutorial);
+            playerTag.putBoolean("PopupsEnabled", entry.getValue().popupsEnabled);
             players.add(playerTag);
         }
         tag.put("Players", players);
@@ -60,9 +62,12 @@ public final class CodexPlayerData extends SavedData {
             PlayerState state = new PlayerState();
             state.unlocked.addAll(readStrings(playerTag.getList("Unlocked", Tag.TAG_STRING)));
             state.seen.addAll(readStrings(playerTag.getList("Seen", Tag.TAG_STRING)));
+            state.popupsFired.addAll(readStrings(playerTag.getList("PopupsFired", Tag.TAG_STRING)));
             // Save-format invariant: absent tag = pre-toggle save, so default auto-pin ON.
             state.autoPinTutorial = !playerTag.contains("AutoPinTutorial")
                 || playerTag.getBoolean("AutoPinTutorial");
+            state.popupsEnabled = !playerTag.contains("PopupsEnabled")
+                || playerTag.getBoolean("PopupsEnabled");
             data.states.put(playerTag.getUUID("Player"), state);
         }
         return data;
@@ -83,7 +88,33 @@ public final class CodexPlayerData extends SavedData {
     public static final class PlayerState {
         private final Set<String> unlocked = new HashSet<>();
         private final Set<String> seen = new HashSet<>();
+        private final Set<String> popupsFired = new HashSet<>();
         private boolean autoPinTutorial = true;
+        private boolean popupsEnabled = true;
+
+        public boolean popupsEnabled() {
+            return popupsEnabled;
+        }
+
+        boolean setPopupsEnabled(boolean value) {
+            if (popupsEnabled == value) return false;
+            popupsEnabled = value;
+            return true;
+        }
+
+        boolean isPopupFired(String id) {
+            return popupsFired.contains(id);
+        }
+
+        boolean firePopup(String id) {
+            return popupsFired.add(id);
+        }
+
+        public boolean resetPopups() {
+            boolean changed = !popupsFired.isEmpty();
+            popupsFired.clear();
+            return changed;
+        }
 
         public Set<String> unlocked() {
             return Set.copyOf(unlocked);

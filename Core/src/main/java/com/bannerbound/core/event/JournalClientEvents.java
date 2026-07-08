@@ -46,5 +46,7 @@ public final class JournalClientEvents {
                     ClientJournalState.isMinimized() ? 0.85f : 1.15f);
             }
         }
+        com.bannerbound.core.client.ClientTutorialPopups.tick(Minecraft.getInstance());
+        com.bannerbound.core.client.ClipPlaybackManager.tick();
     }
 }

@@ -67,6 +67,7 @@ public final class ResearchEvents {
         event.addListener(new com.bannerbound.core.crisis.CrisisDefinitionLoader());
         event.addListener(new com.bannerbound.core.codex.CodexCategoryLoader());
         event.addListener(new com.bannerbound.core.codex.CodexEntryLoader());
+        event.addListener(new com.bannerbound.core.codex.TutorialPopupLoader());
         event.addListener(new com.bannerbound.core.barbarian.BarbarianLoadoutLoader());
         event.addListener(new com.bannerbound.core.barbarian.ParleyLoader());
     }

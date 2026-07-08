@@ -47,7 +47,8 @@ public record CodexCondition(
         if (custom != null) return custom.isStateBased(this);
         return switch (canonicalType()) {
             case "research_completed", "culture_completed", "research", "culture",
-                "era_reached", "flag", "job_unlocked" -> true;
+                "era_reached", "flag", "job_unlocked", "always", "settlement_founded",
+                "government_enacted", "population_reached", "dimension_entered" -> true;
             default -> false;
         };
     }
@@ -70,6 +71,9 @@ public record CodexCondition(
             case "flag" -> event.type().equals("flag") && matches(valueFlag(), event.flag());
             case "advancement" -> event.type().equals("advancement") && matches(valueAdvancement(), event.advancement());
             case "job_unlocked" -> event.type().equals("flag") && matches(jobFlag(), event.flag());
+            case "population_reached" ->
+                event.type().equals("population_reached") && intAtLeast(event.id(), valueId());
+            case "always" -> false;
             default -> event.type().equals(t) && (valueId().isEmpty() || matches(valueId(), event.id()));
         };
     }
@@ -78,8 +82,13 @@ public record CodexCondition(
         CodexTriggerRegistry.ConditionHandler custom = CodexTriggerRegistry.get(canonicalType());
         if (custom != null) return custom.isSatisfied(this, player, settlement, event);
         if (event != null && matchesEvent(event)) return true;
-        if (settlement == null) return false;
         String t = canonicalType();
+        if (t.equals("always")) return true;
+        if (t.equals("dimension_entered")) {
+            return player != null
+                && player.level().dimension().location().toString().equals(normalizedDimension());
+        }
+        if (settlement == null) return false;
         return switch (t) {
             case "research_completed", "research" -> settlement.hasCompletedResearch(valueId());
             case "culture_completed", "culture" -> settlement.hasCompletedCultureResearch(valueId());
@@ -89,8 +98,17 @@ public record CodexCondition(
                 String flagValue = jobFlag();
                 yield !flagValue.isEmpty() && ResearchManager.hasFlagEitherTree(settlement, flagValue);
             }
+            case "settlement_founded" -> true;
+            case "government_enacted" -> settlement.governmentType() != Settlement.Government.NONE;
+            case "population_reached" ->
+                intAtLeast(String.valueOf(settlement.population()), valueId());
             default -> false;
         };
+    }
+
+    private String normalizedDimension() {
+        String value = valueId();
+        return value.contains(":") ? value : "minecraft:" + value;
     }
 
     private String canonicalType() {
@@ -130,6 +148,14 @@ public record CodexCondition(
 
     private static boolean matches(String wanted, String actual) {
         return !wanted.isEmpty() && wanted.equals(actual);
+    }
+
+    private static boolean intAtLeast(String actual, String wanted) {
+        try {
+            return Integer.parseInt(actual.trim()) >= Integer.parseInt(wanted.trim());
+        } catch (NumberFormatException ex) {
+            return false;
+        }
     }
 
     private static boolean eraAtLeast(String actual, String wanted) {

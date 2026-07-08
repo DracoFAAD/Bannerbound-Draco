@@ -105,6 +105,8 @@ public final class BannerboundAntiquityJeiPlugin implements IModPlugin {
             RecipeType.create(BannerboundAntiquity.MODID, "knapping", KnappingRecipe.class);
 
     private static List<ConstructionRecipe> constructionRecipes;
+    private static List<CarpentryRecipe> carpentryRecipeCache = List.of();
+    private static List<KnappingRecipe> knappingRecipeCache = List.of();
     private static List<CastingRecipe> castingRecipes;
 
     private static List<ConstructionRecipe> constructionRecipes() {
@@ -147,6 +149,15 @@ public final class BannerboundAntiquityJeiPlugin implements IModPlugin {
                     Component.translatable("bannerboundantiquity.jei.construction.cut_plant_fiber.note")
                 ),
                 new ConstructionRecipe(
+                    id("cut_dry_fiber"),
+                    List.of(
+                        cuttingTools(),
+                        List.of(new ItemStack(Items.DEAD_BUSH))
+                    ),
+                    new ItemStack(BannerboundAntiquity.DRY_FIBER.get()),
+                    Component.translatable("bannerboundantiquity.jei.construction.cut_dry_fiber.note")
+                ),
+                new ConstructionRecipe(
                     id("cut_sticks"),
                     List.of(
                         cuttingTools(),
@@ -160,7 +171,8 @@ public final class BannerboundAntiquityJeiPlugin implements IModPlugin {
                     List.of(
                         List.of(new ItemStack(BannerboundAntiquity.FLINT_BLADE.get())),
                         List.of(new ItemStack(Items.STICK)),
-                        List.of(new ItemStack(BannerboundAntiquity.PLANT_FIBER.get()))
+                        List.of(new ItemStack(BannerboundAntiquity.PLANT_FIBER.get()),
+                                new ItemStack(BannerboundAntiquity.DRY_FIBER.get()))
                     ),
                     new ItemStack(BannerboundAntiquity.FLINT_KNIFE.get()),
                     Component.translatable("bannerboundantiquity.jei.construction.flint_knife.note")
@@ -709,11 +721,15 @@ public final class BannerboundAntiquityJeiPlugin implements IModPlugin {
         registration.addRecipes(KILN, KilnRecipeManager.all());
         registration.addRecipes(MORTAR, MortarRecipeManager.all());
         registration.addRecipes(DRYING, DryingRackRecipeManager.all());
-        registration.addRecipes(CARPENTRY, carpentryRecipes());
+        // Lists built fresh per call must be cached at registration: JEI hideRecipes matches by
+        // instance, so hiding a rebuilt list is a silent no-op against the registered recipes.
+        carpentryRecipeCache = carpentryRecipes();
+        registration.addRecipes(CARPENTRY, carpentryRecipeCache);
         registration.addRecipes(CONSTRUCTION, constructionRecipes());
         registration.addRecipes(CASTING, castingRecipes());
         registration.addRecipes(COLD_HAMMER, AnvilRecipeManager.all());
-        registration.addRecipes(KNAPPING, knappingRecipes());
+        knappingRecipeCache = knappingRecipes();
+        registration.addRecipes(KNAPPING, knappingRecipeCache);
 
         registration.addIngredientInfo(BannerboundAntiquity.CRAFTING_STONE_ITEM.get(),
             Component.translatable("bannerboundantiquity.jei.info.crafting_stone"));
@@ -735,6 +751,8 @@ public final class BannerboundAntiquityJeiPlugin implements IModPlugin {
             Component.translatable("bannerboundantiquity.jei.info.bone_knife"));
         registration.addIngredientInfo(BannerboundAntiquity.WOODEN_KNIFE.get(),
             Component.translatable("bannerboundantiquity.jei.info.wooden_knife"));
+        registration.addIngredientInfo(BannerboundAntiquity.STONE_KNIFE.get(),
+            Component.translatable("bannerboundantiquity.jei.info.stone_knife"));
         registration.addIngredientInfo(BannerboundAntiquity.CHOPPING_STUMP_ITEM.get(),
             Component.translatable("bannerboundantiquity.jei.info.chopping_stump"));
         registration.addIngredientInfo(BannerboundAntiquity.FIREWOOD.get(),
@@ -833,15 +851,18 @@ public final class BannerboundAntiquityJeiPlugin implements IModPlugin {
             BannerboundAntiquityJeiPlugin::shouldHideKiln);
         syncCustomType(jeiRecipes, MORTAR, MortarRecipeManager.all(),
             BannerboundAntiquityJeiPlugin::shouldHideMortar);
-        syncCustomType(jeiRecipes, CARPENTRY, carpentryRecipes(),
+        syncCustomType(jeiRecipes, CARPENTRY, carpentryRecipeCache,
             BannerboundAntiquityJeiPlugin::shouldHideCarpentry);
+        syncCustomType(jeiRecipes, DRYING, DryingRackRecipeManager.all(),
+            BannerboundAntiquityJeiPlugin::shouldHideDrying);
         syncCustomType(jeiRecipes, CONSTRUCTION, constructionRecipes(),
             BannerboundAntiquityJeiPlugin::shouldHideConstruction);
         syncCustomType(jeiRecipes, CASTING, castingRecipes(),
             BannerboundAntiquityJeiPlugin::shouldHideCasting);
         syncCustomType(jeiRecipes, COLD_HAMMER, AnvilRecipeManager.all(),
             BannerboundAntiquityJeiPlugin::shouldHideColdHammer);
-        syncCustomType(jeiRecipes, KNAPPING, knappingRecipes(), BannerboundAntiquityJeiPlugin::shouldHideKnapping);
+        syncCustomType(jeiRecipes, KNAPPING, knappingRecipeCache,
+            BannerboundAntiquityJeiPlugin::shouldHideKnapping);
     }
 
     private <T> void syncCustomType(IRecipeManager recipeManager, RecipeType<T> recipeType,
@@ -994,13 +1015,15 @@ public final class BannerboundAntiquityJeiPlugin implements IModPlugin {
     }
 
     private static boolean shouldHideKnapping(KnappingRecipe recipe) {
-        if (outputKnown(recipe.output())) {
+        return shouldHideOutput(recipe.output());
+    }
+
+    private static boolean shouldHideDrying(DryingRackRecipe recipe) {
+        if (outputKnown(recipe.result())) {
             return false;
         }
-        if (shouldHideOutput(recipe.output())) {
-            return true;
-        }
-        return false;
+        return shouldHideOutput(recipe.result())
+            || shouldHideOutput(new ItemStack(recipe.input()));
     }
 
     private static boolean allIngredientChoicesHidden(net.minecraft.world.item.crafting.Ingredient ingredient) {
@@ -1099,9 +1122,12 @@ public final class BannerboundAntiquityJeiPlugin implements IModPlugin {
         public void setRecipe(IRecipeLayoutBuilder builder, CraftingStoneRecipe recipe, IFocusGroup focuses) {
             int i = 0;
             for (CraftingStoneRecipe.Ing ing : recipe.ingredients()) {
-                builder.addInputSlot(1 + (i % 3) * 20, 1 + (i / 3) * 20)
+                var slot = builder.addInputSlot(1 + (i % 3) * 20, 1 + (i / 3) * 20)
                     .setStandardSlotBackground()
                     .addItemStack(new ItemStack(ing.item(), ing.count()));
+                if (ing.item() == BannerboundAntiquity.PLANT_FIBER.get()) {
+                    slot.addItemStack(new ItemStack(BannerboundAntiquity.DRY_FIBER.get(), ing.count()));
+                }
                 i++;
             }
             builder.addOutputSlot(119, 20)

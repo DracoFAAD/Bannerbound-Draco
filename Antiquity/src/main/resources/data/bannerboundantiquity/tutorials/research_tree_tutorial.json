@@ -1,0 +1,27 @@
+{
+  "trigger": {
+    "any": [
+      {
+        "type": "menu_opened",
+        "id": "research_tree"
+      }
+    ]
+  },
+  "priority": "toast",
+  "once": true,
+  "order": 40,
+  "pages": [
+    {
+      "title": "The Research Tree",
+      "text": "Your settlement generates &9science&r over time. The header at the top shows how much you earn each second. Every &6citizen&r adds to the rate, so a growing settlement learns faster!\n\n&bDrag&r the board to pan around, and &bscroll&r to zoom."
+    },
+    {
+      "title": "Starting research",
+      "text": "&bLeft-click&r an available node to start researching it. &bRight-click&r a node deeper in the tree to &6queue&r it, along with any missing prerequisites, in order.\n\nOnly &cone&r research can be active at a time, but no progress is ever lost."
+    },
+    {
+      "title": "Eras ahead",
+      "text": "The tree is divided into &6eras&r. Nodes beyond your current era stay locked until your settlement advances. Hover over any node to see what completing it will unlock.\n\nNew tabs like &dCulture&r and &eFaith&r will appear up here as your settlement develops."
+    }
+  ]
+}

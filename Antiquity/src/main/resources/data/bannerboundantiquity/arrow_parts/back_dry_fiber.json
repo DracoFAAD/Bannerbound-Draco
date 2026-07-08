@@ -1,0 +1,11 @@
+{
+    "slot":  "back",
+    "material":  "dry_fiber",
+    "ingredient":  "bannerboundantiquity:dry_fiber",
+    "damage":  1,
+    "weight":  0,
+    "accuracy":  1.5,
+    "priority":  0,
+    "item_texture":  "bannerboundantiquity:item/arrows/fiber_arrow_back",
+    "projectile_texture":  "bannerboundantiquity:textures/projectiles/fiber_back.png"
+}

@@ -8,13 +8,13 @@
     ]
   },
   "priority": "interrupt",
+  "entry": "bannerboundantiquity:path_to_founding_tutorial",
   "once": true,
   "order": 30,
   "pages": [
     {
       "title": "Path Towards a Settlement",
-      "text": "You've made a &abone axe&r! It is time to obtain the &cfirewood&r for your first campfire, which will start your first settlement!",
-      "image": "bannerbound:path_settlement_img0"
+      "text": "You've made a &abone axe&r! It is time to obtain the &cfirewood&r for your first campfire, which will start your first settlement!"
     },
     {
       "title": "The chopping stump",

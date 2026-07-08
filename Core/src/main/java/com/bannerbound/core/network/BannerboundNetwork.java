@@ -191,6 +191,16 @@ public final class BannerboundNetwork {
             ServerPayloadHandler::handleSetAutoPinTutorial
         );
         registrar.playToServer(
+            SetTutorialPopupsPayload.TYPE,
+            SetTutorialPopupsPayload.STREAM_CODEC,
+            ServerPayloadHandler::handleSetTutorialPopups
+        );
+        registrar.playToServer(
+            RequestTutorialPopupPayload.TYPE,
+            RequestTutorialPopupPayload.STREAM_CODEC,
+            ServerPayloadHandler::handleRequestTutorialPopup
+        );
+        registrar.playToServer(
             MenuOpenedPayload.TYPE,
             MenuOpenedPayload.STREAM_CODEC,
             ServerPayloadHandler::handleMenuOpened
@@ -481,11 +491,6 @@ public final class BannerboundNetwork {
             ServerPayloadHandler::handleEditField
         );
         registrar.playToServer(
-            RequestBlockAppealPayload.TYPE,
-            RequestBlockAppealPayload.STREAM_CODEC,
-            ServerPayloadHandler::handleRequestBlockAppeal
-        );
-        registrar.playToServer(
             RequestHomeCitizenListPayload.TYPE,
             RequestHomeCitizenListPayload.STREAM_CODEC,
             ServerPayloadHandler::handleRequestHomeCitizenList
@@ -693,11 +698,6 @@ public final class BannerboundNetwork {
                 ClientPayloadHandler::handleTradeStorage
             );
             registrar.playToClient(
-                BlockAppealDebugPayload.TYPE,
-                BlockAppealDebugPayload.STREAM_CODEC,
-                ClientPayloadHandler::handleBlockAppealDebug
-            );
-            registrar.playToClient(
                 ResearchTreeSyncPayload.TYPE,
                 ResearchTreeSyncPayload.STREAM_CODEC,
                 ClientPayloadHandler::handleResearchTreeSync
@@ -801,6 +801,11 @@ public final class BannerboundNetwork {
                 CodexToastPayload.TYPE,
                 CodexToastPayload.STREAM_CODEC,
                 ClientPayloadHandler::handleCodexToast
+            );
+            registrar.playToClient(
+                ShowTutorialPopupPayload.TYPE,
+                ShowTutorialPopupPayload.STREAM_CODEC,
+                ClientPayloadHandler::handleShowTutorialPopup
             );
             registrar.playToClient(
                 CrisisStatePayload.TYPE,
@@ -1119,11 +1124,6 @@ public final class BannerboundNetwork {
                 (payload, context) -> {}
             );
             registrar.playToClient(
-                BlockAppealDebugPayload.TYPE,
-                BlockAppealDebugPayload.STREAM_CODEC,
-                (payload, context) -> {}
-            );
-            registrar.playToClient(
                 ResearchTreeSyncPayload.TYPE,
                 ResearchTreeSyncPayload.STREAM_CODEC,
                 (payload, context) -> {}
@@ -1226,6 +1226,11 @@ public final class BannerboundNetwork {
             registrar.playToClient(
                 CodexToastPayload.TYPE,
                 CodexToastPayload.STREAM_CODEC,
+                (payload, context) -> {}
+            );
+            registrar.playToClient(
+                ShowTutorialPopupPayload.TYPE,
+                ShowTutorialPopupPayload.STREAM_CODEC,
                 (payload, context) -> {}
             );
             registrar.playToClient(

@@ -66,10 +66,14 @@ public final class CodexEntryLoader extends SimpleJsonResourceReloadListener {
     }
 
     private static CodexUnlockRule readUnlock(JsonObject obj) {
-        if (!obj.has("unlock") || obj.get("unlock").isJsonNull()) {
+        return readRule(obj, "unlock");
+    }
+
+    static CodexUnlockRule readRule(JsonObject obj, String key) {
+        if (!obj.has(key) || obj.get(key).isJsonNull()) {
             return CodexUnlockRule.unlockedByDefault();
         }
-        JsonObject unlock = GsonHelper.getAsJsonObject(obj, "unlock");
+        JsonObject unlock = GsonHelper.getAsJsonObject(obj, key);
         if (unlock.has("any")) {
             return new CodexUnlockRule(CodexUnlockRule.Mode.ANY,
                 readConditions(GsonHelper.getAsJsonArray(unlock, "any")));

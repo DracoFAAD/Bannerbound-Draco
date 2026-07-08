@@ -163,6 +163,10 @@ public class BloomeryBlockEntity extends BlockEntity {
         return smeltProgress;
     }
 
+    public boolean isSmelting() {
+        return smeltingActive;
+    }
+
     private void spawnIgniteBurst() {
         if (level instanceof ServerLevel server) {
             server.sendParticles(ParticleTypes.FLAME,

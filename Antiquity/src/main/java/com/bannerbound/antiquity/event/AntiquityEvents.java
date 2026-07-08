@@ -175,6 +175,7 @@ public final class AntiquityEvents {
     private static final float GRAVEL_FLINT_CHANCE = 0.25f;
     private static final float GRASS_FIBER_CHANCE = 0.50f;
     private static final float LEAVES_STICK_CHANCE = 0.40f;
+    private static final float DEAD_BUSH_FIBER_CHANCE = 0.25f;
 
     @SubscribeEvent
     static void onAddReloadListener(AddReloadListenerEvent event) {
@@ -986,6 +987,12 @@ public final class AntiquityEvents {
         } else if (state.is(BlockTags.LEAVES)) {
             if (rng.nextFloat() < LEAVES_STICK_CHANCE) {
                 Block.popResource(level, pos, new ItemStack(Items.STICK, 1 + rng.nextInt(2)));
+            }
+            damageIfDurable(tool, player);
+        } else if (state.is(Blocks.DEAD_BUSH)) {
+            if (rng.nextFloat() < DEAD_BUSH_FIBER_CHANCE) {
+                Block.popResource(level, pos,
+                    new ItemStack(BannerboundAntiquity.DRY_FIBER.get()));
             }
             damageIfDurable(tool, player);
         }

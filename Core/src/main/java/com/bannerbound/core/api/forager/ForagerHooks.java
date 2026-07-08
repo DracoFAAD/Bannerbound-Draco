@@ -15,9 +15,9 @@ import net.minecraft.world.level.block.state.BlockState;
  * can't replicate itself because the fiber item lives in the expansion. Core's default drops sticks
  * from leaves (40% chance) plus a forager-only trickle of wheat seeds from grass (25%) to seed the
  * farmer chain; drops are additive to bare-hand loot. Antiquity replaces the whole handler in its
- * common setup via {@link #setScavengeYield} (last non-null wins) to add plant fibers from grass,
- * mirroring the player's knife chances so a forager is exactly as productive as a player swinging a
- * blade. {@link #scavenge} is the call site the work goal invokes.
+ * common setup via {@link #setScavengeYield} (last non-null wins) to add plant fibers from grass
+ * and dry fiber from dead bushes, mirroring the player's knife chances so a forager is exactly as
+ * productive as a player swinging a blade. {@link #scavenge} is the call site the work goal invokes.
  */
 public final class ForagerHooks {
 

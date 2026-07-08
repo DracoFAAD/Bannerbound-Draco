@@ -67,6 +67,12 @@ import net.neoforged.neoforge.network.PacketDistributor;
  * (CarpentrySawState / MasonChiselState) so chips do not obscure the animation. Open: only carpentry
  * chip removal is wired in onInteract - masonry chips show the remove hover label and the server
  * handles MasonryActionPayload.REMOVE_QUEUE, but no client code sends it yet.
+ *
+ * <p>ghostNameOnRenderLevelStage additionally labels EVERY GhostRecipeWorkstation's floating
+ * preview with the result item's name (amber while it is a ghost selection, white once the pile
+ * exactly matches), so players can tell what a station is set to craft before committing. The
+ * label sits above the preview at ghostPreviewY; the compact stations' transient "queue"/"remove"
+ * hover labels were lifted to +0.42 so the persistent name below them never collides.
  */
 @EventBusSubscriber(modid = BannerboundAntiquity.MODID, value = Dist.CLIENT)
 @ApiStatus.Internal
@@ -93,6 +99,7 @@ public final class StationReadoutEvents {
     private static final float PICKER_CHIP = 0.34F; // must match the BER picker's render scale
     private static final float BUDGET_SCALE = 0.035F;
     private static final float HOVER_LABEL_SCALE = 0.0075F;
+    private static final float NAME_LABEL_SCALE = 0.009F;
     private static final int LABEL_BG = 0x00000000;
     static final double CHIP_BOX = 0.28;
     static final double SCAN = 7.0;
@@ -149,7 +156,7 @@ public final class StationReadoutEvents {
                 if (ghostHover.picked().target().action() == GhostActionPayload.FILL) {
                     drawBillboardText(pose, buffer, font,
                         Component.translatable("bannerboundantiquity.carpentry.readout.queue").getString(),
-                        ghostHover.picked().target().center().add(0.0, 0.28, 0.0), camera,
+                        ghostHover.picked().target().center().add(0.0, 0.42, 0.0), camera,
                         HOVER_LABEL_SCALE, 0xFFFFFFFF, LABEL_BG);
                 }
             }
@@ -356,6 +363,45 @@ public final class StationReadoutEvents {
     }
 
     @SubscribeEvent
+    public static void ghostNameOnRenderLevelStage(RenderLevelStageEvent event) {
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS) return;
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player == null || mc.level == null) return;
+        Camera camera = event.getCamera();
+        PoseStack pose = event.getPoseStack();
+        MultiBufferSource.BufferSource buffer = mc.renderBuffers().bufferSource();
+        Font font = mc.font;
+        Vec3 pp = mc.player.position();
+        int pcx = mc.player.chunkPosition().x;
+        int pcz = mc.player.chunkPosition().z;
+        double r2 = SCAN * SCAN;
+        boolean drew = false;
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dz = -1; dz <= 1; dz++) {
+                for (BlockEntity be : mc.level.getChunk(pcx + dx, pcz + dz).getBlockEntities().values()) {
+                    if (!(be instanceof com.bannerbound.antiquity.block.entity.GhostRecipeWorkstation ws)) continue;
+                    BlockPos p = be.getBlockPos();
+                    if (p.getCenter().distanceToSqr(pp) > r2) continue;
+                    if (CarpentrySawState.activeFor(p) || MasonChiselState.activeFor(p)) continue;
+                    if (be instanceof com.bannerbound.antiquity.block.entity.PotterySlabBlockEntity pot
+                            && !pot.getInProgress().isEmpty()) continue;
+                    ItemStack ghost = ws.getGhostResult();
+                    ItemStack shown = !ghost.isEmpty() ? ghost : ws.getResult();
+                    if (shown.isEmpty()) continue;
+                    boolean compact = be instanceof WoodworkingTableBlockEntity
+                        || be instanceof MasonsBenchBlockEntity;
+                    Vec3 center = new Vec3(p.getX() + 0.5,
+                        p.getY() + ws.ghostPreviewY() + (compact ? 0.26 : 0.34), p.getZ() + 0.5);
+                    drawBillboardText(pose, buffer, font, shown.getHoverName().getString(), center, camera,
+                        NAME_LABEL_SCALE, ghost.isEmpty() ? 0xFFFFFFFF : 0xFFFFD27F, LABEL_BG);
+                    drew = true;
+                }
+            }
+        }
+        if (drew) buffer.endBatch();
+    }
+
+    @SubscribeEvent
     public static void masonryOnRenderLevelStage(RenderLevelStageEvent event) {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS) return;
         Minecraft mc = Minecraft.getInstance();
@@ -406,7 +452,7 @@ public final class StationReadoutEvents {
                 if (ghostHover.picked().target().action() == GhostActionPayload.FILL) {
                     masonryDrawBillboardText(pose, buffer, font,
                         Component.translatable("bannerboundantiquity.masonry.readout.queue").getString(),
-                        ghostHover.picked().target().center().add(0.0, 0.28, 0.0), camera,
+                        ghostHover.picked().target().center().add(0.0, 0.42, 0.0), camera,
                         HOVER_LABEL_SCALE, 0xFFFFFFFF, LABEL_BG);
                 }
             }

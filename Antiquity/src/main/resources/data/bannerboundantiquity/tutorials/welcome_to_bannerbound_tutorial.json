@@ -1,12 +1,12 @@
 {
   "priority": "interrupt",
   "once": true,
-  "entry": "getting-started",
+  "entry": "bannerboundantiquity:starting_out",
   "order": 10,
   "pages": [
     {
       "title": "Welcome to Bannerbound: Antiquity!",
-      "text": "Before starting your first &2&lsettlement&r, you must first survive on your own in this new world. First, you'll notice you &4cannot punch trees&r like in the regular game; you must craft your first &cset of bone tools&r. This is only one of many changes this mod will introduce.",
+      "text": "Before starting your first &6settlement&r, you must first survive on your own in this new world. First, you'll notice you &4cannot punch trees&r like in the regular game; you must craft your first &cset of bone tools&r. This is only one of many changes this mod will introduce.",
       "clip": "bannerbound:welcome_c0"
     },
     {
@@ -21,7 +21,7 @@
     },
     {
       "title": "Flint blade",
-      "text": "Then, &6smash&r the flint again to get an &e&nflint blade&r.\n ",
+      "text": "Then, &6smash&r the flint again to get a &e&nflint blade&r.\n ",
       "clip": "bannerbound:welcome_c3"
     },
     {

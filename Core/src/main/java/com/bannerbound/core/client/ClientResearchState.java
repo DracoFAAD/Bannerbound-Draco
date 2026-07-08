@@ -88,6 +88,17 @@ public final class ClientResearchState {
         }
     }
 
+    /** Item knowledge is bypassed entirely for creative players, so every knowledge consumer
+     *  (JEI hiding, disguises) must refresh when the local gamemode flips - otherwise leaving
+     *  creative keeps the everything-visible state until the next research sync. */
+    public static void refreshKnowledgeIfGamemodeChanged(boolean creative) {
+        if (creative == lastKnownCreative) return;
+        lastKnownCreative = creative;
+        notifyKnowledgeListeners();
+    }
+
+    private static boolean lastKnownCreative;
+
     public static void removeKnowledgeListener(Runnable listener) {
         KNOWLEDGE_LISTENERS.remove(listener);
     }

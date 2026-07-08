@@ -22,7 +22,8 @@ public record CodexSyncPayload(
     List<Entry> entries,
     List<String> unlocked,
     List<String> seen,
-    boolean autoPinTutorial
+    boolean autoPinTutorial,
+    boolean tutorialPopupsEnabled
 ) implements CustomPacketPayload {
     public record Category(String id, String title, String icon, int order) {
         public static final StreamCodec<ByteBuf, Category> STREAM_CODEC = StreamCodec.of(
@@ -94,7 +95,10 @@ public record CodexSyncPayload(
         boolean secret,
         String ponder,
         List<PageElement> pages,
-        String searchableText
+        String searchableText,
+        /** Linked tutorial popup id ("" = none) - drives the View Tutorial button. An entry whose
+         *  tutorial equals its own id is a server-synthesized Tutorials archive of that popup. */
+        String tutorial
     ) {
         public static final StreamCodec<ByteBuf, Entry> STREAM_CODEC = StreamCodec.of(
             (buf, e) -> {
@@ -108,6 +112,7 @@ public record CodexSyncPayload(
                 ByteBufCodecs.STRING_UTF8.encode(buf, e.ponder());
                 PageElement.STREAM_CODEC.apply(ByteBufCodecs.list()).encode(buf, e.pages());
                 ByteBufCodecs.STRING_UTF8.encode(buf, e.searchableText());
+                ByteBufCodecs.STRING_UTF8.encode(buf, e.tutorial());
             },
             buf -> new Entry(
                 ByteBufCodecs.STRING_UTF8.decode(buf),
@@ -119,6 +124,7 @@ public record CodexSyncPayload(
                 ByteBufCodecs.BOOL.decode(buf),
                 ByteBufCodecs.STRING_UTF8.decode(buf),
                 PageElement.STREAM_CODEC.apply(ByteBufCodecs.list()).decode(buf),
+                ByteBufCodecs.STRING_UTF8.decode(buf),
                 ByteBufCodecs.STRING_UTF8.decode(buf)
             )
         );
@@ -127,7 +133,7 @@ public record CodexSyncPayload(
             List<PageElement> pages = new ArrayList<>(entry.pages().size());
             for (CodexPageElement page : entry.pages()) pages.add(PageElement.from(page));
             return new Entry(entry.id(), entry.category(), entry.title(), entry.subtitle(), entry.icon(),
-                entry.order(), entry.secret(), entry.ponder(), pages, entry.searchableText());
+                entry.order(), entry.secret(), entry.ponder(), pages, entry.searchableText(), "");
         }
     }
 
@@ -141,12 +147,14 @@ public record CodexSyncPayload(
             ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()).encode(buf, p.unlocked());
             ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()).encode(buf, p.seen());
             ByteBufCodecs.BOOL.encode(buf, p.autoPinTutorial());
+            ByteBufCodecs.BOOL.encode(buf, p.tutorialPopupsEnabled());
         },
         buf -> new CodexSyncPayload(
             Category.STREAM_CODEC.apply(ByteBufCodecs.list()).decode(buf),
             Entry.STREAM_CODEC.apply(ByteBufCodecs.list()).decode(buf),
             ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()).decode(buf),
             ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()).decode(buf),
+            ByteBufCodecs.BOOL.decode(buf),
             ByteBufCodecs.BOOL.decode(buf)
         )
     );

@@ -51,8 +51,14 @@ public final class ChronicleToastLayer implements LayeredDraw.Layer {
         graphics.renderOutline(x, y, WIDTH, HEIGHT, (Math.round(0xAA * out) << 24) | 0xD4AF37);
         graphics.fill(x, y, x + 3, y + HEIGHT, (Math.round(0xCC * out) << 24) | 0xD4AF37);
 
-        ItemStack icon = iconStack(toast.icon());
-        graphics.renderItem(icon, x + 11, y + 14);
+        // The toast fires the instant an entry unlocks - before the item is obtained - so the
+        // icon must bypass the unknown-item question-mark swap or every toast reads as "?".
+        UnknownItemHelper.setBypassUnknownSwap(true);
+        try {
+            graphics.renderItem(iconStack(toast.icon()), x + 11, y + 14);
+        } finally {
+            UnknownItemHelper.setBypassUnknownSwap(false);
+        }
 
         Font font = mc.font;
         String title = toast.count() <= 1 ? "New Chronicle entry" : toast.count() + " new Chronicle entries";

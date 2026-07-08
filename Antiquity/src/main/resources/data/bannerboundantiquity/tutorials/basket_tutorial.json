@@ -1,0 +1,38 @@
+{
+  "trigger": {
+    "any": [
+      {
+        "type": "item_obtained",
+        "item": "bannerboundantiquity:basket"
+      },
+      {
+        "type": "block_used",
+        "block": "bannerboundantiquity:basket"
+      },
+      {
+        "type": "block_placed",
+        "block": "bannerboundantiquity:basket"
+      }
+    ]
+  },
+  "priority": "toast",
+  "once": true,
+  "order": 50,
+  "pages": [
+    {
+      "title": "Baskets",
+      "text": "Your first &6basket&r - the settlement's earliest storage! It holds &e9&r stacks; &b{key:key.use}&r to open it. Whatever sits in the first slot is displayed on top of the basket, so you can tell your stores apart at a glance.",
+      "clip": "bannerbound:basket_c0"
+    },
+    {
+      "title": "The common stores",
+      "text": "Baskets placed on your settlement's &6claimed land&r join the shared &2storage pool&r. Citizens fetch tools, materials, and food from them while they work - what one gathers, all may draw upon.",
+      "clip": "bannerbound:basket_c1"
+    },
+    {
+      "title": "Moving a basket",
+      "text": "&b{key:key.sneak} + {key:key.use}&r with an &eempty hand&r scoops the whole basket up - contents and all - as a single item you can carry and place elsewhere.\n\nBreaking it normally instead spills everything onto the ground!",
+      "clip": "bannerbound:basket_c2"
+    }
+  ]
+}

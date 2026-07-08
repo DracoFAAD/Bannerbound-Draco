@@ -68,8 +68,6 @@ public final class ChronicleScreen extends PolishedScreen {
 
     private final List<EntryRow> entryRows = new ArrayList<>();
     private final List<LinkRect> linkRects = new ArrayList<>();
-    private final List<ClipRect> clipRects = new ArrayList<>();
-    private final Set<String> playingClips = new HashSet<>();
     private final List<String> backStack = new ArrayList<>();
     private final List<String> forwardStack = new ArrayList<>();
 
@@ -135,6 +133,18 @@ public final class ChronicleScreen extends PolishedScreen {
                 })
             .bounds(this.width - MARGIN - autoPinW, top - 2, autoPinW, 18)
             .build());
+        boolean popups = ClientChronicleState.tutorialPopupsEnabled();
+        int popupsW = Math.min(130, this.width - 2 * MARGIN);
+        addRenderableWidget(PolishButton.polished(
+                Component.translatable(popups
+                    ? "bannerbound.chronicle.popups.on"
+                    : "bannerbound.chronicle.popups.off"),
+                b -> {
+                    ClientChronicleState.toggleTutorialPopups();
+                    rebuildChronicleWidgets();
+                })
+            .bounds(this.width - MARGIN - autoPinW - 4 - popupsW, top - 2, popupsW, 18)
+            .build());
 
         int mainX = left + SIDEBAR_W + GAP;
         addRenderableWidget(PolishButton.polished(Component.literal("<"), b -> navigateToAdjacent(-1))
@@ -145,10 +155,22 @@ public final class ChronicleScreen extends PolishedScreen {
             .build());
 
         CodexSyncPayload.Entry selected = selected();
+        int rightBtnX = this.width - MARGIN - 92;
         if (selected != null && !selected.ponder().isBlank() && ResearchPonderBridge.isAvailable()) {
             addRenderableWidget(PolishButton.polished(Component.translatable("bannerbound.chronicle.ponder"),
                     b -> ResearchPonderBridge.open(selected.ponder()))
-                .bounds(this.width - MARGIN - 92, top + 30, 92, 20)
+                .bounds(rightBtnX, top + 30, 92, 20)
+                .build());
+            rightBtnX -= 96;
+        }
+        if (selected != null && !selected.tutorial().isBlank()
+                && ClientChronicleState.isUnlocked(selected.id())) {
+            String popupId = selected.tutorial();
+            addRenderableWidget(PolishButton.polished(
+                    Component.translatable("bannerbound.chronicle.view_tutorial"),
+                    b -> PacketDistributor.sendToServer(
+                        new com.bannerbound.core.network.RequestTutorialPopupPayload(popupId)))
+                .bounds(rightBtnX, top + 30, 92, 20)
                 .build());
         }
     }
@@ -223,11 +245,10 @@ public final class ChronicleScreen extends PolishedScreen {
         if (fill != 0) graphics.fill(x, y, x + w, y + ROW_H, fill);
         graphics.renderOutline(x, y, w, ROW_H, selected ? 0xAA9FC8D6 : 0x33374249);
 
-        ItemStack icon = iconStack(entry.icon());
-        graphics.renderItem(icon, x + 4, y + 3);
+        renderItemUnmasked(graphics, iconStack(entry.icon()), x + 4, y + 3);
         boolean pinned = ClientJournalState.isChroniclePinned(entry.id());
-        String label = unlocked ? entry.title() : "???";
-        int color = unlocked ? 0xFFE6E6E6 : 0xFF777777;
+        String label = entry.title();
+        int color = 0xFFE6E6E6;
         int rightReserved = (pinned ? SIDEBAR_PIN_SIZE + 4 : 0)
             + (ClientChronicleState.isUnread(entry.id()) ? 10 : 0);
         graphics.drawString(this.font, trim(this.font, label, w - 34 - rightReserved),
@@ -245,7 +266,6 @@ public final class ChronicleScreen extends PolishedScreen {
 
     private void renderArticle(GuiGraphics graphics, int mouseX, int mouseY, int x, int y, int w, int h) {
         linkRects.clear();
-        clipRects.clear();
         pinRect = null;
         CodexSyncPayload.Entry entry = selected();
         if (entry == null || !ClientChronicleState.isUnlocked(entry.id())) {
@@ -257,7 +277,10 @@ public final class ChronicleScreen extends PolishedScreen {
         graphics.enableScissor(x, y, x + w, y + h);
         int drawY = y - articleScroll;
         graphics.drawString(this.font, trim(this.font, entry.title(), w), x, drawY, 0xFFFFF2C8, false);
-        drawPin(graphics, entry, x + w - HEADER_PIN_SIZE - 2, drawY - 5, mouseX, mouseY);
+        // Synthesized tutorial-archive entries (id == tutorial) have no server-side entry to pin.
+        if (!entry.tutorial().equals(entry.id())) {
+            drawPin(graphics, entry, x + w - HEADER_PIN_SIZE - 2, drawY - 5, mouseX, mouseY);
+        }
         drawY += 15;
         if (!entry.subtitle().isBlank()) {
             graphics.drawString(this.font, trim(this.font, entry.subtitle(), w), x, drawY, 0xFF9EAAB0, false);
@@ -306,13 +329,12 @@ public final class ChronicleScreen extends PolishedScreen {
         int used = 0;
         for (String itemId : page.items()) {
             if (used + 18 > maxInputW) break;
-            graphics.renderItem(iconStack(itemId), iconX + used, iconY);
+            renderItemUnmasked(graphics, iconStack(itemId), iconX + used, iconY);
             used += 20;
         }
         int arrowX = x + Math.min(maxInputW + 8, Math.max(42, used + 16));
         graphics.drawString(this.font, ">", arrowX, iconY + 4, 0xFF7EE0FF, false);
-        ItemStack output = iconStack(page.recipe());
-        graphics.renderItem(output, Math.min(x + w - 24, arrowX + 18), iconY);
+        renderItemUnmasked(graphics, iconStack(page.recipe()), Math.min(x + w - 24, arrowX + 18), iconY);
         return y + boxH;
     }
 
@@ -333,7 +355,7 @@ public final class ChronicleScreen extends PolishedScreen {
         int col = 0;
         int perRow = Math.max(1, w / 22);
         for (String id : page.items()) {
-            graphics.renderItem(iconStack(id), x + col * 22, y);
+            renderItemUnmasked(graphics, iconStack(id), x + col * 22, y);
             col++;
             if (col >= perRow) {
                 col = 0;
@@ -346,49 +368,43 @@ public final class ChronicleScreen extends PolishedScreen {
     private int renderBlockLink(GuiGraphics graphics, CodexSyncPayload.PageElement page,
                                 int x, int y, int w, int mouseX, int mouseY) {
         CodexSyncPayload.Entry target = ClientChronicleState.get(page.entry());
-        if (target == null || target.secret()) return y;
-        boolean unlocked = ClientChronicleState.isUnlocked(target.id());
+        // Locked targets vanish entirely - undiscovered entries must leave no trace.
+        if (target == null || !ClientChronicleState.isUnlocked(target.id())) return y;
         String label = !page.text().isBlank() ? page.text() : target.title();
-        int color = unlocked ? 0xFF7EE0FF : 0xFF777777;
-        boolean hot = unlocked && mouseX >= x && mouseX < x + w && mouseY >= y && mouseY < y + 18;
+        boolean hot = mouseX >= x && mouseX < x + w && mouseY >= y && mouseY < y + 18;
         graphics.fill(x, y, x + w, y + 18, hot ? 0x33407078 : 0x22182024);
-        graphics.drawString(this.font, "> " + trim(this.font, label, w - 12), x + 6, y + 5, color, false);
-        if (unlocked) linkRects.add(new LinkRect(target.id(), x, y, w, 18));
+        graphics.drawString(this.font, "> " + trim(this.font, label, w - 12), x + 6, y + 5, 0xFF7EE0FF, false);
+        linkRects.add(new LinkRect(target.id(), x, y, w, 18));
         return y + 20;
     }
 
     private int renderClip(GuiGraphics graphics, CodexSyncPayload.PageElement page,
                            int x, int y, int w, int mouseX, int mouseY) {
+        // Clips autoplay looping with no chrome, sized to a fixed 16:9 inset (never the full
+        // article width). Live video when the decoder has frames, the poster or a plain dark box
+        // while it warms up; a clip whose assets are absent renders nothing - pure text article.
         ClientCodexClips.Clip clip = ClientCodexClips.get(page.clip());
+        ResourceLocation video = clip.present() ? ResourceLocation.tryParse(clip.video()) : null;
+        boolean hasVideo = video != null && resourceExists(video);
         ResourceLocation poster = clip.posterLocation();
-        String caption = page.caption().isBlank() ? "Clip: " + page.clip() : page.caption();
-        int bottom = poster == null ? renderPlaceholder(graphics, caption, x, y, w, 54)
-            : renderImage(graphics, poster.toString(), caption, x, y, w);
-        int h = bottom - y - (caption.isBlank() ? 0 : 12);
-        boolean hot = mouseX >= x && mouseX < x + w && mouseY >= y && mouseY < bottom;
-        boolean playing = playingClips.contains(page.clip()) || (!playingClips.contains(page.clip()) && clip.autoplay());
-        int cx = x + w / 2;
-        int cy = y + Math.max(22, h / 2);
-        int overlay = hot ? 0xBB101820 : 0x99101820;
-        graphics.fill(cx - 16, cy - 12, cx + 16, cy + 12, overlay);
-        graphics.renderOutline(cx - 16, cy - 12, 32, 24, 0xCC7EE0FF);
-        graphics.drawString(this.font, playing ? "II" : ">", cx - (playing ? 5 : 3), cy - 4,
-            0xFFFFFFFF, false);
-        if (playing) {
-            int pulse = (int) ((Minecraft.getInstance().level == null ? 0 : Minecraft.getInstance().level.getGameTime()) % 34);
-            graphics.fill(x + 8, bottom - 6, x + 8 + Math.min(w - 16, pulse * (w - 16) / 34),
-                bottom - 4, 0xAA7EE0FF);
+        boolean hasPoster = poster != null && resourceExists(poster);
+        if (!hasVideo && !hasPoster) return y;
+
+        int videoW = Math.min(w, 340);
+        int videoH = Math.round(videoW * 9 / 16f);
+        int drawX = x + (w - videoW) / 2;
+        graphics.fill(drawX, y, drawX + videoW, y + videoH, 0xFF0C1114);
+        ResourceLocation live = hasVideo ? ClipPlaybackManager.videoTexture(clip) : null;
+        if (live != null) {
+            graphics.blit(live, drawX, y, videoW, videoH, 0f, 0f, 16, 16, 16, 16);
+        } else if (hasPoster) {
+            graphics.blit(poster, drawX, y, videoW, videoH, 0f, 0f, 16, 16, 16, 16);
         }
-        clipRects.add(new ClipRect(page.clip(), x, y, w, bottom - y));
-        if (!clip.present()) {
-            graphics.drawString(this.font, "Missing clip metadata", x + 8, y + 8, 0xFFFF7777, false);
-        } else if (!clip.video().isBlank()) {
-            String status = resourceExists(ResourceLocation.tryParse(clip.video()))
-                ? "Video asset present - poster preview"
-                : "Video metadata - poster preview";
-            graphics.drawString(this.font, trim(this.font, status, w - 16), x + 8, y + 8, 0xFFB8C0C6, false);
-        }
-        return bottom;
+        graphics.renderOutline(drawX, y, videoW, videoH, 0x665F6B72);
+        if (page.caption().isBlank()) return y + videoH;
+        graphics.drawString(this.font, applyAmp(page.caption()), drawX + 4, y + videoH + 4,
+            0xFFB8C0C6, false);
+        return y + videoH + 16;
     }
 
     private int renderImage(GuiGraphics graphics, String image, String caption, int x, int y, int w) {
@@ -418,17 +434,20 @@ public final class ChronicleScreen extends PolishedScreen {
     }
 
     private int renderRichText(GuiGraphics graphics, String text, int x, int y, int w, int mouseX, int mouseY) {
-        List<Token> tokens = tokenize(text);
+        List<Token> tokens = tokenize(TutorialPopupScreen.substitute(text));
         int cursorX = x;
         int cursorY = y;
         int lineH = this.font.lineHeight + 2;
+        // Tokens draw one drawString each, so active '&' codes must be re-applied as a carried
+        // prefix or a colored span would drop its color at the first space / line wrap.
+        String carry = "";
         for (Token token : tokens) {
             if (token.text().equals("\n")) {
                 cursorX = x;
                 cursorY += lineH;
                 continue;
             }
-            String draw = applyAmp(token.text());
+            String draw = applyAmp(carry + token.text());
             int tw = this.font.width(draw);
             if (cursorX > x && cursorX + tw > x + w) {
                 cursorX = x;
@@ -436,12 +455,12 @@ public final class ChronicleScreen extends PolishedScreen {
             }
             if (token.entryId().isBlank()) {
                 graphics.drawString(this.font, draw, cursorX, cursorY, 0xFFD8D8D8, false);
+                carry = advanceCarry(carry, token.text());
             } else {
                 CodexSyncPayload.Entry target = ClientChronicleState.get(token.entryId());
-                boolean clickable = target != null && !target.secret() && ClientChronicleState.isUnlocked(target.id());
-                boolean visibleLocked = target != null && !target.secret();
-                int color = clickable ? 0xFF7EE0FF : visibleLocked ? 0xFF888888 : 0xFFD8D8D8;
-                graphics.drawString(this.font, draw, cursorX, cursorY, color, false);
+                boolean clickable = target != null && ClientChronicleState.isUnlocked(target.id());
+                int color = clickable ? 0xFF7EE0FF : 0xFFD8D8D8;
+                graphics.drawString(this.font, applyAmp(token.text()), cursorX, cursorY, color, false);
                 if (clickable) {
                     graphics.fill(cursorX, cursorY + this.font.lineHeight, cursorX + tw,
                         cursorY + this.font.lineHeight + 1, color);
@@ -451,6 +470,23 @@ public final class ChronicleScreen extends PolishedScreen {
             cursorX += tw;
         }
         return cursorY + lineH;
+    }
+
+    /** Rolls the active legacy-code prefix forward past one token: a color code restarts the
+     *  prefix, format codes stack onto it, and a reset clears it. */
+    private static String advanceCarry(String carry, String rawToken) {
+        String result = carry;
+        for (int i = 0; i + 1 < rawToken.length(); i++) {
+            if (rawToken.charAt(i) != '&') continue;
+            char code = rawToken.charAt(i + 1);
+            ChatFormatting format = ChatFormatting.getByCode(code);
+            if (format == null) continue;
+            if (format == ChatFormatting.RESET) result = "";
+            else if (format.isColor()) result = "&" + code;
+            else result = result + "&" + code;
+            i++;
+        }
+        return result;
     }
 
     private List<Token> tokenize(String text) {
@@ -496,14 +532,6 @@ public final class ChronicleScreen extends PolishedScreen {
             Minecraft mc = Minecraft.getInstance();
             if (mc.player != null) mc.player.playSound(SoundEvents.BOOK_PAGE_TURN, 0.35f, 1.25f);
             return true;
-        }
-        for (ClipRect clip : clipRects) {
-            if (clip.contains(mouseX, mouseY)) {
-                if (!playingClips.remove(clip.clipId())) playingClips.add(clip.clipId());
-                Minecraft mc = Minecraft.getInstance();
-                if (mc.player != null) mc.player.playSound(SoundEvents.UI_BUTTON_CLICK.value(), 0.35f, 1.1f);
-                return true;
-            }
         }
         for (LinkRect link : linkRects) {
             if (link.contains(mouseX, mouseY)) {
@@ -617,6 +645,17 @@ public final class ChronicleScreen extends PolishedScreen {
         return new ItemStack(item);
     }
 
+    /** Chronicle icons always show the real item: an unlocked entry naming a not-yet-obtained
+     *  item must not render as the question-mark disguise. */
+    private static void renderItemUnmasked(GuiGraphics graphics, ItemStack stack, int x, int y) {
+        UnknownItemHelper.setBypassUnknownSwap(true);
+        try {
+            graphics.renderItem(stack, x, y);
+        } finally {
+            UnknownItemHelper.setBypassUnknownSwap(false);
+        }
+    }
+
     private static String applyAmp(String text) {
         return text == null ? "" : text.replace('&', '\u00a7');
     }
@@ -665,12 +704,6 @@ public final class ChronicleScreen extends PolishedScreen {
     }
 
     private record PinRect(String entryId, int x, int y, int w, int h) {
-        boolean contains(double px, double py) {
-            return px >= x && px < x + w && py >= y && py < y + h;
-        }
-    }
-
-    private record ClipRect(String clipId, int x, int y, int w, int h) {
         boolean contains(double px, double py) {
             return px >= x && px < x + w && py >= y && py < y + h;
         }

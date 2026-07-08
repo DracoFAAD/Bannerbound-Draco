@@ -43,7 +43,7 @@ import com.bannerbound.antiquity.craft.Tannery;
  *
  * <p>handRecipes are the NPC equivalents of the player's two-rocks / hard-surface knapping
  * gestures (AntiquityEvents.onKnapHardSurface): flint -> flint blade, bone -> 2 bone blades, the
- * gravel sift at its deterministic expected rate (4 gravel -> 1 flint), and the six stone tool
+ * gravel sift at its deterministic expected rate (4 gravel -> 1 flint), and the seven stone tool
  * heads (one rock -> one head). They are modelled as {@link CraftingStoneRecipe}s ONLY so every
  * planning surface (chooseCraft, possibleOutputs, the stocker's supply/keep views, min-stock rows)
  * iterates them like the data-driven recipes - but they are NOT performed on the Crafting Stone:
@@ -89,7 +89,8 @@ public class GeneralCraftsExecutor implements WorkExecutor {
             stoneHead(com.bannerbound.antiquity.BannerboundAntiquity.STONE_SHOVEL_HEAD.get()),
             stoneHead(com.bannerbound.antiquity.BannerboundAntiquity.STONE_HOE_HEAD.get()),
             stoneHead(com.bannerbound.antiquity.BannerboundAntiquity.STONE_SWORD_BLADE.get()),
-            stoneHead(com.bannerbound.antiquity.BannerboundAntiquity.STONE_SPEAR_POINT.get()));
+            stoneHead(com.bannerbound.antiquity.BannerboundAntiquity.STONE_SPEAR_POINT.get()),
+            stoneHead(com.bannerbound.antiquity.BannerboundAntiquity.STONE_KNIFE_HEAD.get()));
         java.util.Set<Item> set = new java.util.HashSet<>();
         for (CraftingStoneRecipe r : handRecipes) set.add(r.result().getItem());
         knapResults = set;
@@ -157,7 +158,8 @@ public class GeneralCraftsExecutor implements WorkExecutor {
                     ItemStack dried = recipe.result();
                     if (dried.isEmpty()
                             || !CraftGating.canProduceAt(sl, workBlock, dried.getItem())) continue;
-                    int inFlight = RackTending.inFlight(sl, racks, recipe);
+                    int inFlight = RackTending.inFlightForResult(sl, racks,
+                        com.bannerbound.antiquity.recipe.DryingRackRecipe.CRAFT, dried.getItem());
                     boolean wanted = ordersOnly
                         ? com.bannerbound.core.api.workshop.Workshops
                             .orderedCraftCount(workshop, dried.getItem()) - inFlight > 0
@@ -245,7 +247,8 @@ public class GeneralCraftsExecutor implements WorkExecutor {
                     .orderedCraftCount(workshop, dried.getItem())
                 + com.bannerbound.core.api.workshop.Workshops
                     .minStockDeficit(sl, settlement, workshop, dried)
-                - RackTending.inFlight(sl, racks, r);
+                - RackTending.inFlightForResult(sl, racks,
+                    com.bannerbound.antiquity.recipe.DryingRackRecipe.CRAFT, dried.getItem());
             if (trueNeed <= 0) continue;
             desired.merge(r.input(), bufferRaws ? Math.max(trueNeed, INPUT_BUFFER_CRAFTS) : trueNeed,
                 Integer::sum);

@@ -1,0 +1,16 @@
+{
+  "category": "bannerbound:getting_started",
+  "title": "Path to Founding",
+  "subtitle": "From bare hands to your first settlement",
+  "icon": "minecraft:campfire",
+  "order": 3,
+  "secret": false,
+  "tutorial": {
+    "title": "Path to Founding",
+    "subtitle": "Follow the pop-up tutorials",
+    "priority": 40,
+    "objectives": [
+    ]
+  },
+  "pages": []
+}

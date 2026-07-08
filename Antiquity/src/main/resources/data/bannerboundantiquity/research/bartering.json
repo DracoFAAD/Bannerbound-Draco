@@ -6,6 +6,7 @@
   "y": -300,
   "auto_unlock": false,
   "min_age": "ancient",
+  "requires_tribe": true,
   "prerequisites": [
     "bannerboundantiquity:inventory_logistics"
   ],

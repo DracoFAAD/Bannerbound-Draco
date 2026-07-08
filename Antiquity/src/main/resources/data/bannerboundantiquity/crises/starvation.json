@@ -38,7 +38,7 @@
     "target": "tribe",
     "delay_ticks": 100
   },
-  "chronicle_entry": "bannerboundantiquity:starvation",
+  "chronicle_entry": "",
   "choices": [
     {
       "id": "fish",

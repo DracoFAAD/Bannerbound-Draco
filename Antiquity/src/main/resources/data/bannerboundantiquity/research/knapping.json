@@ -22,7 +22,9 @@
       "bannerboundantiquity:stone_shovel_head",
       "bannerboundantiquity:stone_hoe_head",
       "bannerboundantiquity:stone_sword_blade",
-      "bannerboundantiquity:stone_spear_point"
+      "bannerboundantiquity:stone_spear_point",
+      "bannerboundantiquity:stone_knife",
+      "bannerboundantiquity:stone_knife_head"
     ],
     "features": [
       "bannerbound.set_tool_age:stone"

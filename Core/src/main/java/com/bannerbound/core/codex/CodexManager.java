@@ -17,6 +17,7 @@ import com.bannerbound.core.journal.JournalPlayerData;
 import com.bannerbound.core.network.CodexSyncPayload;
 import com.bannerbound.core.network.CodexToastPayload;
 import com.bannerbound.core.network.OpenCodexScreenPayload;
+import com.bannerbound.core.network.ShowTutorialPopupPayload;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -29,7 +30,10 @@ import net.neoforged.neoforge.network.PacketDistributor;
  * routing gameplay events into unlock and tutorial-progress checks. reconcile() grants every
  * entry whose rule starts unlocked or is state-satisfiable and re-syncs (login/reload pass
  * notify=false to stay quiet); the onXxx and fireForXxx paths translate a live event into a
- * CodexTriggerContext and unlock any entry whose rule may match it. Newly unlocked entries can
+ * CodexTriggerContext and unlock any entry whose rule may match it. The same two paths evaluate
+ * tutorial popups (checkPopups): a satisfied popup marks fired, quietly unlocks its linked entry
+ * for re-reading, and pushes a ShowTutorialPopupPayload (interrupt) or a plain entry toast
+ * (toast priority). Newly unlocked entries can
  * auto-pin their tutorial to the side journal: this fires only on the first unlock (so a later
  * manual unpin sticks) and skips a tutorial whose every step is already complete (the unlock
  * event often satisfies the steps itself, which would otherwise pin a done checklist with nothing
@@ -162,6 +166,7 @@ public final class CodexManager {
     public static void reconcile(ServerPlayer player, boolean notify) {
         if (player == null || player.getServer() == null) return;
         MinecraftServer server = player.getServer();
+        prunePinsForDeletedEntries(player);
         CodexPlayerData data = CodexPlayerData.get(server.overworld());
         CodexPlayerData.PlayerState state = data.state(player.getUUID());
         Settlement settlement = SettlementData.get(server.overworld()).getByPlayer(player.getUUID());
@@ -180,6 +185,20 @@ public final class CodexManager {
         }
         sendTo(player);
         if (notify && !newlyUnlocked.isEmpty()) sendToast(player, newlyUnlocked);
+        checkPopups(player, settlement, data, state, null);
+    }
+
+    /** A pinned tutorial whose Chronicle entry was removed from the datapack would otherwise be
+     *  stuck on the HUD forever (no entry row to unpin from), so login/reload drops such pins. */
+    private static void prunePinsForDeletedEntries(ServerPlayer player) {
+        JournalPlayerData journalData = JournalPlayerData.get(player.getServer().overworld());
+        List<JournalEntry> entries = journalData.entriesFor(player.getUUID());
+        boolean changed = entries.removeIf(pinned -> JOURNAL_PIN_SOURCE.equals(pinned.sourceType())
+            && CodexEntryLoader.get(pinned.sourceId()) == null);
+        if (changed) {
+            journalData.setDirty();
+            JournalManager.sendTo(player);
+        }
     }
 
     public static void reconcileAll(MinecraftServer server, boolean notify) {
@@ -217,6 +236,19 @@ public final class CodexManager {
         fireForSettlement(server, settlement, CodexTriggerContext.flag(flag));
     }
 
+    /** Once-per-second population probe (ImmigrationManager broadcast tick): fires a
+     *  population_reached event only when a settlement's population actually changed. */
+    public static void onPopulationTick(MinecraftServer server, Settlement settlement) {
+        if (server == null || settlement == null) return;
+        Integer last = LAST_POPULATION.put(settlement.id(), settlement.population());
+        if (last == null || settlement.population() > last) {
+            fireForSettlement(server, settlement, CodexTriggerContext.custom(
+                "population_reached", String.valueOf(settlement.population())));
+        }
+    }
+
+    private static final java.util.Map<UUID, Integer> LAST_POPULATION = new java.util.HashMap<>();
+
     public static void onAdvancement(ServerPlayer player, String advancementId) {
         fireForPlayer(player, CodexTriggerContext.advancement(advancementId));
     }
@@ -253,13 +285,88 @@ public final class CodexManager {
                 newlyUnlocked.add(entry);
             }
         }
-        if (newlyUnlocked.isEmpty()) return;
+        if (!newlyUnlocked.isEmpty()) {
+            data.setDirty();
+            sendTo(player);
+            sendToast(player, newlyUnlocked);
+            if (state.autoPinTutorial()) {
+                for (CodexEntry entry : newlyUnlocked) autoPinTutorialEntry(player, entry);
+            }
+        }
+        checkPopups(player, settlement, data, state, event);
+    }
+
+    private static void checkPopups(ServerPlayer player, Settlement settlement,
+                                    CodexPlayerData data, CodexPlayerData.PlayerState state,
+                                    CodexTriggerContext event) {
+        for (TutorialPopup popup : TutorialPopupLoader.sorted()) {
+            if (popup.once() && state.isPopupFired(popup.id())) continue;
+            CodexUnlockRule rule = popup.trigger();
+            // Null event = the reconcile pass: only always-on or state-recheckable triggers may
+            // fire there, mirroring how entry unlocks reconcile on login.
+            boolean satisfied = event == null
+                ? (rule.startsUnlocked() || rule.canReconcileFromState())
+                    && rule.isSatisfied(player, settlement, null)
+                : rule.mayMatchEvent(event) && rule.isSatisfied(player, settlement, event);
+            if (!satisfied) continue;
+            state.firePopup(popup.id());
+            data.setDirty();
+            boolean interrupt = popup.isInterrupt() && state.popupsEnabled();
+            unlockPopupEntry(player, data, state, popup, !interrupt);
+            if (interrupt) {
+                PacketDistributor.sendToPlayer(player, new ShowTutorialPopupPayload(
+                    popup.id(), popup.entry(), popup.order(), popup.pages(), false));
+            }
+        }
+    }
+
+    /** Unlocks the Chronicle entry archiving a fired popup: the authored entry when popup.entry
+     *  names a real one, else the popup's own id (rendered as a synthesized Tutorials entry). */
+    private static void unlockPopupEntry(ServerPlayer player, CodexPlayerData data,
+                                         CodexPlayerData.PlayerState state, TutorialPopup popup,
+                                         boolean notifyToast) {
+        String entryId = resolvePopupEntryId(popup);
+        if (CodexEntryLoader.get(entryId) != null) {
+            unlock(player, entryId, notifyToast);
+            return;
+        }
+        if (!state.unlock(entryId)) return;
         data.setDirty();
         sendTo(player);
-        sendToast(player, newlyUnlocked);
-        if (state.autoPinTutorial()) {
-            for (CodexEntry entry : newlyUnlocked) autoPinTutorialEntry(player, entry);
+        if (notifyToast && !popup.pages().isEmpty()) {
+            PacketDistributor.sendToPlayer(player,
+                new CodexToastPayload(1, popup.pages().get(0).title(), ""));
         }
+    }
+
+    static String resolvePopupEntryId(TutorialPopup popup) {
+        return !popup.entry().isBlank() && CodexEntryLoader.get(popup.entry()) != null
+            ? popup.entry() : popup.id();
+    }
+
+    public static boolean showPopup(ServerPlayer player, String popupId) {
+        TutorialPopup popup = TutorialPopupLoader.get(popupId);
+        if (player == null || popup == null) return false;
+        PacketDistributor.sendToPlayer(player, new ShowTutorialPopupPayload(
+            popup.id(), popup.entry(), popup.order(), popup.pages(), true));
+        return true;
+    }
+
+    public static void setTutorialPopupsEnabled(ServerPlayer player, boolean enabled) {
+        if (player == null || player.getServer() == null) return;
+        CodexPlayerData data = CodexPlayerData.get(player.getServer().overworld());
+        if (data.state(player.getUUID()).setPopupsEnabled(enabled)) {
+            data.setDirty();
+            sendTo(player);
+        }
+    }
+
+    public static boolean resetPopups(ServerPlayer player) {
+        if (player == null || player.getServer() == null) return false;
+        CodexPlayerData data = CodexPlayerData.get(player.getServer().overworld());
+        boolean changed = data.state(player.getUUID()).resetPopups();
+        if (changed) data.setDirty();
+        return changed;
     }
 
     private static void autoPinTutorialEntry(ServerPlayer player, CodexEntry entry) {
@@ -333,16 +440,81 @@ public final class CodexManager {
         for (CodexCategory category : CodexCategoryLoader.sorted()) {
             categories.add(CodexSyncPayload.Category.from(category));
         }
+
+        // Popups double as Chronicle content: a popup naming a real entry links onto it (and
+        // donates its pages when the entry has none of its own); any other popup becomes a
+        // synthesized read-only entry in the Tutorials category under the popup's id.
+        java.util.Map<String, TutorialPopup> popupByEntry = new java.util.HashMap<>();
+        List<TutorialPopup> virtualPopups = new ArrayList<>();
+        for (TutorialPopup popup : TutorialPopupLoader.sorted()) {
+            if (popup.pages().isEmpty()) continue;
+            String entryId = resolvePopupEntryId(popup);
+            if (CodexEntryLoader.get(entryId) != null) popupByEntry.put(entryId, popup);
+            else virtualPopups.add(popup);
+        }
+
         List<CodexSyncPayload.Entry> entries = new ArrayList<>();
         for (CodexEntry entry : CodexEntryLoader.sorted()) {
-            entries.add(CodexSyncPayload.Entry.from(entry));
+            CodexSyncPayload.Entry built = CodexSyncPayload.Entry.from(entry);
+            TutorialPopup linked = popupByEntry.get(entry.id());
+            if (linked != null) {
+                entries.add(new CodexSyncPayload.Entry(built.id(), built.category(), built.title(),
+                    built.subtitle(), built.icon(), built.order(), built.secret(), built.ponder(),
+                    built.pages().isEmpty() ? popupPages(linked) : built.pages(),
+                    built.searchableText() + " " + popupSearchText(linked),
+                    linked.id()));
+            } else {
+                entries.add(built);
+            }
         }
+        for (TutorialPopup popup : virtualPopups) {
+            entries.add(new CodexSyncPayload.Entry(popup.id(), "bannerbound:tutorials",
+                popup.pages().get(0).title(), "", "", popup.order(), true, "",
+                popupPages(popup), popupSearchText(popup), popup.id()));
+        }
+
         Set<String> unlocked = state.unlocked();
         Set<String> seen = state.seen();
         return new CodexSyncPayload(categories, entries,
             unlocked.stream().sorted().toList(),
             seen.stream().sorted().toList(),
-            state.autoPinTutorial());
+            state.autoPinTutorial(),
+            state.popupsEnabled());
+    }
+
+    private static List<CodexSyncPayload.PageElement> popupPages(TutorialPopup popup) {
+        List<CodexSyncPayload.PageElement> out = new ArrayList<>();
+        for (TutorialPopup.Page page : popup.pages()) {
+            if (!page.title().isBlank()) {
+                out.add(new CodexSyncPayload.PageElement("heading", page.title(), "", "", "", "", "", List.of()));
+            }
+            if (!page.clip().isBlank()) {
+                out.add(new CodexSyncPayload.PageElement("clip", "", "", "", page.clip(), "", "", List.of()));
+            } else if (!page.image().isBlank()) {
+                out.add(new CodexSyncPayload.PageElement("image", "", "", "", "",
+                    normalizedImagePath(page.image()), "", List.of()));
+            }
+            if (!page.text().isBlank()) {
+                out.add(new CodexSyncPayload.PageElement("text", page.text(), "", "", "", "", "", List.of()));
+            }
+        }
+        return out;
+    }
+
+    private static String popupSearchText(TutorialPopup popup) {
+        StringBuilder search = new StringBuilder();
+        for (TutorialPopup.Page page : popup.pages()) {
+            search.append(page.title()).append(' ').append(page.text()).append(' ');
+        }
+        return search.toString().toLowerCase(java.util.Locale.ROOT);
+    }
+
+    /** Bare image ids resolve into textures/codex/images; full texture paths pass through. */
+    private static String normalizedImagePath(String image) {
+        net.minecraft.resources.ResourceLocation raw =
+            net.minecraft.resources.ResourceLocation.tryParse(image);
+        if (raw == null || raw.getPath().contains("/")) return image;
+        return raw.getNamespace() + ":textures/codex/images/" + raw.getPath() + ".png";
     }
 
     private static void sendToast(ServerPlayer player, List<CodexEntry> entries) {

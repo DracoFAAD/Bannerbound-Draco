@@ -39,6 +39,12 @@ public class Config {
                 + "tab hover eases). Set false for instant, static screens.")
             .define("uiAnimations", true);
 
+    public static final ModConfigSpec.BooleanValue TUTORIAL_POPUPS = BUILDER
+            .comment("When true (default) tutorial popups open as interrupt modals at their "
+                + "trigger moments. Set false to downgrade every popup to a quiet Chronicle "
+                + "toast - the content still unlocks for re-reading in the Chronicle.")
+            .define("tutorialPopups", true);
+
     public static final ModConfigSpec.BooleanValue JEI_SHOW_UNKNOWN = BUILDER
             .comment("When false, JEI hides recipes whose output item is still unknown to the "
                 + "local player's settlement. Set true for packs that prefer full recipe visibility "

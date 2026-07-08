@@ -211,6 +211,7 @@ public final class ImmigrationManager {
             }
             if (broadcastTick) {
                 broadcastState(server, s);
+                com.bannerbound.core.codex.CodexManager.onPopulationTick(server, s);
                 broadcastWorkforceStatsIfEnabled(server, s);
                 broadcastWorkshopStatsIfEnabled(server, s);
                 broadcastFoodWarningIfChanged(server, s);

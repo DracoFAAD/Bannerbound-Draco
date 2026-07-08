@@ -186,6 +186,20 @@ public final class ServerPayloadHandler {
         });
     }
 
+    public static void handleSetTutorialPopups(SetTutorialPopupsPayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (!(context.player() instanceof ServerPlayer player)) return;
+            com.bannerbound.core.codex.CodexManager.setTutorialPopupsEnabled(player, payload.enabled());
+        });
+    }
+
+    public static void handleRequestTutorialPopup(RequestTutorialPopupPayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (!(context.player() instanceof ServerPlayer player)) return;
+            com.bannerbound.core.codex.CodexManager.showPopup(player, payload.popupId());
+        });
+    }
+
     public static void handleMenuOpened(MenuOpenedPayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
             if (!(context.player() instanceof ServerPlayer player)) return;
@@ -2408,61 +2422,6 @@ public final class ServerPayloadHandler {
                 bs.setValue(net.minecraft.world.level.block.BedBlock.OCCUPIED, false),
                 net.minecraft.world.level.block.Block.UPDATE_ALL);
         }
-    }
-
-    public static void handleRequestBlockAppeal(RequestBlockAppealPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> {
-            if (!(context.player() instanceof ServerPlayer player)) return;
-            MinecraftServer server = player.getServer();
-            if (server == null) return;
-            BlockPos pos = payload.pos();
-
-            if (pos.distSqr(player.blockPosition()) > 128 * 128) return;
-
-            net.minecraft.server.level.ServerLevel overworld = server.overworld();
-            pos = com.bannerbound.core.api.settlement.AppealResolver
-                .appealAnchor(overworld.getBlockState(pos), pos);
-
-            SettlementData sd = SettlementData.get(overworld);
-            net.minecraft.world.level.block.Block block = overworld.getBlockState(pos).getBlock();
-            Settlement owner = sd.getByChunk(new net.minecraft.world.level.ChunkPos(pos).toLong());
-
-            java.util.List<String> styles =
-                owner != null ? owner.cultureStyles() : java.util.List.of();
-            java.util.List<String> palettes =
-                owner != null ? owner.activePalettes() : java.util.List.of();
-            float base = com.bannerbound.core.api.settlement.AppealResolver.appealOf(block, styles, palettes);
-            if (owner != null) {
-                for (com.bannerbound.core.api.settlement.Home home : owner.homes().values()) {
-                    if (!com.bannerbound.core.api.settlement.HouseAppealData.unionContains(overworld, home, pos)) {
-                        continue;
-                    }
-                    int homeQueuePos = com.bannerbound.core.api.settlement.HouseAppealData
-                        .queuePositionOf(overworld, home, pos);
-                    float homeAppeal = homeQueuePos > 0
-                        ? (float) (base * Math.pow(0.9, homeQueuePos - 1)) : base;
-                    net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(player,
-                        new BlockAppealDebugPayload(pos, homeQueuePos, true, true, homeAppeal));
-                    return;
-                }
-            }
-
-            long chunkKey = new net.minecraft.world.level.ChunkPos(pos).toLong();
-            com.bannerbound.core.api.settlement.ChunkAppealData cad =
-                com.bannerbound.core.api.settlement.ChunkBeautyData.get(overworld).get(chunkKey);
-            int queuePosition = 0;
-            boolean tracked = false;
-            if (cad != null && cad.isScanned()) {
-                tracked = true;
-                queuePosition = cad.queuePositionOf(pos);
-            }
-
-            float chunkAppeal = queuePosition > 0
-                ? (float) (base * Math.pow(0.9, queuePosition - 1))
-                : (tracked ? 0f : base);
-            net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(player,
-                new BlockAppealDebugPayload(pos, queuePosition, tracked, false, chunkAppeal));
-        });
     }
 
     public static final String HERALDRY_FLAG = "bannerbound.unlock.heraldry";

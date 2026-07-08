@@ -312,6 +312,8 @@ public final class SettlementManager {
         }
         settlement.setCoupSuppressed(false);
         data.setDirty();
+        com.bannerbound.core.codex.CodexManager.onCustom(server, settlement, "government_enacted",
+            winner.name().toLowerCase(java.util.Locale.ROOT));
         Component label = Component.translatable(
             winner == Settlement.Government.COUNCIL
                 ? "bannerbound.government.council"
@@ -1380,6 +1382,7 @@ public final class SettlementManager {
 
         player.sendSystemMessage(Component.translatable("bannerbound.settle.success", name)
             .withStyle(color.formatting()));
+        com.bannerbound.core.codex.CodexManager.onCustom(player, "settlement_founded", "");
         celebrateFounding(player, settlement);
         broadcastClaims(player.getServer());
         sendEraStateTo(player);
@@ -1475,6 +1478,7 @@ public final class SettlementManager {
 
         player.sendSystemMessage(Component.translatable("bannerbound.join.success", target.factionName())
             .withStyle(target.identityFormatting()));
+        com.bannerbound.core.codex.CodexManager.onCustom(player, "settlement_joined", "");
 
         sendEraStateTo(player);
         com.bannerbound.core.language.CustomLanguageSync.sendTo(player);

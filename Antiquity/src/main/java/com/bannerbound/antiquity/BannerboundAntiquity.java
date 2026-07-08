@@ -859,6 +859,8 @@ public class BannerboundAntiquity {
         ITEMS.registerSimpleItem("bone_blade", new Item.Properties());
     public static final DeferredItem<Item> PLANT_FIBER =
         ITEMS.registerSimpleItem("plant_fiber", new Item.Properties());
+    public static final DeferredItem<Item> DRY_FIBER =
+        ITEMS.registerSimpleItem("dry_fiber", new Item.Properties());
 
     public static final DeferredItem<Item> COW_HIDE =
         ITEMS.registerSimpleItem("cow_hide", new Item.Properties());
@@ -1195,6 +1197,9 @@ public class BannerboundAntiquity {
     public static final DeferredItem<KnifeItem> BONE_KNIFE = ITEMS.registerItem("bone_knife",
         p -> new KnifeItem(p, 48, 3.5, 2.0), new Item.Properties());
 
+    public static final DeferredItem<KnifeItem> STONE_KNIFE = ITEMS.registerItem("stone_knife",
+        p -> new KnifeItem(p, 131, 4.0, 2.0), new Item.Properties());
+
     public static final DeferredItem<com.bannerbound.antiquity.item.ClubItem> BONE_CLUB =
         ITEMS.registerItem("bone_club",
             p -> new com.bannerbound.antiquity.item.ClubItem(p, 48, 4.0, 1.0), new Item.Properties());
@@ -1237,6 +1242,8 @@ public class BannerboundAntiquity {
         ITEMS.registerSimpleItem("stone_sword_blade", new Item.Properties());
     public static final DeferredItem<Item> STONE_SPEAR_POINT =
         ITEMS.registerSimpleItem("stone_spear_point", new Item.Properties());
+    public static final DeferredItem<Item> STONE_KNIFE_HEAD =
+        ITEMS.registerSimpleItem("stone_knife_head", new Item.Properties());
 
     public static final DeferredItem<PrimitiveBowItem> PRIMITIVE_BOW = ITEMS.registerItem("primitive_bow",
         PrimitiveBowItem::new, new Item.Properties().durability(240));
@@ -1432,6 +1439,7 @@ public class BannerboundAntiquity {
                 output.accept(FLINT_BLADE.get());
                 output.accept(BONE_BLADE.get());
                 output.accept(PLANT_FIBER.get());
+                output.accept(DRY_FIBER.get());
                 output.accept(PLANT_STRING.get());
                 output.accept(FIBER_ROPE.get());
                 output.accept(FIREWOOD.get());
@@ -1463,6 +1471,7 @@ public class BannerboundAntiquity {
                 output.accept(BONE_HOE.get());
                 output.accept(BONE_SWORD.get());
                 output.accept(BONE_KNIFE.get());
+                output.accept(STONE_KNIFE.get());
                 output.accept(BONE_CLUB.get());
                 output.accept(BONE_SHEARS.get());
                 output.accept(WOODEN_SPEAR.get());
@@ -1474,6 +1483,7 @@ public class BannerboundAntiquity {
                 output.accept(STONE_HOE_HEAD.get());
                 output.accept(STONE_SWORD_BLADE.get());
                 output.accept(STONE_SPEAR_POINT.get());
+                output.accept(STONE_KNIFE_HEAD.get());
                 output.accept(SLINGSHOT.get());
                 output.accept(PRIMITIVE_BOW.get());
                 output.accept(ARROW.get());
@@ -1632,15 +1642,15 @@ public class BannerboundAntiquity {
         com.bannerbound.core.creative.CreativeSections.forTab(ANTIQUITY_TAB)
             .section(band("tools", 0xFFC9A86B))
                 .add(MORTAR_AND_PESTLE_ITEM, BASKET_ITEM, FIRE_STICKS, FLINT_BLADE, BONE_BLADE,
-                     PLANT_FIBER, PLANT_STRING, FIBER_ROPE, FIREWOOD, FLINT_KNIFE, WOODEN_KNIFE,
+                     PLANT_FIBER, DRY_FIBER, PLANT_STRING, FIBER_ROPE, FIREWOOD, FLINT_KNIFE, WOODEN_KNIFE,
                      CRAFTING_STONE_ITEM, FLETCHING_STATION_ITEM, POTTERY_SLAB_ITEM, WOODWORKING_TABLE_ITEM,
                      BONE_SAW, MASONS_BENCH_ITEM, STONE_CHISEL, WORM)
             .section(band("primitive_tools", 0xFFB8B0A0))
-                .add(BONE_PICKAXE, BONE_AXE, BONE_SHOVEL, BONE_HOE, BONE_SWORD, BONE_KNIFE, BONE_CLUB,
-                     BONE_SHEARS,
+                .add(BONE_PICKAXE, BONE_AXE, BONE_SHOVEL, BONE_HOE, BONE_SWORD, BONE_KNIFE, STONE_KNIFE,
+                     BONE_CLUB, BONE_SHEARS,
                      WOODEN_SPEAR, BONE_SPEAR, STONE_SPEAR, STONE_PICK_HEAD, STONE_AXE_HEAD,
                      STONE_SHOVEL_HEAD, STONE_HOE_HEAD, STONE_SWORD_BLADE, STONE_SPEAR_POINT,
-                     SLINGSHOT, PRIMITIVE_BOW, ARROW, OAR)
+                     STONE_KNIFE_HEAD, SLINGSHOT, PRIMITIVE_BOW, ARROW, OAR)
             .section(band("poisons", 0xFF7FA86B))
                 .add(WOLFSBANE_ITEM, YARROW_ITEM, WOLFSBANE_POISON, WOLFSBANE_DART, YARROW_ANTIDOTE,
                      DEADLY_NIGHTSHADE_ITEM, MARSHMALLOW_ROOT_ITEM, DEADLY_NIGHTSHADE_POISON, NIGHTSHADE_DART,
@@ -1814,6 +1824,9 @@ public class BannerboundAntiquity {
                 } else if (state.is(net.minecraft.tags.BlockTags.LEAVES) && rng.nextFloat() < 0.40f) {
                     out.add(new net.minecraft.world.item.ItemStack(
                         net.minecraft.world.item.Items.STICK, 1 + rng.nextInt(2)));
+                } else if (state.is(net.minecraft.world.level.block.Blocks.DEAD_BUSH)
+                        && rng.nextFloat() < 0.25f) {
+                    out.add(new net.minecraft.world.item.ItemStack(DRY_FIBER.get(), 1));
                 }
                 return out;
             });

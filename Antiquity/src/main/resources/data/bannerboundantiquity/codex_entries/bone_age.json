@@ -1,0 +1,16 @@
+{
+  "category": "bannerbound:getting_started",
+  "title": "Bone Age",
+  "subtitle": "From bare hands to your first settlement",
+  "icon": "bannerboundantiquity:bone_axe",
+  "order": 2,
+  "secret": false,
+  "tutorial": {
+    "title": "Bone Age",
+    "subtitle": "Follow the pop-up tutorials",
+    "priority": 40,
+    "objectives": [
+    ]
+  },
+  "pages": []
+}

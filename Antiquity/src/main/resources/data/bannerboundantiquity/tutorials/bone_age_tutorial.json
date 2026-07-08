@@ -9,6 +9,7 @@
   },
   "priority": "interrupt",
   "once": true,
+  "entry": "bannerboundantiquity:bone_age",
   "order": 20,
   "pages": [
     {

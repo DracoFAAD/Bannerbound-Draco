@@ -46,6 +46,7 @@ public final class ClientChronicleState {
     private static final Set<String> seen = new HashSet<>();
     private static final Queue<ToastEntry> toasts = new ArrayDeque<>();
     private static boolean autoPinTutorial = true;
+    private static boolean tutorialPopupsEnabled = true;
 
     private ClientChronicleState() {
     }
@@ -70,6 +71,7 @@ public final class ClientChronicleState {
         seen.clear();
         seen.addAll(payload.seen());
         autoPinTutorial = payload.autoPinTutorial();
+        tutorialPopupsEnabled = payload.tutorialPopupsEnabled();
     }
 
     public static boolean autoPinTutorial() {
@@ -80,6 +82,16 @@ public final class ClientChronicleState {
         autoPinTutorial = !autoPinTutorial;
         PacketDistributor.sendToServer(
             new com.bannerbound.core.network.SetAutoPinTutorialPayload(autoPinTutorial));
+    }
+
+    public static boolean tutorialPopupsEnabled() {
+        return tutorialPopupsEnabled;
+    }
+
+    public static void toggleTutorialPopups() {
+        tutorialPopupsEnabled = !tutorialPopupsEnabled;
+        PacketDistributor.sendToServer(
+            new com.bannerbound.core.network.SetTutorialPopupsPayload(tutorialPopupsEnabled));
     }
 
     public static void enqueueToast(CodexToastPayload payload) {
@@ -113,9 +125,10 @@ public final class ClientChronicleState {
         String q = query == null ? "" : query.trim().toLowerCase(Locale.ROOT);
         List<CodexSyncPayload.Entry> out = new ArrayList<>();
         for (CodexSyncPayload.Entry entry : entries) {
-            boolean isUnlocked = unlocked.contains(entry.id());
-            if (!isUnlocked && entry.secret()) continue;
-            if (!q.isEmpty() && (!isUnlocked || !entry.searchableText().contains(q))) continue;
+            // Locked entries never show - no "???" teaser rows - which also hides any category
+            // whose entries are all locked (the sidebar only draws categories with visible rows).
+            if (!unlocked.contains(entry.id())) continue;
+            if (!q.isEmpty() && !entry.searchableText().contains(q)) continue;
             out.add(entry);
         }
         return out;

@@ -20,8 +20,8 @@ import net.minecraft.world.level.block.state.BlockState;
  * broken. Unlock gating: berries / flowers / mushrooms / sticks_fibers / wild_crops come with the
  * base Foraging research; the shear-requiring vines / grass / leaves stay LOCKED until Shearing is
  * researched ({@link #usesShears()} keys off that flag so those drop the block itself rather than
- * the bare-hand byproduct). STICKS_FIBERS scavenges grass + leaves BARE-HANDED for crafting raws
- * (sticks from leaves; an expansion adds fibers from grass via {@code ForagerHooks}), which is what
+ * the bare-hand byproduct). STICKS_FIBERS scavenges grass + leaves + dead bushes BARE-HANDED for
+ * crafting raws (sticks from leaves; an expansion adds fibers via {@code ForagerHooks}), which is what
  * makes the fletching/crafting chain self-sustaining; where it overlaps the shear categories those
  * win because they are declared earlier (the work goal walks the enum in order), so the player
  * chooses raws-vs-blocks by toggling. WILD_CROPS is a mature {@link CropBlock} on a crop chunk's
@@ -46,7 +46,8 @@ public enum ForageCategory {
     LEAVES      ("leaves",         "bannerbound.allow_shearing",  false, s -> s.is(BlockTags.LEAVES)),
     STICKS_FIBERS("sticks_fibers", "bannerbound.unlock.forager",  false, s -> s.is(BlockTags.LEAVES)
                                                                            || s.is(Blocks.SHORT_GRASS) || s.is(Blocks.FERN)
-                                                                           || s.is(Blocks.TALL_GRASS) || s.is(Blocks.LARGE_FERN)),
+                                                                           || s.is(Blocks.TALL_GRASS) || s.is(Blocks.LARGE_FERN)
+                                                                           || s.is(Blocks.DEAD_BUSH)),
     WILD_CROPS  ("wild_crops",     "bannerbound.unlock.forager",  true,  s -> s.getBlock() instanceof CropBlock cb
                                                                            && cb.isMaxAge(s));
 

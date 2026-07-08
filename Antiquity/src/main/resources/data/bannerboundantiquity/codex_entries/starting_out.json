@@ -1,13 +1,13 @@
 {
   "category": "bannerbound:getting_started",
   "title": "Starting Out",
-  "subtitle": "Your first hours in the Antiquity age",
+  "subtitle": "From bare hands to your first settlement",
   "icon": "minecraft:flint",
   "order": 1,
   "secret": false,
   "tutorial": {
     "title": "Starting Out",
-    "subtitle": "From bare hands to your first fire",
+    "subtitle": "Follow the pop-up tutorials",
     "priority": 40,
     "objectives": [
       {
@@ -18,68 +18,75 @@
         "trigger": { "type": "menu_opened", "id": "chronicle" },
         "substeps": [
           "Press J at any time to open the Chronicle.",
-          "Every system you discover is recorded here.",
+          "Tutorials you have seen can be replayed from there.",
           "Don't want this guide? Unpin it in the Chronicle to hide the tracker."
-        ]
-      },
-      {
-        "id": "get_flint",
-        "label": "Smash gravel into flint",
-        "progress": "Need flint",
-        "complete": "Flint knapped",
-        "trigger": { "type": "item_obtained", "item": "minecraft:flint" },
-        "substeps": [
-          "Find or dig up gravel.",
-          "Hold the gravel and right-click a rock or any hard stone surface.",
-          "Roughly one smash in four flakes off a piece of flint."
         ]
       },
       {
         "id": "knap_blade",
         "label": "Knap a Flint Blade",
-        "progress": "Need Flint Blade",
+        "progress": "Need a Flint Blade",
         "complete": "Flint Blade made",
         "trigger": { "type": "item_obtained", "item": "bannerboundantiquity:flint_blade" },
         "substeps": [
-          "Hold a piece of flint.",
-          "Right-click a hard stone surface to knap it into a Flint Blade.",
-          "The blade is your first cutting edge — it also gathers plant fiber and sticks."
+          "Smash gravel against stone to flake off flint.",
+          "Smash the flint again to knap a Flint Blade."
+        ]
+      },
+      {
+        "id": "craft_flint_knife",
+        "label": "Craft a Flint Knife",
+        "progress": "Need a Flint Knife",
+        "complete": "Flint Knife made",
+        "trigger": { "type": "item_obtained", "item": "bannerboundantiquity:flint_knife" },
+        "substeps": [
+          "Cut grass with the blade for plant fiber.",
+          "Cut sticks from leaves or dead bushes.",
+          "Combine stick, fiber, and blade in your inventory grid."
+        ]
+      },
+      {
+        "id": "collect_bone",
+        "label": "Hunt for bone",
+        "progress": "Need bone",
+        "complete": "Bone collected",
+        "trigger": { "type": "item_obtained", "item": "minecraft:bone" },
+        "substeps": [
+          "Kill animals or fish with your Flint Knife.",
+          "Bigger animals drop more bone; cows are the slowest."
+        ]
+      },
+      {
+        "id": "bone_blades",
+        "label": "Smash bones into Bone Blades",
+        "progress": "Need Bone Blades",
+        "complete": "Bone Blades made",
+        "trigger": { "type": "item_obtained", "item": "bannerboundantiquity:bone_blade" },
+        "substeps": [
+          "Smash a bone against a hard surface, just like flint."
         ]
       },
       {
         "id": "carve_crafting_stone",
-        "label": "Carve a Crafting Stone",
-        "progress": "Need Crafting Stone",
-        "complete": "Crafting Stone carved",
+        "label": "Make a Crafting Stone",
+        "progress": "Need a Crafting Stone",
+        "complete": "Crafting Stone made",
         "trigger": { "type": "block_formed", "block": "bannerboundantiquity:crafting_stone" },
         "substeps": [
-          "Hold the Flint Blade.",
-          "Right-click a cobblestone block to carve it into a Crafting Stone.",
-          "Items placed on it craft in any order — your early workbench."
+          "Pick up rocks from the ground; craft 4 into a rock block.",
+          "Use a blade or knife on the placed rock block.",
+          "Place sticks, fiber, and bone blades on it to craft your tool set."
         ]
       },
       {
-        "id": "make_fire_sticks",
-        "label": "Make Fire Sticks",
-        "progress": "Need Fire Sticks",
-        "complete": "Fire Sticks made",
-        "trigger": { "type": "item_obtained", "item": "bannerboundantiquity:fire_sticks" },
+        "id": "bone_axe",
+        "label": "Craft a Bone Axe",
+        "progress": "Need a Bone Axe",
+        "complete": "Bone Axe made",
+        "trigger": { "type": "item_obtained", "item": "bannerboundantiquity:bone_axe" },
         "substeps": [
-          "Add 2 sticks to the Crafting Stone.",
-          "When the result preview appears, shift-right-click the stone.",
-          "Pick up the Fire Sticks — your means to make fire."
-        ]
-      },
-      {
-        "id": "carve_chopping_stump",
-        "label": "Carve a Chopping Stump",
-        "progress": "Need Chopping Stump",
-        "complete": "Chopping Stump carved",
-        "trigger": { "type": "block_formed", "block": "bannerboundantiquity:chopping_stump" },
-        "substeps": [
-          "Logs can't be punched out — knap a Bone or Stone Axe first.",
-          "Fell a tree, then place a single lone log on the ground.",
-          "Right-click the lone log with an axe to carve a Chopping Stump."
+          "Browse the Crafting Stone arrows to the axe recipe.",
+          "Use the preview to auto-craft from your inventory."
         ]
       },
       {
@@ -89,60 +96,22 @@
         "complete": "Firewood split",
         "trigger": { "type": "item_obtained", "item": "bannerboundantiquity:firewood" },
         "substeps": [
-          "Use the Chopping Stump to split logs into Firewood.",
-          "Firewood is the fuel that lights your first campfire.",
-          "A campfire is where founding a settlement begins."
+          "Use the Bone Axe on a lone placed log to carve a Chopping Stump.",
+          "Place logs on the stump and chop them with the axe."
         ]
       },
       {
-        "id": "hunt_animal",
-        "label": "Hunt a wild animal",
-        "progress": "Hunt for food",
-        "complete": "First kill",
-        "trigger": { "type": "animal_hunted" },
+        "id": "found_settlement",
+        "label": "Found your settlement",
+        "progress": "Light the founding campfire",
+        "complete": "Settlement founded!",
+        "trigger": { "type": "settlement_founded" },
         "substeps": [
-          "Knap a Stone Spear (or craft a Primitive Bow) for the hunt.",
-          "Stalk a calm animal in a crouch — a spooked one will flee.",
-          "Kill it for meat, and later hide and feather for your crafts."
+          "Use 4 Firewood on the ground where you want to settle.",
+          "When the campfire is ready, use it and found your settlement."
         ]
       }
     ]
   },
-  "pages": [
-    {
-      "type": "heading",
-      "text": "From bare hands to a settlement"
-    },
-    {
-      "type": "text",
-      "text": "You begin with nothing but the land. This guide walks the first steps of the Antiquity age: knapping stone, making fire, and feeding yourself by the hunt. Follow the checklist on the left — each step completes on its own as you do it."
-    },
-    {
-      "type": "text",
-      "text": "The earliest edge is &6flint&r. Smash gravel against a rock to flake off flint, then knap that flint against stone into a &6Flint Blade&r. The blade carves a &6Crafting Stone&r — your first workbench — where two sticks become &6Fire Sticks&r."
-    },
-    {
-      "type": "items",
-      "items": ["minecraft:gravel", "minecraft:flint", "bannerboundantiquity:flint_blade", "bannerboundantiquity:crafting_stone"],
-      "caption": "The first tools of stone"
-    },
-    {
-      "type": "text",
-      "text": "With an axe you fell trees and carve a lone log into a &6Chopping Stump&r, which splits logs into &6Firewood&r — the fuel for your first campfire and the start of a real settlement. Out on unclaimed land, the &6hunt&r brings back meat, hide, and feather."
-    },
-    {
-      "type": "items",
-      "items": ["bannerboundantiquity:chopping_stump", "bannerboundantiquity:firewood", "minecraft:campfire", "bannerboundantiquity:stone_spear"],
-      "caption": "Fire, then a settlement"
-    },
-    {
-      "type": "text",
-      "text": "Done with this guide? Open the Chronicle and &6unpin&r Starting Out to hide the tracker. You can re-pin it any time."
-    },
-    {
-      "type": "link",
-      "entry": "bannerboundantiquity:knapping_stone_tools",
-      "text": "Next: Knapping & Stone Tools"
-    }
-  ]
+  "pages": []
 }

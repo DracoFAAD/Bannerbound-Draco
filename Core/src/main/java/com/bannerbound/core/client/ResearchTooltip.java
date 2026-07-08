@@ -85,9 +85,15 @@ public final class ResearchTooltip {
             footer.add(Component.translatable("bannerbound.research.queue_position", queuePos)
                 .withColor(0xFF1A5560));
         }
-        if (!ClientResearchState.ageMet(def) && !ClientResearchState.isCompleted(def.id())) {
-            footer.add(Component.translatable("bannerbound.research.age_locked",
-                    def.minAge().displayName()).withColor(0xFF8E2018));
+        if (!ClientResearchState.isCompleted(def.id())) {
+            if (ClientEraState.getPlayerEra().ordinal() < def.minAge().ordinal()) {
+                footer.add(Component.translatable("bannerbound.research.age_locked",
+                        def.minAge().displayName()).withColor(0xFF8E2018));
+            }
+            if (def.requiresTribe() && !ClientPopulationState.isTribe()) {
+                footer.add(Component.translatable("bannerbound.research.tribe_locked")
+                    .withColor(0xFF8E2018));
+            }
         }
         if (!ClientResearchState.prereqsMet(def) && !ClientResearchState.isCompleted(def.id())) {
             footer.add(Component.translatable("bannerbound.research.prereq_locked")

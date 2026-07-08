@@ -265,6 +265,15 @@ public final class BannerboundCommand {
                     .requires(s -> s.hasPermission(2))
                     .then(Commands.argument("player", EntityArgument.player())
                         .executes(BannerboundCommand::executeCodexReset))))
+            .then(Commands.literal("popup")
+                .requires(s -> s.hasPermission(2))
+                .then(Commands.literal("show")
+                    .then(Commands.argument("popup", StringArgumentType.greedyString())
+                        .suggests(popupSuggestions())
+                        .executes(BannerboundCommand::executePopupShow)))
+                .then(Commands.literal("reset")
+                    .then(Commands.argument("player", EntityArgument.player())
+                        .executes(BannerboundCommand::executePopupReset))))
             .then(Commands.literal("chunktype")
                 .requires(s -> s.hasPermission(2))
                 .executes(BannerboundCommand::executeChunkType)
@@ -755,6 +764,35 @@ public final class BannerboundCommand {
         ServerPlayer player = ctx.getSource().getPlayerOrException();
         com.bannerbound.core.codex.CodexManager.open(player, "");
         return 1;
+    }
+
+    private static SuggestionProvider<CommandSourceStack> popupSuggestions() {
+        return (ctx, builder) -> {
+            for (String id : com.bannerbound.core.codex.TutorialPopupLoader.getAll().keySet()) {
+                builder.suggest(id);
+            }
+            return builder.buildFuture();
+        };
+    }
+
+    private static int executePopupShow(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        ServerPlayer player = ctx.getSource().getPlayerOrException();
+        String popupId = StringArgumentType.getString(ctx, "popup").trim();
+        boolean sent = com.bannerbound.core.codex.CodexManager.showPopup(player, popupId);
+        ctx.getSource().sendSuccess(() -> Component.literal(sent
+                ? "Queued tutorial popup " + popupId + "."
+                : "Unknown tutorial popup " + popupId + ".")
+            .withStyle(sent ? ChatFormatting.GOLD : ChatFormatting.RED), false);
+        return sent ? 1 : 0;
+    }
+
+    private static int executePopupReset(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        ServerPlayer target = EntityArgument.getPlayer(ctx, "player");
+        boolean changed = com.bannerbound.core.codex.CodexManager.resetPopups(target);
+        ctx.getSource().sendSuccess(() -> Component.literal(
+                "Reset fired tutorial popups for " + target.getGameProfile().getName() + ".")
+            .withStyle(changed ? ChatFormatting.GOLD : ChatFormatting.GRAY), true);
+        return changed ? 1 : 0;
     }
 
     private static int executeCodexUnlock(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {

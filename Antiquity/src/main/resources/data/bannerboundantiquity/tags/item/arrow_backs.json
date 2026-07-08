@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "minecraft:feather",
-    "bannerboundantiquity:plant_fiber"
+    "bannerboundantiquity:plant_fiber",
+    "bannerboundantiquity:dry_fiber"
   ]
 }

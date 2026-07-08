@@ -27,11 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
  * {@link #scoreUnion} is the pure generic union scorer shared with workshops (and any future
  * building kind); no cache lives here. Overlapping boxes dedupe by position; air contributes
  * nothing; two-tall blocks (tall plants, doors, beds) count once at their anchor half via
- * {@link AppealResolver#isAppealDuplicateHalf}, and {@link #queuePositionOf} resolves a queried
- * non-anchor half back to that anchor so the overlay's marginal value matches the score.
- * Homes have no chunk-style scan sweep, so queuePositionOf synthesises a stable slot order by
- * sorting same-type union positions by packed long - deterministic for a given union, and
- * renumbered on add/remove the way a chunk rescan would. Union iteration is O(sum of box
+ * {@link AppealResolver#isAppealDuplicateHalf}. Union iteration is O(sum of box
  * volumes), bounded by the per-box and per-building caps. {@link AppealContributors#extra} adds
  * non-block appeal (e.g. Antiquity plaster/trim face decorations) per union position, and
  * {@link #unionContains} lets the block-edit listener decide whether an edit warrants a rescore.
@@ -98,42 +94,4 @@ public final class HouseAppealData {
         return false;
     }
 
-    public static int queuePositionOf(ServerLevel level, Home home, BlockPos target) {
-        BlockSelectionRegistry registry = BlockSelectionRegistry.get(level);
-        List<BlockSelection> boxes = registry.findByHome(home.id());
-        if (boxes.isEmpty()) return 0;
-        BlockState targetState = level.getBlockState(target);
-        if (targetState.isAir()) return 0;
-        if (AppealResolver.isAppealDuplicateHalf(targetState)) {
-            target = AppealResolver.appealAnchor(targetState, target);
-            targetState = level.getBlockState(target);
-            if (targetState.isAir()) return 0;
-        }
-        Block targetBlock = targetState.getBlock();
-
-        Set<BlockPos> union = new HashSet<>();
-        for (BlockSelection s : boxes) {
-            for (int x = s.minX(); x <= s.maxX(); x++) {
-                for (int y = s.minY(); y <= s.maxY(); y++) {
-                    for (int z = s.minZ(); z <= s.maxZ(); z++) {
-                        union.add(new BlockPos(x, y, z));
-                    }
-                }
-            }
-        }
-        if (!union.contains(target)) return 0;
-
-        List<Long> sameType = new java.util.ArrayList<>();
-        long targetKey = target.asLong();
-        for (BlockPos p : union) {
-            BlockState state = level.getBlockState(p);
-            if (state.isAir()) continue;
-            if (AppealResolver.isAppealDuplicateHalf(state)) continue;
-            if (state.getBlock() != targetBlock) continue;
-            sameType.add(p.asLong());
-        }
-        java.util.Collections.sort(sameType);
-        int idx = sameType.indexOf(targetKey);
-        return idx < 0 ? 0 : idx + 1;
-    }
 }

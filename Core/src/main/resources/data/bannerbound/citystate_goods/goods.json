@@ -21,6 +21,7 @@
     { "item": "minecraft:sweet_berries", "weight": 2.0, "biomes": ["taiga"] },
     { "item": "bannerboundantiquity:pig_hide", "weight": 1.0, "biomes": ["taiga", "forest"], "poi": "minecraft:butcher" },
     { "item": "bannerboundantiquity:plant_fiber", "weight": 1.0, "biomes": ["taiga", "forest", "jungle", "plains"] },
+    { "item": "bannerboundantiquity:dry_fiber", "weight": 1.0, "biomes": ["desert", "badlands"] },
     { "item": "bannerboundantiquity:plant_string", "weight": 1.0, "biomes": ["taiga", "forest", "jungle"] },
 
     { "item": "minecraft:rabbit_hide", "weight": 2.0, "biomes": ["snowy"] },

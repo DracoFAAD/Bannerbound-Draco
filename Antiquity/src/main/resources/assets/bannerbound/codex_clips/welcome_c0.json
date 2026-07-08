@@ -1,0 +1,6 @@
+{
+  "video": "bannerbound:codex_clips/welcome_c0.mp4",
+  "poster": "bannerbound:textures/codex/clips/welcome_c0_poster.png",
+  "loop": true,
+  "autoplay": true
+}

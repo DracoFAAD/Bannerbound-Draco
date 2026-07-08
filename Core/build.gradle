@@ -28,6 +28,8 @@ sourceSets.main.resources {
 
 repositories {
     maven { url = "https://maven.blamejared.com" }
+    // JCodec (pure-Java MP4/H.264 decode for tutorial clips) resolves from Maven Central.
+    mavenCentral()
 }
 
 base {
@@ -134,6 +136,15 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+
+    // JCodec: pure-Java MP4 demux + H.264 baseline decode for tutorial clips (BSD-2, no natives).
+    // Shipped jar-in-jar so end users need no install; TUTORIAL_POPUP_PLAN.md section 3.
+    jarJar(implementation('org.jcodec:jcodec')) {
+        version {
+            strictly '[0.2.5,0.3)'
+            prefer '0.2.5'
+        }
+    }
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar

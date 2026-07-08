@@ -35,6 +35,12 @@ import com.bannerbound.antiquity.event.AntiquityEvents;
  * one ingredient still missing (an exact match is the craftable result, not a candidate). An empty
  * pile yields no candidates (no ghost spam on an empty stone), and candidates are sorted by result
  * id so the renderer's ghost pick is stable across recomputes.
+ *
+ * <p>Dry fiber (the desert/mesa dead-bush harvest) is a 1:1 stand-in for plant fiber: every placed
+ * pile is counted through {@code canonical()}, which folds DRY_FIBER into PLANT_FIBER before
+ * matching, so any recipe listing plant fiber accepts either fiber or a mix without touching the
+ * recipe JSONs. The flip side: a crafting-stone recipe can never demand dry fiber SPECIFICALLY --
+ * an ingredient entry of dry_fiber is unmatchable because piles never count it under its own id.
  */
 @ApiStatus.Internal
 public class CraftingStoneRecipeManager extends SimpleJsonResourceReloadListener {
@@ -67,12 +73,22 @@ public class CraftingStoneRecipeManager extends SimpleJsonResourceReloadListener
         return recipes;
     }
 
-    @Nullable
-    public static CraftingStoneRecipe find(List<ItemStack> contents) {
+    private static Item canonical(Item item) {
+        return item == BannerboundAntiquity.DRY_FIBER.get()
+            ? BannerboundAntiquity.PLANT_FIBER.get() : item;
+    }
+
+    private static Map<Item, Integer> countPlaced(List<ItemStack> contents) {
         Map<Item, Integer> placed = new HashMap<>();
         for (ItemStack s : contents) {
-            if (!s.isEmpty()) placed.merge(s.getItem(), s.getCount(), Integer::sum);
+            if (!s.isEmpty()) placed.merge(canonical(s.getItem()), s.getCount(), Integer::sum);
         }
+        return placed;
+    }
+
+    @Nullable
+    public static CraftingStoneRecipe find(List<ItemStack> contents) {
+        Map<Item, Integer> placed = countPlaced(contents);
         if (placed.isEmpty()) return null;
         for (CraftingStoneRecipe recipe : recipes) {
             if (recipe.matches(placed)) return recipe;
@@ -81,10 +97,7 @@ public class CraftingStoneRecipeManager extends SimpleJsonResourceReloadListener
     }
 
     public static List<CraftingStoneRecipe> findMatching(List<ItemStack> contents) {
-        Map<Item, Integer> placed = new HashMap<>();
-        for (ItemStack s : contents) {
-            if (!s.isEmpty()) placed.merge(s.getItem(), s.getCount(), Integer::sum);
-        }
+        Map<Item, Integer> placed = countPlaced(contents);
 
         if (placed.isEmpty()) return null;
 
@@ -97,10 +110,7 @@ public class CraftingStoneRecipeManager extends SimpleJsonResourceReloadListener
     }
 
     public static List<CraftingStoneRecipe> candidates(List<ItemStack> contents) {
-        Map<Item, Integer> placed = new HashMap<>();
-        for (ItemStack s : contents) {
-            if (!s.isEmpty()) placed.merge(s.getItem(), s.getCount(), Integer::sum);
-        }
+        Map<Item, Integer> placed = countPlaced(contents);
         if (placed.isEmpty()) return List.of();
         List<CraftingStoneRecipe> out = new ArrayList<>();
         for (CraftingStoneRecipe recipe : recipes) {
