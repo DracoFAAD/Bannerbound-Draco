@@ -411,6 +411,12 @@ public class HerderWorkGoal extends OrderedWorkGoal {
         boolean posted = citizen.distanceToSqr(
             dropCell.getX() + 0.5, dropCell.getY(), dropCell.getZ() + 0.5) <= 2.25;
 
+        // Teleport the remaining animals when the herder reaches the goal path. Becuz sometimes the herder is stuck for too long allowing other animals to get out.
+        if (posted) {
+            placeBatch(sl);
+            return;
+        }
+
         List<BlockPos> finishSpots = null;
         int finished = 0;
         java.util.Iterator<Animal> it = batch.iterator();
