@@ -1,6 +1,8 @@
 package com.bannerbound.core.civpm.data;
 
+import com.bannerbound.core.BannerboundCore;
 import com.bannerbound.core.civpm.CivPM;
+import com.bannerbound.core.civpm.utils.CPMMathUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.nbt.CompoundTag;
@@ -10,7 +12,9 @@ import net.minecraft.nbt.NbtOps;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.UUID;
 
 public class CPMRegion {
     public static class Serialization {
@@ -37,71 +41,49 @@ public class CPMRegion {
                 return Serialization.CODEC.parse(NbtOps.INSTANCE, tag)
                         .getOrThrow(IllegalStateException::new);
             } catch (IOException | IllegalStateException e) {
-                System.err.println("Failed to read region save file: " + e.getMessage());
+                BannerboundCore.LOGGER.error("Failed to read region save file: {}", e.getMessage());
                 return null;
             }
         }
     }
 
     private long pos;
-    private final HashSet<String> wanderers;
-    private boolean changed; // to not save an unchanged region
+    private final HashMap<UUID, Object> wanderers;
+    private boolean changed;
 
-    public CPMRegion(long pos, HashSet<String> wanderers) {
+    public CPMRegion(long pos, HashMap<UUID, Object> wanderers) {
         this.pos = pos;
         this.wanderers = wanderers;
     }
 
-    public CPMRegion() {
-        this(0L, new HashSet<>());
-    }
-
-    public CPMRegion(int x, int y) {
-        this(pack(x, y), new HashSet<>());
-    }
-
     public CPMRegion(long pos) {
-        this(pos, new HashSet<>());
-    }
-
-    public CPMRegion(int x, int y, HashSet<String> wanderers) {
-        this(pack(x, y), wanderers);
-    }
-
-    public CPMRegion(int x, int y, String wanderersString) {
-        this(pack(x, y), new HashSet<>());
-        deserializeWanderers(wanderersString);
+        this(pos, new HashMap<>());
     }
 
     public CPMRegion(long pos, String wanderersString) {
-        this(pos, new HashSet<>());
+        this(pos, new HashMap<>());
         deserializeWanderers(wanderersString);
     }
 
-    public int getX() { return unpackX(pos); }
-    public void setX(int x) { pos = packX(pos, x); }
-
-    public int getY() { return unpackY(pos); }
-    public void setY(int y) { pos = packY(pos, y); }
-
+    public int getX() { return CPMMathUtils.CPM2DUtils.unpackX(pos); }
+    public int getY() { return CPMMathUtils.CPM2DUtils.unpackY(pos); }
     public long getPos() { return pos; }
-    public void setPos(long pos) { this.pos = pos; }
 
-    public void changed() {CivPM.getInstance().regionChanged(this);}
+    public void changed() {CivPM.getRegionManager().regionChanged(this);}
 
-    public HashSet<String> getWanderers() { return wanderers; }
+    public HashMap<UUID, Object> getWanderers() { return wanderers; }
 
-    public void removeWanderer(String wanderer) {
+    public void removeWanderer(UUID wanderer) {
         wanderers.remove(wanderer);
         changed();
     }
 
-    public void addWanderer(String wanderer) {
-        if (wanderer.length() > 4000) {
-            throw new IllegalArgumentException("There can only be max 4000 Wanderers in a region");
+    public void addWanderer(UUID wanderer) {
+        if (wanderers.size() > 3000) {
+            throw new IllegalArgumentException("There can only be max 3000 Wanderers in a region");
         }
 
-        wanderers.add(wanderer);
+        wanderers.put(wanderer, true);
         changed();
     }
 
@@ -116,8 +98,8 @@ public class CPMRegion {
     public String serializeWanderers() {
         StringBuilder joined = new StringBuilder();
 
-        for (String wanderer : wanderers) {
-            joined.append(wanderer).append(",");
+        for (UUID wanderer : wanderers.keySet()) {
+            joined.append(wanderer.toString()).append(",");
         }
 
         if (!joined.isEmpty()) {
@@ -146,30 +128,10 @@ public class CPMRegion {
                 }
 
                 if (s < e) {
-                    wanderers.add(wanderersString.substring(s, e));
+                    wanderers.put(UUID.fromString(wanderersString.substring(s, e)), true);
                 }
                 start = i + 1;
             }
         }
-    }
-
-    public static long pack(int x, int y) {
-        return ((long) x << 32) | (y & 0xFFFFFFFFL);
-    }
-
-    public static int unpackX(long packed) {
-        return (int) (packed >> 32);
-    }
-
-    public static int unpackY(long packed) {
-        return (int) packed;
-    }
-
-    public static long packX(long pos, int newX) {
-        return ((long) newX << 32) | (pos & 0xFFFFFFFFL);
-    }
-
-    public static long packY(long pos, int newY) {
-        return (pos & 0xFFFFFFFF00000000L) | (newY & 0xFFFFFFFFL);
     }
 }
