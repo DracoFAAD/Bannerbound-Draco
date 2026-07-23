@@ -1,5 +1,6 @@
 package com.bannerbound.core.api.settlement;
 
+import com.bannerbound.core.entity.CitizenEntity;
 import com.bannerbound.core.faction.ChunkForceLoader;
 import com.bannerbound.core.api.research.ResearchDefinition;
 
@@ -30,6 +31,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -184,15 +186,17 @@ public final class SettlementManager {
     public static java.util.List<com.bannerbound.core.entity.CitizenEntity>
             allCitizensOf(ServerLevel level, Settlement settlement) {
         if (level == null || settlement == null) return java.util.Collections.emptyList();
+
         java.util.List<com.bannerbound.core.entity.CitizenEntity> out = new java.util.ArrayList<>();
-        // +/-3.0e7 = vanilla's dimension-spanning entity-query bound; enumerates every loaded citizen.
-        for (com.bannerbound.core.entity.CitizenEntity c
-                : level.getEntitiesOfClass(com.bannerbound.core.entity.CitizenEntity.class,
-                    new net.minecraft.world.phys.AABB(
-                        -3.0e7, level.getMinBuildHeight(), -3.0e7,
-                        3.0e7, level.getMaxBuildHeight(), 3.0e7))) {
-            if (settlement.id().equals(c.getSettlementId())) out.add(c);
+
+        for (Citizen citizen : settlement.citizens()) {
+            Entity entity = level.getEntity(citizen.entityId());
+
+            if (!(entity instanceof CitizenEntity citizenEntity)) continue;
+
+            out.add(citizenEntity);
         }
+
         return out;
     }
 
