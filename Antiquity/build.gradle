@@ -180,7 +180,7 @@ dependencies {
     // composite build declared in settings.gradle (includeBuild '../MDK'), so it always
     // tracks the local Core sources. Core is also a required mod dependency at runtime
     // (declared in neoforge.mods.toml).
-    implementation 'com.bannerbound.core:bannerbound:1.0.0'
+    implementation 'com.bannerbound.core:bannerbound:0.0.3'
 
     // Ponder — compile-only. Antiquity's Ponder-touching classes (BannerboundAntiquityPonderPlugin,
     // PonderBootstrap) compile against this API but are only class-loaded when Create is detected
