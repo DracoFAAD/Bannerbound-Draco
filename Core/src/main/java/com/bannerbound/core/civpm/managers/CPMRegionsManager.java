@@ -37,7 +37,7 @@ public class CPMRegionsManager {
             regionsFolder = worldDataDir.resolve("cpm_regions");
             Files.createDirectories(regionsFolder);
         } catch (IOException e) {
-            System.err.println("Failed to create region save directories: " + e.getMessage());
+            BannerboundCore.LOGGER.error("Failed to create region save directories: {}", e.getMessage());
             return;
         }
 
@@ -115,14 +115,12 @@ public class CPMRegionsManager {
             regionsFolder = worldDataDir.resolve("cpm_regions");
             Files.createDirectories(regionsFolder);
         } catch (IOException e) {
-            System.err.println("Failed to create region save directories: " + e.getMessage());
+            BannerboundCore.LOGGER.error("Failed to create region save directories: {}", e.getMessage());
             return null;
         }
 
         Path regionFile = regionsFolder.resolve("region_" + CPMMathUtils.CPM2DUtils.unpackX(pos) + "-" + CPMMathUtils.CPM2DUtils.unpackY(pos) + ".dat");
         if (!Files.exists(regionFile)) return null;
-
-        BannerboundCore.LOGGER.info("Loaded region file: {}", regionFile);
 
         if (cache) {
             CPMRegion region = CPMRegion.Serialization.loadFromFile(regionFile);

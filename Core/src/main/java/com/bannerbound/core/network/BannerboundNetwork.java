@@ -1,5 +1,8 @@
 package com.bannerbound.core.network;
 
+import com.bannerbound.core.civpm.CivPM;
+import com.bannerbound.core.civpm.CivPMClient;
+import com.bannerbound.core.civpm.managers.packets.CPMPacketsRegistrar;
 import org.jetbrains.annotations.ApiStatus;
 
 import com.bannerbound.core.BannerboundCore;
@@ -34,6 +37,8 @@ public final class BannerboundNetwork {
     @SubscribeEvent
     public static void register(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar("1");
+
+        CPMPacketsRegistrar.registerPackets(registrar);
 
         registrar.playToServer(
             SettleRequestPayload.TYPE,

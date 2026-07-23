@@ -13,7 +13,6 @@ import net.minecraft.nbt.NbtOps;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.UUID;
 
 public class CPMRegion {

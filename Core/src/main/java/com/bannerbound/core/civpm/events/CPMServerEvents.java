@@ -3,8 +3,6 @@ package com.bannerbound.core.civpm.events;
 import com.bannerbound.core.BannerboundCore;
 import com.bannerbound.core.civpm.CivPM;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.LevelEvent;
